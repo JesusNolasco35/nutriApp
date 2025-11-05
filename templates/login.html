@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Iniciar Sesión - NutriApp{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card bg-dark border border-light shadow">
+        <div class="card-body">
+            <h3 class="text-center text-light mb-4">Iniciar Sesión</h3>
+
+            <form action="{{ url_for('login') }}" method="POST">
+                <div class="mb-3">
+                    <label for="usuario" class="form-label text-light">Usuario</label>
+                    <input type="text" class="form-control bg-secondary text-light border-0" id="usuario" name="usuario" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label text-light">Contraseña</label>
+                    <input type="password" class="form-control bg-secondary text-light border-0" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="btn btn-outline-light w-100">Entrar</button>
+            </form>
+
+            <p class="text-center text-light mt-3">
+                ¿No tienes cuenta?
+                <a href="{{ url_for('registro') }}" class="text-info text-decoration-none fw-bold">Regístrate aquí</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
