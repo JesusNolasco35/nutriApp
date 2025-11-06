@@ -10,12 +10,12 @@
             <form action="{{ url_for('login') }}" method="POST">
                 <div class="mb-3">
                     <label for="usuario" class="form-label text-light">Usuario</label>
-                    <input type="text" class="form-control bg-secondary text-light border-0" id="usuario" name="usuario" required>
+                    <input type="text" class="form-control  text-light border-0" id="usuario" name="usuario" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="password" class="form-label text-light">Contraseña</label>
-                    <input type="password" class="form-control bg-secondary text-light border-0" id="password" name="password" required>
+                    <input type="password" class="form-control  text-light border-0" id="password" name="password" required>
                 </div>
 
                 <button type="submit" class="btn btn-outline-light w-100">Entrar</button>
@@ -23,7 +23,7 @@
 
             <p class="text-center text-light mt-3">
                 ¿No tienes cuenta?
-                <a href="{{ url_for('registro') }}" class="text-info text-decoration-none fw-bold">Regístrate aquí</a>
+                <a href="{{ url_for('registro') }}" class="fw-bold">Regístrate aquí</a>
             </p>
         </div>
     </div>
