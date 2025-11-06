@@ -12,24 +12,35 @@ def index():
      return render_template("index.html")
 
 
-@app.route("/login", methods=["GET", "POST"])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-     if request.method == "POST":
-          email = request.form.get("email")
-          password = request.form["password"]
+     if request.method == 'POST':
+          email = request.form.get('email', '').strip()
+          password = request.form.get('password', '').strip()
 
-          usuario = USUARIOS_REGISTRADOS.get(email)
+          if not email or not password:
+               flash('Por favor ingresa email y contraseña', 'error')
+               return redirect(url_for('login'))
 
+          if email in USUARIOS_REGISTRADOS:
+               usuario = USUARIOS_REGISTRADOS[email]
+               if usuario['pasword'] == password:
+                    session['usuario_email'] = email
+               session['usuario'] = usuario['nombre']
+                    session['logueado'] = True
 
-          if usuario and usuario["password"] == password:
-               session["usuario_nombre"] = usuario["nombre"]
-               session["usuario_email"] = email  
-               flash("Inicio de sesión exitoso", "success")
-               return redirect(url_for("index"))
+                    flash(f'Bienvenido {usuario["nombre"]}!', 'success')
+                    return redirect(url_for('index'))
+               else:
+                    flash('Contraseña incorrecta', 'error')
+                    return redirect(url_for('login'))
           else:
-               flash("Correo o contraseña incorrectos", "error")
+               flash('El usuario no existe', 'error')
+               return redirect(url_for('login'))
 
-     return render_template("login.html")
+
+     return render_template('login.html')
+
 
 
 @app.route("/logout")
