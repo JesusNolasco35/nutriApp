@@ -31,7 +31,6 @@ def login():
             flash('Contraseña incorrecta', 'error')
             return redirect(url_for('login'))
 
-        
         session['usuario_email'] = email
         session['usuario_nombre'] = usuario['nombre']
         session['logueado'] = True
@@ -93,6 +92,11 @@ def registro():
         return redirect(url_for("login"))
 
     return render_template("registro.html")
+
+
+@app.route("/educacion")
+def educacion():
+    return render_template("Educacion.html")
 
 
 if __name__ == "__main__":
