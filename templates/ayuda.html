@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block title %}Ayuda y Soporte{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <h2 class="text-success text-center mb-4">Centro de Ayuda</h2>
+
+    
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h4 class="text-success">Preguntas Frecuentes</h4>
+            <hr>
+
+            <div class="accordion" id="faqAccordion">
+
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#respuesta1">
+                            ¿Cómo puedo registrar mis alimentos?
+                        </button>
+                    </h2>
+                    <div id="respuesta1" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            Puedes ir al módulo “Registro de Alimentos” desde el menú principal y agregar tus comidas del día.
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#respuesta2">
+                            ¿Por qué no puedo iniciar sesión?
+                        </button>
+                    </h2>
+                    <div id="respuesta2" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            Revisa que tu correo esté registrado y que tu contraseña sea correcta. Si el problema sigue,
+                            borra cookies o intenta desde otro navegador.
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#respuesta3">
+                            ¿Cómo uso las calculadoras de IMC, TMB o GCT?
+                        </button>
+                    </h2>
+                    <div id="respuesta3" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            Simplemente ingresa tus datos básicos como peso, altura, edad o nivel de actividad,
+                            y la app calculará automáticamente tu resultado.
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq4">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#respuesta4">
+                            ¿Cómo puedo cambiar mis datos personales?
+                        </button>
+                    </h2>
+                    <div id="respuesta4" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            Desde el menú de usuario, selecciona “Ajustes” y podrás modificar tus preferencias
+                            o cambiar tu contraseña.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+
+            <h4 class="text-success">Contacto de Soporte</h4>
+            <hr>
+
+            <p>Si necesitas ayuda adicional, puedes comunicarte con nosotros:</p>
+
+            <ul>
+                <li><strong>Email:</strong> soporte@nutriapp.com</li>
+                <li><strong>Horario:</strong> Lunes a Viernes, 9:00 AM – 6:00 PM</li>
+                <li><strong>Tiempo de respuesta:</strong> 24–48 horas</li>
+            </ul>
+
+            <p class="mt-3">Tu opinión es importante para mejorar NutriApp.</p>
+        </div>
+    </div>
+
+   
+    <div class="card shadow-sm mb-5">
+        <div class="card-body">
+            <h4 class="text-success">Recursos Útiles</h4>
+            <hr>
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a class="text-success fw-bold" href="{{ url_for('educacion') }}">Módulo de Educación</a>
+                </li>
+                <li class="list-group-item">
+                    <a class="text-success fw-bold" href="#">Términos y Condiciones</a>
+                </li>
+                <li class="list-group-item">
+                    <a class="text-success fw-bold" href="#">Política de Privacidad</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

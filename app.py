@@ -98,6 +98,15 @@ def registro():
 def educacion():
     return render_template("Educacion.html")
 
+@app.route("/ajustes")
+def ajustes():
+    return render_template("ajustes.html")
+
+@app.route("/ayuda")
+def ayuda():
+    return render_template("ayuda.html")
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
