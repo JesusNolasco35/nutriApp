@@ -1,251 +1,174 @@
 {% extends "base.html" %}
-{% block title %} Educación e Información {% endblock %}
+{% block title %}Educación e Información{% endblock %}
 
 {% block content %}
 
-<h1 class="text-center mb-5 text-info">Educación e Información</h1>
 
-<!-- CARD 1 -->
-<div class="card bg-dark text-light border border-info mb-4">
-    <div class="row g-0">
-        <div class="col-md-4">
-            <img src="/static/img/etiquetas.png" class="img-fluid rounded-start" alt="Etiqueta nutricional">
-        </div>
+<div class="text-center mb-5">
+    <h1 class="fw-bold">Educación e Información</h1>
+    <p class="text-muted fs-5">Aprende conceptos básicos de nutrición de forma clara y sencilla</p>
+</div>
 
-        <div class="col-md-8">
-            <div class="card-body">
-                <h4 class="card-title fw-bold text-info">Cómo Leer una Etiqueta Nutricional</h4>
-                <p class="card-text mt-3">
 
-                    <strong>1. Revisa la porción:</strong><br>
-                    Toda la información depende de la porción. Si comes más, multiplicas calorías y nutrientes.
-                    <br><br>
+<div class="container">
 
-                    <strong>2. Calorías por porción:</strong><br>
-                    Más de 200 kcal por porción se considera alto.
-                    <br><br>
+   
+    <div class="card shadow-sm mb-5">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="/static/img/etiquetas.png" class="img-fluid rounded-start" alt="Etiqueta nutricional">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
 
-                    <strong>3. Nutrientes principales:</strong><br>
-                    • <strong>Grasas saturadas:</strong> deben ser bajas.<br>
-                    • <strong>Grasas trans:</strong> deben ser cero.<br>
-                    • <strong>Azúcares añadidos:</strong> procura que sean bajos.<br>
-                    • <strong>Proteínas:</strong> ayudan a la saciedad.
-                    <br><br>
+                    <h4 class="fw-bold">Cómo Leer una Etiqueta Nutricional</h4>
+                    <hr>
 
-                    <strong>4. % de Valor Diario (%VD):</strong><br>
-                    5% o menos es bajo. 20% o más es alto.
-                    <br><br>
+                    <p class="card-text">
+                        <strong>1. Revisa la porción:</strong> Toda la información depende de la porción.<br><br>
 
-                    <strong>5. Lista de ingredientes:</strong><br>
-                    Ordenados de mayor a menor. Si los primeros son azúcar o jarabes, no es saludable.
-                    <br><br>
+                        <strong>2. Calorías por porción:</strong> Más de 200 kcal ya es alto.<br><br>
 
-                    <strong>6. Sellos de advertencia (NOM-051):</strong><br>
-                    Indican exceso de azúcares, grasas o sodio.
+                        <strong>3. Nutrientes principales:</strong><br>
+                        • Grasas saturadas bajas.<br>
+                        • Cero grasas trans.<br>
+                        • Azúcares añadidos bajos.<br>
+                        • Proteínas para saciedad.<br><br>
 
-                </p>
+                        <strong>4. % del Valor Diario:</strong> 5% es bajo, 20% es alto.<br><br>
+
+                        <strong>5. Ingredientes:</strong> Ordenados de mayor a menor.<br><br>
+
+                        <strong>6. Sellos NOM-051:</strong> Indican exceso de azúcar, grasa o sodio.
+                    </p>
+
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- CARD 2 -->
-<div class="card bg-dark text-light border border-info mb-4">
-    <div class="row g-0 align-items-center">
-
-        <div class="col-md-4">
-            <img src="/static/img/mitos.png" class="img-fluid rounded-start w-100 h-100" alt="Mitos y Verdades">
-        </div>
-
-        <div class="col-md-8">
-            <div class="card-body">
-
-                <h4 class="card-title fw-bold text-info">Mitos y Verdades sobre las Dietas de Moda</h4>
-                <p class="card-text mt-3">
-
-                    <strong>1. “Las dietas detox limpian el cuerpo”.</strong><br>
-                    <span class="text-info">Verdad:</span> El hígado y los riñones ya eliminan toxinas naturalmente.<br>
-                    <span class="text-warning">Mito:</span> Los jugos detox no queman grasa ni limpian el cuerpo.
-                    <br><br>
-
-                    <strong>2. “Eliminar carbohidratos es la mejor forma de bajar de peso”.</strong><br>
-                    <span class="text-info">Verdad:</span> Reducir carbohidratos refinados ayuda.<br>
-                    <span class="text-warning">Mito:</span> Quitar todos los carbohidratos provoca cansancio y pérdida
-                    muscular.
-                    <br><br>
-
-                    <strong>3. “La dieta keto funciona para todos”.</strong><br>
-                    <span class="text-info">Verdad:</span> Puede servir en algunos casos específicos.<br>
-                    <span class="text-warning">Mito:</span> No es adecuada para todas las personas sin supervisión
-                    médica.
-                    <br><br>
-
-                    <strong>4. “Los suplementos para adelgazar son seguros porque son naturales”.</strong><br>
-                    <span class="text-info">Verdad:</span> Algunos ingredientes naturales sí ayudan.<br>
-                    <span class="text-warning">Mito:</span> “Natural” no significa seguro; muchos suplementos no están
-                    regulados.
-                    <br><br>
-
-                    <strong>5. “Mientras menos comas, más rápido bajas de peso”.</strong><br>
-                    <span class="text-info">Verdad:</span> Reducir calorías es necesario.<br>
-                    <span class="text-warning">Mito:</span> Comer muy poco baja el metabolismo y causa rebote.
-                    <br><br>
-
-                    <strong>6. “Las dietas rápidas son efectivas”.</strong><br>
-                    <span class="text-info">Verdad:</span> Pueden generar pérdida de peso temporal.<br>
-                    <span class="text-warning">Mito:</span> No son sostenibles; se pierde agua y músculo, no grasa.
-                    <br><br>
-
-                    <strong>7. “La dieta perfecta existe”.</strong><br>
-                    <span class="text-info">Verdad:</span> La mejor dieta es la que puedes mantener a largo plazo.<br>
-                    <span class="text-warning">Mito:</span> No hay una dieta única ideal para todos.
-                    <br><br>
-
-                </p>
-
+    
+    <div class="card shadow-sm mb-5">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="/static/img/mitos.png" class="img-fluid rounded-start" alt="Mitos y Verdades">
             </div>
-        </div>
 
-    </div>
-</div>
+            <div class="col-md-8">
+                <div class="card-body">
 
-<!-- CARD 3 -->
-<div class="card bg-dark text-light border border-info mb-4">
-    <div class="row g-0 align-items-center">
+                    <h4 class="fw-bold">Mitos y Verdades sobre Dietas de Moda</h4>
+                    <hr>
 
-        <div class="col-md-4">
-            <img src="/static/img/macronutrientes.png" class="img-fluid rounded-start w-100 h-100"
-                style="object-fit: cover;" alt="Macronutrientes">
-        </div>
+                    <p>
+                        <strong>1. Dietas detox:</strong><br>
+                        Verdad: El cuerpo ya elimina toxinas.<br>
+                        Mito: Los jugos no queman grasa.<br><br>
 
-        <div class="col-md-8">
-            <div class="card-body">
+                        <strong>2. Quitar carbohidratos:</strong><br>
+                        Verdad: Reducir refinados ayuda.<br>
+                        Mito: Quitarlos todos es dañino.<br><br>
 
-                <h4 class="card-title fw-bold text-info">Guías sobre Macronutrientes y su Función</h4>
+                        <strong>3. Dieta keto:</strong><br>
+                        Verdad: Funciona en casos específicos.<br>
+                        Mito: No es para todos.<br><br>
 
-                <p class="card-text mt-3">
+                        <strong>4. Suplementos “naturales”:</strong><br>
+                        Verdad: Algunos ayudan.<br>
+                        Mito: Natural no significa seguro.<br><br>
 
-                    <strong>1. Carbohidratos</strong><br>
-                    • Proporcionan energía inmediata.<br>
-                    • Fuentes: Frutas, verduras, avena, Legumbres.<br>
-                    • Recomendación: Preferir carbohidratos complejos.
-                    <br><br>
+                        <strong>5. Comer muy poco:</strong><br>
+                        Verdad: Se requieren menos calorías.<br>
+                        Mito: Muy poco baja el metabolismo.<br><br>
 
-                    <strong>2. Proteínas</strong><br>
-                    • Reparan tejidos, músculos y hormonas.<br>
-                    • Fuentes: Pollo, pescado, huevo, frijoles, yogurt.<br>
-                    • Recomendación: Consumir proteína en cada comida.
-                    <br><br>
+                        <strong>6. Dietas rápidas:</strong><br>
+                        Verdad: Bajas peso temporalmente.<br>
+                        Mito: No son sostenibles.<br><br>
+                    </p>
 
-                    <strong>3. Grasas</strong><br>
-                    • Apoyan hormonas y absorción de vitaminas.<br>
-                    • Fuentes saludables: Aguacate, nueces, aceite de oliva.<br>
-                    • Evitar: Grasas trans.
-                    <br><br>
-
-                    <strong>4. Fibra</strong><br>
-                    • Mejora la digestión y regula glucosa.<br>
-                    • Fuentes: avena, frutas, verduras.<br>
-                    • Recomendación: 25–30 g diarios.
-                    <br><br>
-
-                    <strong>5. Agua</strong><br>
-                    • Regula temperatura y transporte de nutrientes.<br>
-                    • Recomendación: 6–8 vasos al día.
-                    <br><br>
-
-                </p>
-
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- CARD 4 -->
-<div class="card bg-dark text-light border border-info mb-4">
-    <div class="row g-0 align-items-center">
+   
+    <div class="card shadow-sm mb-5">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="/static/img/macronutrientes.png" class="img-fluid rounded-start" alt="Macronutrientes">
+            </div>
 
-        <div class="col-md-4">
-            <img src="/static/img/hidratacion.png" class="img-fluid rounded-start w-100 h-100"
-                style="object-fit: cover;" alt="Hidratación y Fibra">
-        </div>
+            <div class="col-md-8">
+                <div class="card-body">
 
-        <div class="col-md-8">
-            <div class="card-body">
+                    <h4 class="fw-bold">Macronutrientes y su Función</h4>
+                    <hr>
 
-                <h4 class="card-title fw-bold text-info">La Importancia de la Hidratación, la Fibra y Otros Factores</h4>
+                    <p>
+                        <strong>Carbohidratos:</strong> energía inmediata.<br>
+                        <strong>Proteínas:</strong> reparan tejidos.<br>
+                        <strong>Grasas saludables:</strong> vitaminas y hormonas.<br>
+                        <strong>Fibra:</strong> digestión y saciedad.<br>
+                        <strong>Agua:</strong> hidratación esencial.<br>
+                    </p>
 
-                <p class="card-text mt-3">
-
-                    <strong>1. Hidratación</strong><br>
-                    • Mantiene la temperatura y el rendimiento físico.<br>
-                    • Recomendación: 6–8 vasos al día.
-                    <br><br>
-
-                    <strong>2. Fibra Dietética</strong><br>
-                    • Regula digestión, glucosa y saciedad.<br>
-                    • Fuentes: avena, frutas, verduras, legumbres.
-                    <br><br>
-
-                    <strong>3. Vitaminas y Minerales</strong><br>
-                    • Apoyan energía y sistema inmune.
-                    <br><br>
-
-                    <strong>4. Antioxidantes</strong><br>
-                    • Protegen de daño celular.
-                    <br><br>
-
-                    <strong>5. Actividad Física</strong><br>
-                    • Mejora metabolismo, salud y estrés.
-                    <br><br>
-
-                    <strong>6. Descanso Adecuado</strong><br>
-                    • Regulación hormonal y recuperación muscular.
-                    <br><br>
-
-                </p>
-
+                </div>
             </div>
         </div>
-
     </div>
-</div>
 
-<!-- CARD 5 -->
-<div class="card bg-dark text-center text-light border border-info mb-4">
-    <div class="card-body">
+   
+    <div class="card shadow-sm mb-5">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="/static/img/hidratacion.png" class="img-fluid rounded-start" alt="Hidratación y Fibra">
+            </div>
 
-        <div class="mb-3">
-            <img src="/static/img/images.png" alt="Descargas" style="width: 120px; opacity: 0.85;">
+            <div class="col-md-8">
+                <div class="card-body">
+
+                    <h4 class="fw-bold">Hidratación y Estilo de Vida</h4>
+                    <hr>
+
+                    <p>
+                        <strong>Hidratación:</strong> regula temperatura.<br>
+                        <strong>Fibra:</strong> mejora digestión.<br>
+                        <strong>Vitaminas:</strong> energía e inmunidad.<br>
+                        <strong>Actividad física:</strong> salud general.<br>
+                        <strong>Descanso:</strong> recuperación muscular.<br>
+                    </p>
+
+                </div>
+            </div>
         </div>
+    </div>
 
-        <h4 class="card-title fw-bold text-info">Recursos Descargables</h4>
+    
+    <div class="card text-center shadow-sm mb-5 py-4">
 
-        <p class="card-text mt-3">
+        <img src="/static/img/images.png" class="mx-auto mb-3" width="120" alt="Descargas">
 
-            <strong>Planillas y Material en PDF para Complementar tu Nutrición y Actividad Física</strong><br><br>
+        <h4 class="fw-bold">Recursos Descargables</h4>
+        <p class="text-muted">Material en PDF para apoyar tu nutrición</p>
 
-            <strong class="text-info">Descargas disponibles:</strong><br><br>
+        <div class="list-group w-75 mx-auto">
 
-        <div class="mt-3">
-
-            <a download="Nutricion IMSS" href="/static/pdfs/guiaadolesc_nutricion.pdf" class="d-block mb-2 text-info">
-                Descargar Guía de Nutrición IMSS
+            <a download href="/static/pdfs/guiaadolesc_nutricion.pdf" class="list-group-item list-group-item-action">
+                Guía de Nutrición IMSS
             </a>
 
-            <a download="Actividad Física IMSS" href="/static/pdfs/Guia-Tecnica-Actividad-Fisica-2024.pdf" class="d-block mb-2 text-info">
-                Descargar Ejercicios Básicos IMSS
+            <a download href="/static/pdfs/Guia-Tecnica-Actividad-Fisica-2024.pdf" class="list-group-item list-group-item-action">
+                Ejercicios Básicos IMSS
             </a>
 
-            <a download="Alimentacion Saludable" href="/static/pdfs/saludable.pdf" class="d-block text-info">
-                ¿Qué es? y qué consumir para una alimentación saludable
+            <a download href="/static/pdfs/saludable.pdf" class="list-group-item list-group-item-action">
+                Alimentación Saludable
             </a>
 
         </div>
 
-        </p>
-
     </div>
+
 </div>
 
 {% endblock %}

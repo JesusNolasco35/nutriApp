@@ -1,77 +1,74 @@
 {% extends "base.html" %}
 {% block title %}Registro - NutriApp{% endblock %}
+
 {% block content %}
 <div class="container mt-5">
-    <div class="card bg-dark border border-light shadow">
+    <div class="card shadow-sm">
         <div class="card-body">
-            <h3 class="text-center text-light mb-4">Crear Cuenta</h3>
+
+            <h3 class="text-center text-success mb-4">Crear Cuenta</h3>
 
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
             {% for category, message in messages %}
-            <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show"
-                role="alert">
+            <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show">
                 {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button class="btn-close" data-bs-dismiss="alert"></button>
             </div>
             {% endfor %}
             {% endif %}
             {% endwith %}
 
             <form method="POST" action="{{ url_for('registro') }}">
-                
+
+               
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <input type="text" name="nombres" class="form-control bg-secondary text-light border-0"
-                            placeholder="Nombre(s)" required minlength="3" maxlength="40"
-                            value="{{ request.form.get('nombres', '') }}" />
+                        <input type="text" name="nombres" class="form-control" placeholder="Nombre(s)" required>
                     </div>
                     <div class="col-md-6">
-                        <input type="text" name="apellido" class="form-control bg-secondary text-light border-0"
-                            placeholder="Apellido(s)" required minlength="3" maxlength="40"
-                            value="{{ request.form.get('apellido', '') }}" />
+                        <input type="text" name="apellido" class="form-control" placeholder="Apellido(s)" required>
                     </div>
+                </div>
+
+               
+                <div class="mb-3">
+                    <label class="form-label text-success">Fecha de nacimiento</label>
+                    <input type="date" class="form-control" name="fecha_nacimiento" required>
                 </div>
 
                 
                 <div class="mb-3">
-                    <label class="form-label text-light">Fecha de nacimiento</label>
-                    <input type="date" class="form-control bg-secondary text-light border-0" name="fecha_nacimiento"
-                        required value="{{ request.form.get('fecha_nacimiento', '') }}" />
-                </div>
+                    <label class="form-label text-success">Género</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genero" value="hombre" required>
+                        <label class="form-check-label">Hombre</label>
+                    </div>
 
-                
-                <div class="mb-3">
-                    <label class="form-label text-light d-block">Género</label>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" value="hombre" required />
-                        <label class="form-check-label text-light">Hombre</label>
+                        <input class="form-check-input" type="radio" name="genero" value="mujer">
+                        <label class="form-check-label">Mujer</label>
                     </div>
+
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" value="mujer" />
-                        <label class="form-check-label text-light">Mujer</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" value="otro" />
-                        <label class="form-check-label text-light">Otro</label>
+                        <input class="form-check-input" type="radio" name="genero" value="otro">
+                        <label class="form-check-label">Otro</label>
                     </div>
                 </div>
 
-                
+               
                 <div class="row mb-3">
                     <div class="col-md-4">
-                        <input type="number" name="peso" class="form-control bg-secondary text-light border-0"
-                            placeholder="Peso (kg)" min="30" max="250"
-                            value="{{ request.form.get('peso', '') }}" required />
+                        <input type="number" name="peso" class="form-control" placeholder="Peso (kg)" required>
                     </div>
+
                     <div class="col-md-4">
-                        <input type="number" name="altura" class="form-control bg-secondary text-light border-0"
-                            placeholder="Altura (cm)" min="100" max="250"
-                            value="{{ request.form.get('altura', '') }}" required />
+                        <input type="number" name="altura" class="form-control" placeholder="Altura (cm)" required>
                     </div>
+
                     <div class="col-md-4">
-                        <select name="nivel_actividad" class="form-select bg-secondary text-light border-0" required>
-                            <option value="" disabled selected>Nivel de actividad física</option>
+                        <select name="nivel_actividad" class="form-select" required>
+                            <option disabled selected>Nivel de actividad</option>
                             <option value="sedentario">Sedentario</option>
                             <option value="ligero">Ligero</option>
                             <option value="moderado">Moderado</option>
@@ -83,69 +80,43 @@
 
                 
                 <div class="mb-3">
-                    <label class="form-label text-light">Objetivo principal</label>
-                    <select name="objetivo" class="form-select bg-secondary text-light border-0" required>
-                        <option value="" disabled selected>Selecciona tu objetivo</option>
+                    <label class="form-label text-success">Objetivo principal</label>
+                    <select name="objetivo" class="form-select" required>
+                        <option disabled selected>Selecciona tu objetivo</option>
                         <option value="bajar_peso">Bajar de peso</option>
                         <option value="mantener_peso">Mantener peso</option>
                         <option value="aumentar_masa_muscular">Aumentar masa muscular</option>
-                        <option value="mejorar_digestion">Mejorar digestión</option>
-                        <option value="controlar_condicion">Controlar una condición (diabetes, hipertensión, etc.)</option>
                     </select>
                 </div>
 
                 
                 <div class="mb-3">
-                    <label class="form-label text-light">Preferencias y restricciones alimenticias</label>
-                    <textarea name="preferencias" class="form-control bg-secondary text-light border-0" rows="2"
-                        placeholder="Ejemplo: sin gluten, sin lactosa, vegano, vegetariano, keto, sin mariscos...">{{ request.form.get('preferencias', '') }}</textarea>
+                    <label class="form-label text-success">Preferencias alimenticias</label>
+                    <textarea name="preferencias" class="form-control" rows="2"></textarea>
                 </div>
 
                 
                 <div class="mb-3">
-                    <label class="form-label text-light">Nivel de experiencia en cocina</label>
-                    <select name="nivel_experiencia" class="form-select bg-secondary text-light border-0" required>
-                        <option value="" disabled selected>Selecciona tu nivel</option>
-                        <option value="principiante">Principiante</option>
-                        <option value="intermedio">Intermedio</option>
-                        <option value="chef_aficionado">Chef aficionado</option>
-                    </select>
+                    <input type="email" name="email" class="form-control" placeholder="Correo electrónico" required>
                 </div>
 
                 
                 <div class="mb-3">
-                    <input type="email" class="form-control bg-secondary text-light border-0" name="email"
-                        placeholder="Correo electrónico" required
-                        pattern="[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|outlook\.com|yahoo\.com)"
-                        value="{{ request.form.get('email', '') }}" />
-                </div>
-
-                
-                <div class="mb-3">
-                    <input type="password" name="password" class="form-control bg-secondary text-light border-0"
-                        placeholder="Contraseña" required minlength="8" maxlength="20" />
+                    <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
                 </div>
 
                 <div class="mb-3">
-                    <input type="password" name="confirm_password" class="form-control bg-secondary text-light border-0"
-                        placeholder="Confirmar contraseña" required minlength="8" maxlength="20" />
+                    <input type="password" name="confirm_password" class="form-control" placeholder="Confirmar contraseña" required>
                 </div>
 
                 
-                <button type="submit" class="btn btn-outline-light w-100 mb-3">
-                    Registrarte
-                </button>
+                <button type="submit" class="btn btn-success w-100">Registrarte</button>
 
-                <p class="small text-light text-start text-center">
-                    Al hacer clic en "Registrarte", aceptas nuestras Condiciones, la
-                    Política de privacidad y la Política de cookies. Puedes darte de baja
-                    cuando quieras.
-                </p>
-
-                <p class="text-center text-light">
+                <p class="text-center mt-3">
                     ¿Ya tienes cuenta?
-                    <a href="{{ url_for('login') }}" class="text-info text-decoration-none fw-bold">Inicia sesión</a>
+                    <a href="{{ url_for('login') }}" class="fw-bold text-success">Inicia sesión</a>
                 </p>
+
             </form>
         </div>
     </div>

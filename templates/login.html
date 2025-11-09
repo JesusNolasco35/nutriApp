@@ -3,29 +3,27 @@
 
 {% block content %}
 <div class="container mt-5">
-    <div class="card bg-dark border border-light shadow">
+    <div class="card shadow-sm">
         <div class="card-body">
-            <h3 class="text-center text-light mb-4">Iniciar Sesión</h3>
+            <h3 class="text-center text-success mb-4">Iniciar Sesión</h3>
 
             <form action="{{ url_for('login') }}" method="POST">
                 <div class="mb-3">
-                    <label for="email" class="form-label text-light">Usuario</label>
-                    <input type="email" class="form-control bg-secondary text-light border-0" id="email" name="email" required>
-
-
+                    <label for="email" class="form-label text-success">Correo electrónico</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="password" class="form-label text-light">Contraseña</label>
-                    <input type="password" class="form-control bg-secondary text-light border-0" id="password" name="password" required>
+                    <label for="password" class="form-label text-success">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
                 </div>
 
-                <button type="submit" class="btn btn-outline-light w-100">Entrar</button>
+                <button type="submit" class="btn btn-success w-100">Entrar</button>
             </form>
 
-            <p class="text-center text-light mt-3">
+            <p class="text-center mt-3">
                 ¿No tienes cuenta?
-                <a href="{{ url_for('registro') }}" class="fw-bold">Regístrate aquí</a>
+                <a href="{{ url_for('registro') }}" class="fw-bold text-success">Regístrate aquí</a>
             </p>
         </div>
     </div>

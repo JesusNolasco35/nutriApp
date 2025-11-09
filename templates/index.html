@@ -1,76 +1,80 @@
 {% extends "base.html" %}
-
-{% block title %}Funcionalidades de Nutri App{% endblock %}
+{% block title %}Funcionalidades de NutriApp{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="text-center mb-5 text-info">Funcionalidades de Nutri App</h1>
+
+    <h1 class="text-center mb-5 text-success">Funcionalidades de NutriApp</h1>
 
     <div class="row justify-content-center">
-        <div class="col-12 col-sm-6 col-md-4 mb-4">
-            <div class="card bg-dark border-info h-100 shadow">
-                <img src="/static/img/registro.png" class="card-img-top img-fluid border-bottom border-info" alt="Registro de Alimentos">
-                <div class="card-body text-light">
-                    <h5 class="card-title text-info">Registro de Alimentos</h5>
-                    <p class="card-text">Nuestra aplicación te permite registrar fácilmente los alimentos que consumes, ya sea mediante búsqueda o escaneo de códigos de barras para obtener información precisa de su contenido nutricional.</p>
-                </div>
-            </div>
-        </div>
 
+        
         <div class="col-12 col-sm-6 col-md-4 mb-4">
-            <div class="card bg-dark border-info h-100 shadow">
-                <img src="/static/img/peso.png" class="card-img-top img-fluid border-bottom border-info" alt="Seguimiento de Peso">
-                <div class="card-body text-light">
-                    <h5 class="card-title text-info">Seguimiento de Peso y Actividad</h5>
-                    <p class="card-text">Lleva un control preciso de tu peso y actividad física, mostrando tus progresos en gráficos semanales y mensuales para evaluar tu evolución visualmente.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-4 mb-4">
-            <div class="card bg-dark border-info h-100 shadow">
-                <img src="/static/img/diario.png" class="card-img-top img-fluid border-bottom border-info" alt="Diario Nutricional">
-                <div class="card-body text-light">
-                    <h5 class="card-title text-info">Calculadora de TBM</h5>
-                    <p class="card-text">Nuestra aplicación te permite calcular tu Tasa Metabólica Basal (TMB) de forma rápida y precisa. Solo debes ingresar tus datos personales —como edad, peso, estatura y nivel de actividad— para conocer cuántas calorías necesita tu cuerpo diariamente en reposo.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-4 mb-4">
-            <div class="card bg-dark border-info h-100 shadow">
-                <img src="/static/img/comunidad.png" class="card-img-top img-fluid border-bottom border-info" alt="Comunidad Nutricional">
-                <div class="card-body text-light">
-                    <h5 class="card-title text-info">Calculadora IMC</h5>
-                    <p class="card-text">Calcula tu Índice de Masa Corporal fácil y rápido. Solo ingresa tu peso y estatura, y la app te mostrará tu resultado junto con el rango correspondiente para que evalúes tu estado nutricional.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-4 mb-4">
-            <div class="card bg-dark border-info h-100 shadow">
-                <img src="/static/img/dieta.jpg" class="card-img-top img-fluid border-bottom border-info" alt="Planes de Dieta">
-                <div class="card-body text-light">
-                    <h5 class="card-title text-info">Calculadora de GCT</h5>
-                    <p class="card-text">Obtén tu Gasto Calórico Total de forma rápida. Ingresa tus datos y nivel de actividad física para saber cuántas calorías necesitas al día y ajustar tu plan según tus objetivos.</p>
+            <div class="card h-100 shadow-sm">
+                <img src="/static/img/registro.png" class="card-img-top" alt="Registro de Alimentos">
+                <div class="card-body">
+                    <h5 class="card-title text-success">Registro de Alimentos</h5>
+                    <p class="card-text">Registra fácil tus alimentos mediante búsqueda o escaneo.</p>
                 </div>
             </div>
         </div>
 
         
         <div class="col-12 col-sm-6 col-md-4 mb-4">
-            <div class="card bg-dark border-info h-100 shadow">
-                <img src="/static/img/modulo2.jpg" class="card-img-top img-fluid border-bottom border-info" alt="Calculadora de GCT">
-                <div class="card-body text-light">
-                    <h5 class="card-title text-info">Módulo de Educación e Información</h5>
-                    <p class="card-text">Accede a contenido confiable sobre nutrición, salud y bienestar. Aprende con artículos, consejos y recursos diseñados para ayudarte a mejorar tus hábitos y alcanzar tus objetivos.</p>
+            <div class="card h-100 shadow-sm">
+                <img src="/static/img/peso.png" class="card-img-top" alt="Seguimiento de Peso">
+                <div class="card-body">
+                    <h5 class="card-title text-success">Seguimiento de Peso y Actividad</h5>
+                    <p class="card-text">Controla tu progreso semanal y mensual con gráficos.</p>
                 </div>
             </div>
         </div>
+
+       
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="/static/img/diario.png" class="card-img-top" alt="TMB">
+                <div class="card-body">
+                    <h5 class="card-title text-success">Calculadora TMB</h5>
+                    <p class="card-text">Conoce la energía basal que tu cuerpo necesita.</p>
+                </div>
+            </div>
+        </div>
+
+       
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="/static/img/comunidad.png" class="card-img-top" alt="IMC">
+                <div class="card-body">
+                    <h5 class="card-title text-success">Calculadora IMC</h5>
+                    <p class="card-text">Evalúa tu estado nutricional en segundos.</p>
+                </div>
+            </div>
+        </div>
+
         
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="/static/img/dieta.jpg" class="card-img-top" alt="GCT">
+                <div class="card-body">
+                    <h5 class="card-title text-success">Calculadora GCT</h5>
+                    <p class="card-text">Obtén cuántas calorías ocupas al día.</p>
+                </div>
+            </div>
+        </div>
+
         
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="/static/img/modulo2.jpg" class="card-img-top" alt="Educación">
+                <div class="card-body">
+                    <h5 class="card-title text-success">Educación e Información</h5>
+                    <p class="card-text">Aprende sobre nutrición de manera fácil y confiable.</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
-
 
 {% endblock %}
