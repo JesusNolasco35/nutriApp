@@ -110,6 +110,11 @@ def ayuda():
 def Imc():
     return render_template("imc.html")
 
+@app.route("/Calculadora De TMB")
+def TMB():
+    return render_template("TMB.html")
+
+
 
 
 if __name__ == "__main__":
