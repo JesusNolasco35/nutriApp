@@ -106,6 +106,10 @@ def ajustes():
 def ayuda():
     return render_template("ayuda.html")
 
+@app.route("/Calculadora De IMC")
+def Imc():
+    return render_template("imc.html")
+
 
 
 if __name__ == "__main__":
