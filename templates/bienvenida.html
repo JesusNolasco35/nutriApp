@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Nutri App{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 text-center">
+    <div class="p-5 mb-5 bg-white rounded-3 shadow">
+        <h1 class="display-4 text-success fw-bold">¡Bienvenido a NutriApp!</h1>
+        <p class="lead text-secondary">
+            Tu aplicación para llevar un control completo de tu nutrición y bienestar.
+        </p>
+        <hr class="my-4 border-success">
+        <p class="text-dark">
+            Regístrate, inicia sesión o continúa como invitado para empezar a usar la app.
+        </p>
+
+
+        <a class="btn btn-success btn-lg me-2" href="{{ url_for('registro') }}" role="button">Regístrate</a>
+        <a class="btn btn-primary btn-lg me-2" href="{{ url_for('login') }}" role="button">Iniciar Sesión</a>
+        <a class="btn btn-outline-success btn-lg" href="{{ url_for('inicio_invitado') }}" role="button">Continuar como invitado</a>
+    </div>
+</div>
+
+{% endblock %}

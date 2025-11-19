@@ -5,10 +5,37 @@ app.secret_key = "clavexdffdd"
 
 USUARIOS_REGISTRADOS = {}
 
+# ------------------------------
+# NUEVO: Ruta de bienvenida
+# ------------------------------
+@app.route('/')
+def bienvenida():
+    """
+    Página de bienvenida.
+    Ofrece opciones de registrarse, iniciar sesión o continuar como invitado.
+    """
+    return render_template("bienvenida.html")
 
-@app.route("/")
+
+# ------------------------------
+# MODIFICADO: index
+# ------------------------------
+@app.route('/inicio')  # Cambié de '/' a '/inicio' para que el index sea después de login o invitado
 def index():
+    """
+    Página principal de NutriApp después de iniciar sesión o entrar como invitado.
+    """
     return render_template("index.html")
+
+
+@app.route('/inicio_invitado')
+def inicio_invitado():
+    """
+    Permite entrar como invitado sin necesidad de registrarse ni iniciar sesión.
+    Redirige al mismo index pero con flag de invitado si quieres mostrar algo especial.
+    """
+    session['logueado'] = False  # No está logueado
+    return redirect(url_for('index'))
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -36,7 +63,7 @@ def login():
         session['logueado'] = True
 
         flash(f'Bienvenido {usuario["nombre"]}!', 'success')
-        return redirect(url_for('index'))
+        return redirect(url_for('index'))  # REDIRIGE A LA PÁGINA PRINCIPAL
 
     return render_template('login.html')
 
@@ -108,14 +135,11 @@ def ayuda():
 
 @app.route("/Calculadora De IMC")
 def Imc():
-    
     return render_template("imc.html")
 
 @app.route("/Calculadora De TMB")
 def TMB():
     return render_template("TMB.html")
-
-
 
 
 if __name__ == "__main__":
