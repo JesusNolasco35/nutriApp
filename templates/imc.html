@@ -1,48 +1,75 @@
-{% extends "base.html" %}
-{% block title %}Calculadora IMC{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}Calculadora IMC{% endblock %} {%
+block content %}
 <div class="container mt-5">
-
-   
-    {% with mensajes = get_flashed_messages(with_categories=True) %}
-    {% if mensajes %}
-        {% for categoria, mensaje in mensajes %}
-            <div class="alert alert-{{ categoria }} text-center">
-                {{ mensaje }}
-            </div>
-        {% endfor %}
-    {% endif %}
-    {% endwith %}
+    {% with mensajes = get_flashed_messages(with_categories=True) %} {% if
+    mensajes %} {% for categoria, mensaje in mensajes %}
+    <div class="alert alert-{{ categoria }} text-center">{{ mensaje }}</div>
+    {% endfor %} {% endif %} {% endwith %}
 
     <div class="row justify-content-center">
         <div class="col-md-6">
-
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h3 class="text-center mb-4">Calculadora de IMC</h3>
 
                     <form method="POST" action="{{ url_for('imc') }}">
-
                         <div class="mb-3">
                             <label class="form-label">Peso (kg)</label>
-                            <input type="number" step="0.01" class="form-control" name="peso" required>
+                            <input type="number" step="0.01" class="form-control" name="peso" required />
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Altura (cm)</label>
-                            <input type="number" step="0.01" class="form-control" name="altura" required>
+                            <input type="number" step="0.01" class="form-control" name="altura" required />
                         </div>
 
                         <button type="submit" class="btn btn-success w-100 mt-3">
                             Calcular IMC
                         </button>
-
                     </form>
 
+                    {% with mensajes = get_flashed_messages(with_categories=True) %} {% if
+                    mensajes %}
+                    <div class="mt-4 text-center">
+                        <img src="/static/img/imc.png" class="img-fluid rounded" style="max-width: 280px" />
+                    </div>
+
+                    <div class="mt-4">
+                        <h5>Preguntas frecuentes</h5>
+                        <div class="accordion" id="faqIMC">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#imc1">
+                                        ¿Qué tan confiable es el IMC?
+                                    </button>
+                                </h2>
+                                <div id="imc1" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        El IMC es una guía general, pero no mide grasa muscular ni
+                                        distribución corporal.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#imc2">
+                                        ¿Puedo mejorar mi IMC?
+                                    </button>
+                                </h2>
+                                <div id="imc2" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        Sí, con dieta balanceada y actividad física constante.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %} {% endwith %}
                 </div>
             </div>
-
         </div>
     </div>
 </div>

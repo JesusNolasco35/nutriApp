@@ -4,14 +4,13 @@
 {% block content %}
 <div class="container mt-5">
 
-    
     {% with mensajes = get_flashed_messages(with_categories=True) %}
     {% if mensajes %}
-        {% for categoria, mensaje in mensajes %}
-            <div class="alert alert-{{ categoria }} text-center">
-                {{ mensaje }}
-            </div>
-        {% endfor %}
+    {% for categoria, mensaje in mensajes %}
+    <div class="alert alert-{{ categoria }} text-center">
+        {{ mensaje }}
+    </div>
+    {% endfor %}
     {% endif %}
     {% endwith %}
 
@@ -88,10 +87,50 @@
                     {% if resultado %}
                     <div class="mt-4 p-3 bg-light border rounded">
                         <h5 class="text-center mb-3">Resultados</h5>
-                        <p><strong>Calorías recomendadas:</strong> {{ resultado.calorias }} kcal/día</p>
-                        <p><strong>Proteínas:</strong> {{ resultado.proteinas }} g/día</p>
-                        <p><strong>Carbohidratos:</strong> {{ resultado.carbohidratos }} g/día</p>
-                        <p><strong>Grasas:</strong> {{ resultado.grasas }} g/día</p>
+                        <p><strong>Calorías recomendadas:</strong> {{ calorias }} kcal/día</p>
+                        <p><strong>Proteínas:</strong> {{ proteinas|round(0) }} g</p>
+                        <p><strong>Carbohidratos:</strong> {{ carbohidratos|round(0) }} g</p>
+                        <p><strong>Grasas:</strong> {{ grasas|round(0) }} g</p>
+
+                        <div class="text-center mt-3">
+                            <img src="/static/img/macros.png" class="img-fluid rounded" style="max-width: 280px;">
+                        </div>
+
+                        <div class="mt-4">
+                            <h5>Preguntas frecuentes</h5>
+                            <div class="accordion" id="faqMacros">
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#m1">
+                                            ¿Qué son las proteínas?
+                                        </button>
+                                    </h2>
+                                    <div id="m1" class="accordion-collapse collapse">
+                                        <div class="accordion-body">
+                                            Nutrientes esenciales para el crecimiento muscular.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#m2">
+                                            ¿Qué pasa si no cumplo mis macros?
+                                        </button>
+                                    </h2>
+                                    <div id="m2" class="accordion-collapse collapse">
+                                        <div class="accordion-body">
+                                            No pasa nada, pero tus resultados pueden ser más lentos.
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
                     {% endif %}
 

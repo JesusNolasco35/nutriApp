@@ -195,7 +195,7 @@ def gct():
     resultado = None
     try:
         if request.method == "POST":
-           
+        
             edad = request.form.get("edad", "").strip()
             altura = request.form.get("altura", "").strip()
             peso = request.form.get("peso", "").strip()
@@ -206,12 +206,11 @@ def gct():
                 flash("Por favor completa todos los campos.", "warning")
                 return redirect(url_for("gct"))
 
-           
             edad = float(edad)
             altura = float(altura)   
             peso = float(peso)
 
-           
+
             multiplicador = {
                 "sedentario": 1.2,
                 "ligero": 1.375,
@@ -336,10 +335,10 @@ def macros():
             flash("Por favor ingresa valores válidos.", "danger")
 
     return render_template("macros.html",
-                           resultado=resultado,
-                           proteinas=proteinas,
-                           carbohidratos=carbohidratos,
-                           grasas=grasas)
+                    resultado=resultado,
+                    proteinas=proteinas,
+                    carbohidratos=carbohidratos,
+                    grasas=grasas)
 
 
 if __name__ == "__main__":

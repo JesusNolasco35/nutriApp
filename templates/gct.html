@@ -4,7 +4,6 @@
 {% block content %}
 <div class="container mt-5">
 
-    <!-- Mensajes flash -->
     {% with mensajes = get_flashed_messages(with_categories=True) %}
       {% if mensajes %}
         {% for categoria, mensaje in mensajes %}
@@ -54,11 +53,11 @@
                 <label class="form-label">Nivel de actividad</label>
                 <select class="form-select" name="actividad" required>
                   <option value="">Selecciona una opción</option>
-                  <option value="sedentario">Sedentario (poco o nada de ejercicio)</option>
-                  <option value="ligero">Ligero (1-3 días/semana)</option>
-                  <option value="moderado">Moderado (3-5 días/semana)</option>
-                  <option value="intenso">Intenso (6-7 días/semana)</option>
-                  <option value="muy_intenso">Muy intenso (entrenamientos dobles)</option>
+                  <option value="sedentario">Sedentario</option>
+                  <option value="ligero">Ligero</option>
+                  <option value="moderado">Moderado</option>
+                  <option value="intenso">Intenso</option>
+                  <option value="muy_intenso">Muy intenso</option>
                 </select>
               </div>
 
@@ -71,11 +70,51 @@
               <div><strong>Factor actividad:</strong> {{ resultado.factor }}</div>
               <div><strong>GCT:</strong> {{ resultado.gct }} kcal/día</div>
             </div>
+
+            
+            <div class="text-center mt-3">
+              <img src="/static/img/gct.png" class="img-fluid rounded" style="max-width: 300px;">
+            </div>
+
+            
+            <div class="mt-4">
+              <h5>Preguntas frecuentes</h5>
+              <div class="accordion" id="faqGCT">
+                
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq1">
+                      ¿Qué significa el GCT?
+                    </button>
+                  </h2>
+                  <div id="faq1" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      Es la cantidad total de calorías que necesitas para mantener tu peso según tu actividad diaria.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq2">
+                      ¿Cómo usar mis calorías diarias?
+                    </button>
+                  </h2>
+                  <div id="faq2" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      Si quieres bajar de peso, resta 300–500 calorías. Si quieres subir, suma 300–400 kcal.
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
             {% endif %}
 
           </div>
         </div>
       </div>
     </div>
+
 </div>
 {% endblock %}
