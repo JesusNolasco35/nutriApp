@@ -40,9 +40,9 @@
         .card img {
           border-top-left-radius: 15px;
          border-top-right-radius: 15px;
-         width: 100%;          /* que ocupe todo el ancho de la card */
-         height: 600px;        /* altura fija, ajustable */
-         object-fit: cover;    /* recorta y ajusta la imagen sin deformarla */
+         width: 100%;         
+         height: 600px;       
+         object-fit: cover;    
         }
 
 
@@ -94,10 +94,10 @@
 
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('TMB') }}">TMB</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('Imc') }}">IMC</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">GCT</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Peso Ideal</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Macronutrientes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('imc') }}">IMC</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('gct') }}">GCT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('pci') }}">Peso Ideal</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('macros') }}">Macronutrientes</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Seguimiento</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Registro de Alimentos</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('educacion') }}">Educación</a></li>

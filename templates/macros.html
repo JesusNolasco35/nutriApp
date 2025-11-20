@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Calculadora de Macronutrientes{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+
+    
+    {% with mensajes = get_flashed_messages(with_categories=True) %}
+    {% if mensajes %}
+        {% for categoria, mensaje in mensajes %}
+            <div class="alert alert-{{ categoria }} text-center">
+                {{ mensaje }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="text-center mb-4">Calculadora de Macronutrientes</h3>
+
+                    <form method="POST" action="{{ url_for('macros') }}">
+
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Peso (kg)</label>
+                                <input type="number" name="peso" step="0.1" class="form-control" required>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Altura (cm)</label>
+                                <input type="number" name="altura" step="0.1" class="form-control" required>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Edad</label>
+                                <input type="number" name="edad" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Género</label>
+                                <select name="genero" class="form-select" required>
+                                    <option value="hombre">Hombre</option>
+                                    <option value="mujer">Mujer</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Actividad física</label>
+                                <select name="actividad" class="form-select" required>
+                                    <option value="1.2">Sedentario</option>
+                                    <option value="1.375">Ligero</option>
+                                    <option value="1.55">Moderado</option>
+                                    <option value="1.725">Intenso</option>
+                                    <option value="1.9">Muy intenso</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Objetivo</label>
+                                <select name="objetivo" class="form-select" required>
+                                    <option value="perder">Perder peso</option>
+                                    <option value="mantener">Mantener peso</option>
+                                    <option value="ganar">Ganar masa muscular</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Tipo de dieta</label>
+                                <select name="dieta" class="form-select" required>
+                                    <option value="balanceada">Balanceada</option>
+                                    <option value="alta_prote">Alta en proteína</option>
+                                    <option value="keto">Keto</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100 mt-3">Calcular</button>
+                    </form>
+
+                    {% if resultado %}
+                    <div class="mt-4 p-3 bg-light border rounded">
+                        <h5 class="text-center mb-3">Resultados</h5>
+                        <p><strong>Calorías recomendadas:</strong> {{ resultado.calorias }} kcal/día</p>
+                        <p><strong>Proteínas:</strong> {{ resultado.proteinas }} g/día</p>
+                        <p><strong>Carbohidratos:</strong> {{ resultado.carbohidratos }} g/día</p>
+                        <p><strong>Grasas:</strong> {{ resultado.grasas }} g/día</p>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
