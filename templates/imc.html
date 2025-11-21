@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
+<<<<<<< HEAD
 <div class="container mt-4">
 
     <div class="card border-success mb-4">
@@ -52,8 +53,16 @@
             {% endif %}
         </div>
     </div>
+=======
+    {% with mensajes = get_flashed_messages(with_categories=True) %}
+    {% if mensajes %}
+        {% for categoria, mensaje in mensajes %}
+            <div class="alert alert-{{ categoria }} text-center">{{ mensaje }}</div>
+        {% endfor %}
+>>>>>>> 1f3dc20b361c4338070b53e2e44c3efcf1026960
     {% endif %}
 
+<<<<<<< HEAD
     <div id="preguntasIMC" class="carousel slide mb-5" data-bs-ride="carousel">
         <div class="carousel-inner">
 
@@ -96,6 +105,107 @@
                             🌱 Tus pequeños avances se suman.
                         </p>
                     </div>
+=======
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <h3 class="text-center mb-1">¿Por qué es importante calcular tu IMC?</h3>
+
+                    <p class="text-muted text-center mb-4">
+                        El Índice de Masa Corporal (IMC) es una herramienta sencilla que te permite conocer
+                        si tu peso está dentro de un rango saludable. Aunque no mide la grasa corporal de forma directa,
+                        ayuda a identificar riesgos relacionados con enfermedades crónicas y problemas metabólicos.
+                    </p>
+
+                    <hr>
+
+                    <h3 class="text-center mb-4">Calculadora de IMC</h3>
+
+                    <form method="POST" action="{{ url_for('imc') }}">
+
+                        <div class="mb-3">
+                            <label class="form-label">Peso (kg)</label>
+                            <input type="number" step="0.01" class="form-control" name="peso" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Altura (cm)</label>
+                            <input type="number" step="0.01" class="form-control" name="altura" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edad" class="form-label">Edad</label>
+                            <input type="number" class="form-control" id="edad" name="edad" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Sexo</label>
+                            <div class="d-flex gap-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sexo" id="sexo_hombre" value="Hombre" required>
+                                    <label class="form-check-label" for="sexo_hombre">Hombre</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sexo" id="sexo_mujer" value="Mujer" required>
+                                    <label class="form-check-label" for="sexo_mujer">Mujer</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100 mt-3">
+                            Calcular IMC
+                        </button>
+                    </form>
+
+                    {% with mensajes = get_flashed_messages(with_categories=True) %}
+                    {% if mensajes %}
+                    <div class="mt-4 text-center">
+                        <img src="/static/img/imc.png" class="img-fluid rounded" style="max-width: 280px">
+                    </div>
+
+                    <div class="mt-4">
+                        <h5>Preguntas frecuentes</h5>
+                        <div class="accordion" id="faqIMC">
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#imc1">
+                                        ¿Qué tan confiable es el IMC?
+                                    </button>
+                                </h2>
+                                <div id="imc1" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        El IMC es una guía general, pero no mide la grasa muscular ni la distribución
+                                        corporal.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#imc2">
+                                        ¿Puedo mejorar mi IMC?
+                                    </button>
+                                </h2>
+                                <div id="imc2" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        Sí, con una dieta balanceada y actividad física constante.
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+
+>>>>>>> 1f3dc20b361c4338070b53e2e44c3efcf1026960
                 </div>
             </div>
 
@@ -112,4 +222,104 @@
 
 </div>
 
+<<<<<<< HEAD
+=======
+
+<!-- CONTENEDOR INFORMACIÓN DEL IMC -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <h3 class="text-center mb-1">Información sobre el Índice de Masa Corporal (IMC)</h3>
+
+                    <p class="text-center text-muted mb-4">
+                        Resuelve tus dudas más comunes sobre el IMC y su interpretación.
+                    </p>
+
+                    <hr>
+
+                    <div class="accordion accordion-flush" id="accordionIMC">
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#imc-info1">
+                                    ¿El IMC es un indicador fiable de grasa corporal?
+                                </button>
+                            </h2>
+                            <div id="imc-info1" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    El IMC estima la categoría de peso, pero no mide grasa ni distingue músculo.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#imc-info2">
+                                    ¿Por qué es importante mantener un IMC saludable?
+                                </button>
+                            </h2>
+                            <div id="imc-info2" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    Un IMC normal reduce el riesgo de diabetes, enfermedades del corazón y más.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#imc-info3">
+                                    ¿El IMC aplica igual para todos?
+                                </button>
+                            </h2>
+                            <div id="imc-info3" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    En niños se usan tablas especiales. En adultos sirve igual para hombres y mujeres.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#imc-info4">
+                                    ¿Puede un IMC alto ser saludable?
+                                </button>
+                            </h2>
+                            <div id="imc-info4" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    Atletas pueden tener IMC alto por músculo, sin ser poco saludables.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#imc-info5">
+                                    ¿Cómo afecta el IMC al riesgo de enfermedades?
+                                </button>
+                            </h2>
+                            <div id="imc-info5" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    Un IMC fuera del rango normal incrementa riesgo de enfermedades crónicas.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+>>>>>>> 1f3dc20b361c4338070b53e2e44c3efcf1026960
 {% endblock %}
