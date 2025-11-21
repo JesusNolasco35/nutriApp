@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% block title %}Calculadora de Macronutrientes{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+
+    {% with mensajes = get_flashed_messages(with_categories=True) %}
+    {% if mensajes %}
+    {% for categoria, mensaje in mensajes %}
+    <div class="alert alert-{{ categoria }} text-center">
+        {{ mensaje }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="text-center mb-4">Calculadora de Macronutrientes</h3>
+
+                    <form method="POST" action="{{ url_for('macros') }}">
+
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Peso (kg)</label>
+                                <input type="number" name="peso" step="0.1" class="form-control" required>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Altura (cm)</label>
+                                <input type="number" name="altura" step="0.1" class="form-control" required>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Edad</label>
+                                <input type="number" name="edad" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Género</label>
+                                <select name="genero" class="form-select" required>
+                                    <option value="hombre">Hombre</option>
+                                    <option value="mujer">Mujer</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Actividad física</label>
+                                <select name="actividad" class="form-select" required>
+                                    <option value="1.2">Sedentario</option>
+                                    <option value="1.375">Ligero</option>
+                                    <option value="1.55">Moderado</option>
+                                    <option value="1.725">Intenso</option>
+                                    <option value="1.9">Muy intenso</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Objetivo</label>
+                                <select name="objetivo" class="form-select" required>
+                                    <option value="perder">Perder peso</option>
+                                    <option value="mantener">Mantener peso</option>
+                                    <option value="ganar">Ganar masa muscular</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Tipo de dieta</label>
+                                <select name="dieta" class="form-select" required>
+                                    <option value="balanceada">Balanceada</option>
+                                    <option value="alta_prote">Alta en proteína</option>
+                                    <option value="keto">Keto</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100 mt-3">Calcular</button>
+                    </form>
+
+                    {% if resultado %}
+                    <div class="mt-4 p-3 bg-light border rounded">
+                        <h5 class="text-center mb-3">Resultados</h5>
+                        <p><strong>Calorías recomendadas:</strong> {{ calorias }} kcal/día</p>
+                        <p><strong>Proteínas:</strong> {{ proteinas|round(0) }} g</p>
+                        <p><strong>Carbohidratos:</strong> {{ carbohidratos|round(0) }} g</p>
+                        <p><strong>Grasas:</strong> {{ grasas|round(0) }} g</p>
+
+                        <div class="text-center mt-3">
+                            <img src="/static/img/macros.png" class="img-fluid rounded" style="max-width: 280px;">
+                        </div>
+
+                        <div class="mt-4">
+                            <h5>Preguntas frecuentes</h5>
+                            <div class="accordion" id="faqMacros">
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#m1">
+                                            ¿Qué son las proteínas?
+                                        </button>
+                                    </h2>
+                                    <div id="m1" class="accordion-collapse collapse">
+                                        <div class="accordion-body">
+                                            Nutrientes esenciales para el crecimiento muscular.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#m2">
+                                            ¿Qué pasa si no cumplo mis macros?
+                                        </button>
+                                    </h2>
+                                    <div id="m2" class="accordion-collapse collapse">
+                                        <div class="accordion-body">
+                                            No pasa nada, pero tus resultados pueden ser más lentos.
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

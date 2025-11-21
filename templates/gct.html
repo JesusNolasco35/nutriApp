@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block title %}Calculadora GCT{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+
+    {% with mensajes = get_flashed_messages(with_categories=True) %}
+      {% if mensajes %}
+        {% for categoria, mensaje in mensajes %}
+          <div class="alert alert-{{ categoria }} text-center">
+            {{ mensaje }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h3 class="text-center mb-4">Calculadora de Gasto Calórico Total (GCT)</h3>
+
+            <form method="POST" action="{{ url_for('gct') }}">
+
+              <div class="mb-3">
+                <label class="form-label">Edad (años)</label>
+                <input type="number" class="form-control" name="edad" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Altura (cm)</label>
+                <input type="number" step="0.1" class="form-control" name="altura" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Peso (kg)</label>
+                <input type="number" step="0.1" class="form-control" name="peso" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Género</label><br>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="genero" value="hombre" required>
+                  <label class="form-check-label">Hombre</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="genero" value="mujer">
+                  <label class="form-check-label">Mujer</label>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Nivel de actividad</label>
+                <select class="form-select" name="actividad" required>
+                  <option value="">Selecciona una opción</option>
+                  <option value="sedentario">Sedentario</option>
+                  <option value="ligero">Ligero</option>
+                  <option value="moderado">Moderado</option>
+                  <option value="intenso">Intenso</option>
+                  <option value="muy_intenso">Muy intenso</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-success w-100">Calcular GCT</button>
+            </form>
+
+            {% if resultado %}
+            <div class="alert alert-info mt-4 text-center">
+              <div><strong>TMB:</strong> {{ resultado.tmb }} kcal/día</div>
+              <div><strong>Factor actividad:</strong> {{ resultado.factor }}</div>
+              <div><strong>GCT:</strong> {{ resultado.gct }} kcal/día</div>
+            </div>
+
+            
+            <div class="text-center mt-3">
+              <img src="/static/img/gct.png" class="img-fluid rounded" style="max-width: 300px;">
+            </div>
+
+            
+            <div class="mt-4">
+              <h5>Preguntas frecuentes</h5>
+              <div class="accordion" id="faqGCT">
+                
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq1">
+                      ¿Qué significa el GCT?
+                    </button>
+                  </h2>
+                  <div id="faq1" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      Es la cantidad total de calorías que necesitas para mantener tu peso según tu actividad diaria.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq2">
+                      ¿Cómo usar mis calorías diarias?
+                    </button>
+                  </h2>
+                  <div id="faq2" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      Si quieres bajar de peso, resta 300–500 calorías. Si quieres subir, suma 300–400 kcal.
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+{% endblock %}
