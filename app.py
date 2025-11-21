@@ -137,41 +137,48 @@ def imc():
     if request.method == "POST":
         peso = request.form.get("peso", "").replace(",", ".")
         altura = request.form.get("altura", "").replace(",", ".")
+        edad = request.form.get("edad", "").strip()
+        sexo = request.form.get("sexo", "").strip().lower()
 
-        # Validación REAL: verifica que tengan números válidos
-        if not peso.strip() or not altura.strip():
-            return render_template("imc.html", error="Por favor llena todos los campos")
+        
+        if not peso or not altura or not edad or sexo not in ["masculino", "femenino"]:
+            return render_template("imc.html", error="Por favor llena todos los campos correctamente")
 
         try:
             peso = float(peso)
-            altura = float(altura) / 100  # cm → metros
+            altura = float(altura) / 100 
+            edad = int(edad)
         except ValueError:
-            return render_template("imc.html",
-                                   error="Introduce números válidos. Ejemplo: 70 o 1.75")
+            return render_template("imc.html", error="Introduce números válidos para peso, altura y edad")
 
-        # Evitar división por cero
         if altura == 0:
-            return render_template("imc.html",
-                                   error="La altura no puede ser cero")
+            return render_template("imc.html", error="La altura no puede ser cero")
 
         imc = peso / (altura * altura)
+        imc = round(imc, 2)  
 
-        if imc < 18.5:
-            resultado = {"estado": "Bajo peso", "imagen": "bajo2.png"}
-            mensaje = "Necesitas mejorar tu alimentación."
-        elif imc < 25:
-            resultado = {"estado": "Normal", "imagen": "normal2.png"}
-            mensaje = "¡Estás en un buen rango, sigue así!"
-        elif imc < 30:
-            resultado = {"estado": "Sobrepeso", "imagen": "sobrepeso2.png"}
-            mensaje = "Cuida un poco más tus hábitos."
-        else:
-            resultado = {"estado": "Obesidad", "imagen": "obeso2.png"}
-            mensaje = "Toma acción para mejorar tu salud."
+        
+        if edad >= 18:  
+            if imc < 18.5:
+                resultado = {"estado": "Bajo peso", "imagen": "bajo2.png"}
+                mensaje = "Necesitas mejorar tu alimentación."
+            elif imc < 25:
+                resultado = {"estado": "Normal", "imagen": "normal2.png"}
+                mensaje = "¡Estás en un buen rango, sigue así!"
+            elif imc < 30:
+                resultado = {"estado": "Sobrepeso", "imagen": "sobrepeso2.png"}
+                mensaje = "Cuida un poco más tus hábitos."
+            else:
+                resultado = {"estado": "Obesidad", "imagen": "obeso2.png"}
+                mensaje = "Toma acción para mejorar tu salud."
+        else:  
+            resultado = {"estado": "Menor de 18 años", "imagen": "infantil.png"}
+            mensaje = f"Tu IMC es {imc}. Para niños y adolescentes, consulta con un especialista para interpretar correctamente el IMC según edad y sexo."
 
-        return render_template("imc.html", resultado=resultado, mensaje=mensaje)
+        return render_template("imc.html", resultado=resultado, mensaje=mensaje, imc=imc)
 
     return render_template("imc.html")
+
 
 
 
