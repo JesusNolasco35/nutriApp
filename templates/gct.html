@@ -1,81 +1,130 @@
 {% extends "base.html" %}
-{% block title %}Calculadora GCT{% endblock %}
+{% block title %} Gasto Calórico Total {% endblock %}
 
 {% block content %}
+
 <div class="container mt-5">
 
-    <!-- Mensajes flash -->
-    {% with mensajes = get_flashed_messages(with_categories=True) %}
-      {% if mensajes %}
-        {% for categoria, mensaje in mensajes %}
-          <div class="alert alert-{{ categoria }} text-center">
-            {{ mensaje }}
-          </div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
+  <h1 class="text-center text-success mb-4">Gasto Calórico Total</h1>
 
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h3 class="text-center mb-4">Calculadora de Gasto Calórico Total (GCT)</h3>
 
-            <form method="POST" action="{{ url_for('gct') }}">
+  <div id="carouselGCT" class="carousel slide mb-4">
+    <div class="carousel-inner">
 
-              <div class="mb-3">
-                <label class="form-label">Edad (años)</label>
-                <input type="number" class="form-control" name="edad" required>
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label">Altura (cm)</label>
-                <input type="number" step="0.1" class="form-control" name="altura" required>
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label">Peso (kg)</label>
-                <input type="number" step="0.1" class="form-control" name="peso" required>
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label">Género</label><br>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="genero" value="hombre" required>
-                  <label class="form-check-label">Hombre</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="genero" value="mujer">
-                  <label class="form-check-label">Mujer</label>
-                </div>
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label">Nivel de actividad</label>
-                <select class="form-select" name="actividad" required>
-                  <option value="">Selecciona una opción</option>
-                  <option value="sedentario">Sedentario (poco o nada de ejercicio)</option>
-                  <option value="ligero">Ligero (1-3 días/semana)</option>
-                  <option value="moderado">Moderado (3-5 días/semana)</option>
-                  <option value="intenso">Intenso (6-7 días/semana)</option>
-                  <option value="muy_intenso">Muy intenso (entrenamientos dobles)</option>
-                </select>
-              </div>
-
-              <button type="submit" class="btn btn-success w-100">Calcular GCT</button>
-            </form>
-
-            {% if resultado %}
-            <div class="alert alert-info mt-4 text-center">
-              <div><strong>TMB:</strong> {{ resultado.tmb }} kcal/día</div>
-              <div><strong>Factor actividad:</strong> {{ resultado.factor }}</div>
-              <div><strong>GCT:</strong> {{ resultado.gct }} kcal/día</div>
-            </div>
-            {% endif %}
-
-          </div>
+      <div class="carousel-item active">
+        <div class="p-4 bg-success text-white rounded text-center">
+          <h4>¿Qué es el Gasto Calórico Total?</h4>
+          <p>Es la cantidad de calorías que tu cuerpo necesita al día según tu actividad.</p>
+          <small>¡Conócelo y mejora tu salud!</small>
         </div>
       </div>
+
+      <div class="carousel-item">
+        <div class="p-4 bg-success text-white rounded text-center">
+          <h4>¿Por qué es importante calcularlo?</h4>
+          <p>Te ayuda a saber cuántas calorías debes consumir para subir, bajar o mantener tu peso.</p>
+          <small>¡Tu cuerpo merece lo mejor!</small>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="p-4 bg-success text-white rounded text-center">
+          <h4>¿Qué necesito para calcularlo?</h4>
+          <p>Peso, altura, edad, sexo y nivel de actividad física.</p>
+          <small>¡Cada paso cuenta!</small>
+        </div>
+      </div>
+
     </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselGCT" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselGCT" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+
+  <div class="card border-success mb-4">
+    <div class="card-body">
+
+      <form method="POST" action="/gct">
+
+        <div class="mb-3">
+          <label class="form-label">Peso (kg)</label>
+          <input type="number" step="0.1" name="peso" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Altura (cm)</label>
+          <input type="number" step="0.1" name="altura" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Edad</label>
+          <input type="number" name="edad" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Sexo</label>
+          <select name="sexo" class="form-select" required>
+            <option value="" disabled selected>Selecciona...</option>
+            <option value="h">Hombre</option>
+            <option value="m">Mujer</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Nivel de Actividad</label>
+          <select name="actividad" class="form-select" required>
+            <option value="" disabled selected>Selecciona...</option>
+            <option value="1.2">Sedentario</option>
+            <option value="1.375">Ligero</option>
+            <option value="1.55">Moderado</option>
+            <option value="1.725">Intenso</option>
+            <option value="1.9">Muy Intenso</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Calcular GCT</button>
+
+      </form>
+
+    </div>
+  </div>
+
+
+  {% if resultado %}
+  <div class="alert alert-success text-center mt-4">
+
+    <h4 class="mb-3">Resultado</h4>
+
+    <p class="fs-4 fw-bold">{{ resultado }} kcal</p>
+
+    <p class="text-dark">
+      Esta es la cantidad estimada de calorías que tu cuerpo necesita al día para
+      <strong>mantener tu peso actual</strong> considerando tu nivel de actividad.
+    </p>
+
+    <hr>
+
+    <h5 class="text-success">¿Qué puedo hacer con este número?</h5>
+
+    <p class="text-dark">
+      • Si quieres <strong>bajar de peso</strong>, consume entre <strong>300 y 500 kcal menos</strong> al día. <br>
+      • Si quieres <strong>subir masa muscular</strong>, consume entre <strong>200 y 400 kcal más</strong>. <br>
+      • Si quieres <strong>mantenerte</strong>, trata de no alejarte mucho de tu GCT.
+    </p>
+
+    <p class="fw-bold text-success mt-3">
+      🌟 ¡Vas por buen camino! Entender tus calorías es el primer paso para un cambio real.
+    </p>
+
+  </div>
+  {% endif %}
+
+
 </div>
+
 {% endblock %}

@@ -1,53 +1,145 @@
 {% extends "base.html" %}
-{% block title %}Peso Corporal Ideal{% endblock %}
-
 {% block content %}
-<div class="container mt-5">
 
-    {% if resultado %}
-        <div class="alert alert-success text-center">
-            {{ resultado }}
+<div class="container mt-4">
+
+    
+    <div class="card border-success mb-4">
+        <div class="card-header bg-success text-white text-center">
+            <h4>Peso Corporal Ideal (PCI)</h4>
         </div>
+
+        <div class="card-body">
+
+            <form method="POST" class="row g-3">
+
+                <div class="col-md-6">
+                    <label class="form-label">Altura (cm)</label>
+                    <input type="number" name="altura" class="form-control border-success" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Sexo</label>
+                    <select name="sexo" class="form-select border-success" required>
+                        <option value="h">Hombre</option>
+                        <option value="m">Mujer</option>
+                    </select>
+                </div>
+
+                <div class="col-12 text-center mt-3">
+                    <button type="submit" class="btn btn-success px-4">
+                        Calcular PCI
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+    
+    {% if resultado %}
+    <div class="alert alert-success text-center">
+
+        <h4 class="mb-3">Resultado</h4>
+
+        <p class="fs-4 fw-bold">{{ resultado }} kg</p>
+
+        <p class="text-dark">
+            Este es tu peso corporal ideal según la fórmula de <strong>Devine</strong>,
+            basada en tu altura y sexo.
+        </p>
+
+        <hr>
+
+        <h5 class="text-success">¿Qué significa esto?</h5>
+
+        <p class="text-dark">
+            No es una meta estricta, sino un <strong>rango aproximado</strong> en el que tu
+            cuerpo suele funcionar con salud y equilibrio.
+        </p>
+
+        <p class="fw-bold text-success mt-3">
+            🌿 Tu mejor versión no es un número, es un proceso.
+        </p>
+
+    </div>
     {% endif %}
 
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+    
+    <div id="preguntasPCI" class="carousel slide mt-5 mb-5" data-bs-ride="carousel">
 
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h3 class="text-center mb-4">Calculadora de Peso Corporal Ideal</h3>
+        <div class="carousel-inner">
 
-                    <form method="POST" action="{{ url_for('pci') }}">
+            
+            <div class="carousel-item active">
+                <div class="card border-success">
+                    <div class="card-body">
 
-                        <div class="mb-3">
-                            <label class="form-label">Altura (cm)</label>
-                            <input type="number" class="form-control" name="altura" required>
-                        </div>
+                        <h5 class="text-success">¿Qué es el Peso Corporal Ideal?</h5>
+                        <p class="text-secondary">
+                            Es una estimación del peso en el que tu cuerpo puede funcionar 
+                            con buena salud, energía y movilidad.
+                        </p>
 
-                        <div class="mb-3">
-                            <label class="form-label">Género</label><br>
+                        <p class="text-success fw-bold">
+                            🌟 Cada pequeño avance suma, no te detengas.
+                        </p>
 
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="genero" value="hombre" required>
-                                <label class="form-check-label">Hombre</label>
-                            </div>
+                    </div>
+                </div>
+            </div>
 
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="genero" value="mujer">
-                                <label class="form-check-label">Mujer</label>
-                            </div>
-                        </div>
+            
+            <div class="carousel-item">
+                <div class="card border-success">
+                    <div class="card-body">
 
-                        <button type="submit" class="btn btn-success w-100 mt-3">
-                            Calcular Peso Ideal
-                        </button>
+                        <h5 class="text-success">¿Para qué sirve calcularlo?</h5>
+                        <p class="text-secondary">
+                            Te ayuda a definir metas realistas y saludables sin exageraciones.
+                        </p>
 
-                    </form>
+                        <p class="text-success fw-bold">
+                            💪 La constancia siempre gana.
+                        </p>
 
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="carousel-item">
+                <div class="card border-success">
+                    <div class="card-body">
+
+                        <h5 class="text-success">¿Es un valor exacto?</h5>
+                        <p class="text-secondary">
+                            No, es solo una referencia. Tu genética, hábitos y estilo de vida 
+                            importan más que cualquier fórmula.
+                        </p>
+
+                        <p class="text-success fw-bold">
+                            ✨ Lo mejor está en tu esfuerzo diario.
+                        </p>
+
+                    </div>
                 </div>
             </div>
 
         </div>
+
+        
+        <button class="carousel-control-prev" type="button" data-bs-target="#preguntasPCI" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#preguntasPCI" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
     </div>
+
 </div>
+
 {% endblock %}

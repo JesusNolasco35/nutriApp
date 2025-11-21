@@ -1,104 +1,125 @@
 {% extends "base.html" %}
-{% block title %}Calculadora de Macronutrientes{% endblock %}
+{% block title %} Macronutrientes {% endblock %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container mt-4">
+
+    <h1 class="text-center text-success mb-4">Calculadora de Macronutrientes</h1>
+
+    <div class="card border-success mb-4">
+        <div class="card-body">
+
+            <form method="POST">
+
+                <div class="mb-3">
+                    <label class="form-label">Sexo</label>
+                    <select name="sexo" class="form-select border-success" required>
+                        <option value="">Seleccionar</option>
+                        <option value="hombre">Hombre</option>
+                        <option value="mujer">Mujer</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Edad</label>
+                    <input type="number" name="edad" class="form-control border-success" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Peso (kg)</label>
+                    <input type="number" name="peso" step="0.1" class="form-control border-success" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Estatura (cm)</label>
+                    <input type="number" name="altura" step="0.1" class="form-control border-success" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nivel de actividad</label>
+                    <select name="actividad" class="form-select border-success" required>
+                        <option value="">Seleccionar</option>
+                        <option value="sedentario">Sedentario</option>
+                        <option value="ligero">Ligero</option>
+                        <option value="moderado">Moderado</option>
+                        <option value="intenso">Intenso</option>
+                        <option value="muy_intenso">Muy intenso</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-success w-100">Calcular</button>
+            </form>
+
+        </div>
+    </div>
+
+    {% if resultado and resultado != 'error' %}
+
+    <div class="alert alert-success">
+        <h4 class="text-center mb-3">Resultados diarios recomendados</h4>
+
+        <p><strong>Calorías totales (GCT):</strong> {{ resultado.gct }} kcal</p>
+        <p><strong>Tasa Metabólica Basal (TMB):</strong> {{ resultado.tmb }} kcal</p>
+        <p><strong>Proteínas:</strong> {{ resultado.proteinas }} g</p>
+        <p><strong>Grasas:</strong> {{ resultado.grasas }} g</p>
+        <p><strong>Carbohidratos:</strong> {{ resultado.carbohidratos }} g</p>
+
+        <hr>
+        <p class="text-center"><em>“Cada día cuenta. Haz que tus hábitos trabajen a tu favor.”</em></p>
+    </div>
+
+    {% elif resultado == 'error' %}
+    <div class="alert alert-danger">Por favor llena todos los campos correctamente.</div>
+    {% endif %}
 
     
-    {% with mensajes = get_flashed_messages(with_categories=True) %}
-    {% if mensajes %}
-        {% for categoria, mensaje in mensajes %}
-            <div class="alert alert-{{ categoria }} text-center">
-                {{ mensaje }}
-            </div>
-        {% endfor %}
-    {% endif %}
-    {% endwith %}
+    <div id="preguntasCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
 
-    <div class="row justify-content-center">
-        <div class="col-md-7">
-
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h3 class="text-center mb-4">Calculadora de Macronutrientes</h3>
-
-                    <form method="POST" action="{{ url_for('macros') }}">
-
-                        <div class="row mb-3">
-                            <div class="col-md-4">
-                                <label class="form-label">Peso (kg)</label>
-                                <input type="number" name="peso" step="0.1" class="form-control" required>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label class="form-label">Altura (cm)</label>
-                                <input type="number" name="altura" step="0.1" class="form-control" required>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label class="form-label">Edad</label>
-                                <input type="number" name="edad" class="form-control" required>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Género</label>
-                                <select name="genero" class="form-select" required>
-                                    <option value="hombre">Hombre</option>
-                                    <option value="mujer">Mujer</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label">Actividad física</label>
-                                <select name="actividad" class="form-select" required>
-                                    <option value="1.2">Sedentario</option>
-                                    <option value="1.375">Ligero</option>
-                                    <option value="1.55">Moderado</option>
-                                    <option value="1.725">Intenso</option>
-                                    <option value="1.9">Muy intenso</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Objetivo</label>
-                                <select name="objetivo" class="form-select" required>
-                                    <option value="perder">Perder peso</option>
-                                    <option value="mantener">Mantener peso</option>
-                                    <option value="ganar">Ganar masa muscular</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label">Tipo de dieta</label>
-                                <select name="dieta" class="form-select" required>
-                                    <option value="balanceada">Balanceada</option>
-                                    <option value="alta_prote">Alta en proteína</option>
-                                    <option value="keto">Keto</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-success w-100 mt-3">Calcular</button>
-                    </form>
-
-                    {% if resultado %}
-                    <div class="mt-4 p-3 bg-light border rounded">
-                        <h5 class="text-center mb-3">Resultados</h5>
-                        <p><strong>Calorías recomendadas:</strong> {{ resultado.calorias }} kcal/día</p>
-                        <p><strong>Proteínas:</strong> {{ resultado.proteinas }} g/día</p>
-                        <p><strong>Carbohidratos:</strong> {{ resultado.carbohidratos }} g/día</p>
-                        <p><strong>Grasas:</strong> {{ resultado.grasas }} g/día</p>
+            
+            <div class="carousel-item active">
+                <div class="card border-success">
+                    <div class="card-body">
+                        <h5 class="text-success">¿Qué son los macronutrientes?</h5>
+                        <p>Son los nutrientes que tu cuerpo necesita en grandes cantidades: proteínas, grasas y carbohidratos.</p>
+                        <p class="text-center text-success"><em>“Nutrir tu cuerpo es invertir en tu mejor versión.”</em></p>
                     </div>
-                    {% endif %}
+                </div>
+            </div>
 
+            
+            <div class="carousel-item">
+                <div class="card border-success">
+                    <div class="card-body">
+                        <h5 class="text-success">¿Para qué sirven las proteínas?</h5>
+                        <p>Ayudan a construir y reparar músculos, producir hormonas y mantener tu metabolismo activo.</p>
+                        <p class="text-center text-success"><em>“Cada día puedes avanzar, aunque sea un poco.”</em></p>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="carousel-item">
+                <div class="card border-success">
+                    <div class="card-body">
+                        <h5 class="text-success">¿Por qué son importantes los carbohidratos?</h5>
+                        <p>Son la principal fuente de energía del cuerpo y del cerebro.</p>
+                        <p class="text-center text-success"><em>“No busques perfección, busca constancia.”</em></p>
+                    </div>
                 </div>
             </div>
 
         </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#preguntasCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-success"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#preguntasCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-success"></span>
+        </button>
+
     </div>
+
 </div>
 {% endblock %}
