@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container mt-5">
+<div class="container mt-5 ">
 
     
     {% with mensajes = get_flashed_messages(with_categories=True) %}
@@ -14,36 +14,54 @@
     {% endwith %}
 
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-8">
 
             <div class="card shadow-sm">
                 <div class="card-body">
 
                     <h3 class="text-center mb-4">Calculadora de TMB</h3>
+                    <hr>
 
                     <form method="POST" action="{{ url_for('tmb') }}">
+    <div class="row g-3">
+
+        
+
+        <div class="col-md-12">
+            <label class="form-label">Edad (años)</label>
+            <input type="number" name="edad" class="form-control border-success" required>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Peso (kg)</label>
+            <input type="number" step="0.1" name="peso" class="form-control border-success" required>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Altura (cm)</label>
+            <input type="number" step="0.1" name="altura" class="form-control border-success" required>
+        </div>
 
 
+        <div class="col-md-12">
+            <label class="form-label">Sexo</label>
+            <select name="sexo" class="form-select border-success" required>
+                <option value="" selected disabled>Selecciona una opción</option>
+                <option value="hombre">Hombre</option>
+                <option value="mujer">Mujer</option>
+            </select>
+        </div>
+
+        <div class="col-12 text-center mt-3">
+            <button type="submit" class="btn btn-success px-4">Calcular TMB</button>
+        </div>
 
 
-                <div class="col-md-6">
-                    <label class="form-label">Edad (años)</label>
-                    <input type="number" name="edad" class="form-control border-success" required>
-                </div>
+    </div>
+</form>
 
-                <div class="col-md-6">
-                    <label class="form-label">Peso (kg)</label>
-                    <input type="number" step="0.1" name="peso" class="form-control border-success" required>
-                </div>
 
-                <div class="col-md-6">
-                    <label class="form-label">Altura (cm)</label>
-                    <input type="number" step="0.1" name="altura" class="form-control border-success" required>
-                </div>
-
-                <div class="col-12 text-center">
-                    <button type="submit" class="btn btn-success px-4">Calcular TMB</button>
-                </div>
+                
 
             </form>
 
@@ -96,14 +114,20 @@
             <div class="carousel-item">
                 <div class="card border-success">
                     <div class="card-body">
-                        <h5 class="text-success">¿Puede aumentar o disminuir?</h5>
+                        <h5 class="text-success">¿Como se calcula el TMB segun Harris-Benedict?</h5>
                         <p class="text-secondary">
-                            Sí, depende del músculo, edad, metabolismo y genética.
+                            La Tasa Metabólica Basal (TMB) según Harris-Benedict se calcula usando peso, altura, edad y sexo, porque hombres y mujeres tienen fórmulas distintas.
+Hombres:
+TMB = 88.362 + (13.397 x peso) + (4.799 x altura) - (5.677 x edad)
+Mujeres:
+TMB = 447.593 + (9.247 x peso) + (3.098 x altura) - (4.330 x edad)
+Estos valores estiman las calorías que el cuerpo necesita en reposo.
                         </p>
                         <p class="text-success fw-bold">🌱 El progreso es lento, pero seguro.</p>
                     </div>
                 </div>
             </div>
+
 
         </div>
 

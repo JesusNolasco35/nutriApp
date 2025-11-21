@@ -201,7 +201,7 @@ def tmb():
         except ValueError:
             return render_template("tmb.html", error="Introduce valores numéricos válidos")
 
-        
+
         if sexo == "hombre":
             tmb_resultado = 88.36 + (13.4 * peso) + (4.8 * altura) - (5.7 * edad)
         else:
@@ -212,6 +212,7 @@ def tmb():
         return render_template("tmb.html", resultado=tmb_final)
 
     return render_template("tmb.html")
+
 
 
 

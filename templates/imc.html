@@ -8,6 +8,7 @@
             <h4>Calculadora de IMC</h4>
         </div>
         <div class="card-body">
+        
 
             {% with mensajes = get_flashed_messages(with_categories=True) %}
             {% if mensajes %}
@@ -23,6 +24,24 @@
 
             
             <form method="POST" class="row g-3">
+                <div class="card border-success mt-4">
+    <div class="card-body">
+
+        <h5 class="text-success">¿Qué puedo hacer con este número?</h5>
+
+        <p class="text-dark">
+            • Si tu IMC está en <strong>bajo peso</strong>, enfócate en una dieta más calórica y rica en nutrientes. <br>
+            • Si estás en un <strong>peso saludable</strong>, mantén tus hábitos y actividad física regular. <br>
+            • Si presentas <strong>sobrepeso u obesidad</strong>, es recomendable crear un déficit calórico moderado y aumentar la actividad física.
+        </p>
+
+        <p class="fw-bold text-success mt-3">
+            🌟 ¡Cada pequeño paso importa! Conocer tu IMC te ayuda a tomar decisiones inteligentes para tu salud.
+        </p>
+
+    </div>
+</div>
+
 
                 <div class="col-md-3">
                     <label class="form-label">Peso (kg)</label>
@@ -76,53 +95,7 @@
     </div>
 
     
-    <div id="preguntasIMC" class="carousel slide mb-5" data-bs-ride="carousel">
-        <div class="carousel-inner">
-
-            <div class="carousel-item active">
-                <div class="card border-success">
-                    <div class="card-body">
-                        <h5 class="text-success">¿Qué es el IMC?</h5>
-                        <p class="text-secondary">
-                            El índice de masa corporal es una fórmula que compara tu peso con tu estatura para saber si
-                            estás en un rango saludable.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="card border-success">
-                    <div class="card-body">
-                        <h5 class="text-success">¿Por qué es importante?</h5>
-                        <p class="text-secondary">
-                            Permite detectar riesgos como bajo peso, sobrepeso u obesidad que pueden afectar tu salud.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <div class="card border-success">
-                    <div class="card-body">
-                        <h5 class="text-success">¿Puedo mejorar mi IMC?</h5>
-                        <p class="text-secondary">
-                            Sí. Con actividad física, buena alimentación y constancia, tu IMC puede mejorar con el tiempo.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#preguntasIMC" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-
-        <button class="carousel-control-next" type="button" data-bs-target="#preguntasIMC" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
-    </div>
+    
     {% endif %}
 
 </div>
