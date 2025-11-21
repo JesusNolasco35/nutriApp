@@ -175,7 +175,7 @@ def imc():
             resultado = {"estado": "Menor de 18 años", "imagen": "infantil.png"}
             mensaje = f"Tu IMC es {imc}. Para niños y adolescentes, consulta con un especialista para interpretar correctamente el IMC según edad y sexo."
 
-        return render_template("imc.html", resultado=resultado, mensaje=mensaje, imc=imc)
+        return render_template("imc.html", resultado=resultado, imc=imc)
 
     return render_template("imc.html")
 
@@ -282,13 +282,13 @@ def macros():
             altura = float(request.form.get("altura"))
             actividad = request.form.get("actividad")
 
-           
+
             if sexo == "hombre":
                 tmb = 88.36 + (13.4 * peso) + (4.8 * altura) - (5.7 * edad)
             else:
                 tmb = 447.6 + (9.2 * peso) + (3.1 * altura) - (4.3 * edad)
 
-           
+
             factores = {
                 "sedentario": 1.2,
                 "ligero": 1.375,
@@ -299,7 +299,7 @@ def macros():
 
             gct = tmb * factores[actividad]
 
-           
+
             proteinas_g = peso * 2 
             proteinas_cal = proteinas_g * 4
 
