@@ -4,10 +4,22 @@
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-8">
 
             <div class="card shadow-sm">
                 <div class="card-body">
+
+                    <h3 class="text-center mb-1">¿Por qué es importante conocer tu TMB?</h3>
+
+                    <p class="text-muted text-center mb-4">
+                        La Tasa Metabólica Basal (TMB) representa la cantidad de energía que tu cuerpo
+                        necesita para funcionar en reposo. Conocer tu TMB es fundamental para ajustar
+                        tus metas de alimentación, definir superávit o déficit calórico, y planificar
+                        rutinas de entrenamiento de manera más precisa.
+                    </p>
+
+                    <hr>
+
                     <h3 class="text-center mb-4">Calculadora de TMB</h3>
 
                     <form method="POST">
@@ -26,20 +38,20 @@
                         </div>
 
                         <div class="mb-3">
-                    <label class="form-label text-success">Género</label><br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" value="hombre" required>
-                        <label class="form-check-label">Hombre</label>
-                    </div>
+                            <label class="form-label text-success">Género</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="genero" value="hombre" required>
+                                <label class="form-check-label">Hombre</label>
+                            </div>
 
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genero" value="mujer">
-                        <label class="form-check-label">Mujer</label>
-                    </div>
+                            <div class="mb-3 form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="genero" value="mujer">
+                                <label class="form-check-label">Mujer</label>
+                            </div>
 
-                        <button type="submit" class="btn btn-success w-100">
-                            Calcular TMB
-                        </button>
+                            <button type="submit" class="btn btn-success w-100">
+                                Calcular TMB
+                            </button>
                     </form>
 
                 </div>
@@ -48,5 +60,108 @@
         </div>
     </div>
 </div>
-{% endblock %}
+<!-- CONTENEDOR: ACORDEÓN PARA TMB -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
 
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <h3 class="text-center mb-1">Información sobre la Tasa Metabólica Basal (TMB)</h3>
+
+                    <p class="text-center text-muted mb-4">
+                        Resuelve tus dudas más comunes sobre la TMB y su interpretación.
+                    </p>
+
+                    <hr>
+
+                    <div class="accordion accordion-flush" id="accordionTMB">
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#tmb-collapseOne">
+                                    ¿Qué es exactamente la TMB?
+                                </button>
+                            </h2>
+                            <div id="tmb-collapseOne" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    La TMB representa la cantidad de calorías que tu cuerpo necesita para mantener
+                                    funciones vitales como respirar, circular la sangre y mantener tus órganos activos,
+                                    incluso estando en reposo total.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#tmb-collapseTwo">
+                                    ¿La TMB cambia según la edad, sexo o peso?
+                                </button>
+                            </h2>
+                            <div id="tmb-collapseTwo" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    Sí. La TMB varía según el sexo, la edad, la altura y el peso.
+                                    Generalmente disminuye con la edad y suele ser más alta en hombres debido a una
+                                    mayor masa muscular.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#tmb-collapseThree">
+                                    ¿Hacer ejercicio aumenta mi TMB?
+                                </button>
+                            </h2>
+                            <div id="tmb-collapseThree" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    La actividad física no aumenta directamente la TMB, pero ganar masa muscular sí,
+                                    ya que el músculo gasta más energía incluso en reposo.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#tmb-collapseFour">
+                                    ¿Por qué es útil conocer mi TMB?
+                                </button>
+                            </h2>
+                            <div id="tmb-collapseFour" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    Conocer tu TMB te ayuda a saber cuántas calorías necesitas al día para mantener,
+                                    bajar o subir de peso de manera más precisa y saludable.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#tmb-collapseFive">
+                                    ¿La TMB es igual al gasto calórico total?
+                                </button>
+                            </h2>
+                            <div id="tmb-collapseFive" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    No. La TMB solo representa las calorías que tu cuerpo usa en reposo.
+                                    Para obtener el gasto calórico total, se multiplica por tu nivel de actividad
+                                    física.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
