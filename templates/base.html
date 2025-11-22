@@ -92,21 +92,23 @@
 
                 <ul class="navbar-nav me-auto">
 
-                    <!-- Dropdown Calculadoras -->
+                    
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" href="#" id="calcDropdown"
                             data-bs-toggle="dropdown">
                             Calculadoras
                         </a>
-
+                        
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ url_for('imc') }}">IMC</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('tmb') }}">TMB</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('pci') }}">Peso Corporal Ideal</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('macros') }}">Macronutrientes</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('gct') }}">Gasto Calórico Total (GCT)</a></li>
+                            
                         </ul>
                     </li>
+                    <li><a class="nav-link text-white" href="{{ url_for('educacion') }}">Educación</a></li>
 
                     {% if session.get('logueado') %}
                     <li class="nav-item">
