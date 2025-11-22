@@ -2,16 +2,20 @@
 {% block title %} Macronutrientes {% endblock %}
 
 {% block content %}
-<div class="container mt-4">
+<div class="container mt-5">
     <h1 class="text-center text-success mb-4">Macronutrientes</h1>
 
-    <div id="preguntasCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
+    
+    <div id="preguntasMacros" class="carousel slide mt-4" data-bs-ride="carousel">
+
         <div class="carousel-inner">
 
-
+            
             <div class="carousel-item active">
-                <div class="alert alert-success text-center mt-4">
-                    <h4 class="mb-3 text-success">¿Qué son los macronutrientes?</h4>
+                
+                <div class="alert alert-success text-center">
+
+                    <h4 class="mb-3">¿Qué son los macronutrientes?</h4>
 
                     <p class="text-dark">
                         Son los nutrientes que tu cuerpo necesita en grandes cantidades:
@@ -21,15 +25,17 @@
                     <hr>
 
                     <p class="fw-bold text-success">
-                        🌿 “Nutrir tu cuerpo es invertir en tu mejor versión.”
+                         “Nutrir tu cuerpo es invertir en tu mejor versión.”
                     </p>
+
                 </div>
             </div>
 
-
+            
             <div class="carousel-item">
-                <div class="alert alert-success text-center mt-4">
-                    <h4 class="mb-3 text-success">¿Para qué sirven las proteínas?</h4>
+                <div class="alert alert-success text-center">
+
+                    <h4 class="mb-3">¿Para qué sirven las proteínas?</h4>
 
                     <p class="text-dark">
                         Construyen músculo, reparan tejidos y mantienen tu metabolismo activo.
@@ -38,15 +44,17 @@
                     <hr>
 
                     <p class="fw-bold text-success">
-                        💪 “Cada día puedes avanzar, aunque sea un poco.”
+                        “Cada día puedes avanzar, aunque sea un poco.”
                     </p>
+
                 </div>
             </div>
 
-
+            
             <div class="carousel-item">
-                <div class="alert alert-success text-center mt-4">
-                    <h4 class="mb-3 text-success">¿Por qué son importantes los carbohidratos?</h4>
+                <div class="alert alert-success text-center">
+
+                    <h4 class="mb-3">¿Por qué son importantes los carbohidratos?</h4>
 
                     <p class="text-dark">
                         Son la principal fuente de energía para tu cuerpo y tu cerebro.
@@ -55,24 +63,27 @@
                     <hr>
 
                     <p class="fw-bold text-success">
-                        ⚡ “No busques perfección, busca constancia.”
+                         “No busques perfección, busca constancia.”
                     </p>
+
                 </div>
             </div>
 
         </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#preguntasCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon bg-success rounded-pill p-3"></span>
+        
+        <button class="carousel-control-prev" type="button" data-bs-target="#preguntasMacros" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
         </button>
 
-        <button class="carousel-control-next" type="button" data-bs-target="#preguntasCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon bg-success rounded-pill p-3"></span>
+        <button class="carousel-control-next" type="button" data-bs-target="#preguntasMacros" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
         </button>
 
     </div>
 
-</div>
+
+
 
     <div class="card border-success mb-4">
         <div class="card-body">
@@ -81,6 +92,23 @@
 
                 <h2 class="text-center mb-4">Calculadora de Macronutrientes</h2>
 
+
+                <div class="mb-3">
+                    <label class="form-label">Peso (kg)</label>
+                    <input type="number" name="peso" step="0.1" class="form-control" required>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">Altura (cm)</label>
+                    <input type="number" name="altura" step="0.1" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Edad (años)</label>
+                    <input type="number" name="edad" class="form-control" required>
+                </div>
+
                 <div class="mb-3">
                     <label class="form-label">Sexo</label>
                     <select name="sexo" class="form-select" required>
@@ -88,21 +116,6 @@
                         <option value="hombre">Hombre</option>
                         <option value="mujer">Mujer</option>
                     </select>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Edad</label>
-                    <input type="number" name="edad" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Peso (kg)</label>
-                    <input type="number" name="peso" step="0.1" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Estatura (cm)</label>
-                    <input type="number" name="altura" step="0.1" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
@@ -141,9 +154,10 @@
     {% elif resultado == 'error' %}
     <div class="alert alert-danger">Por favor llena todos los campos correctamente.</div>
     {% endif %}
+</div>
 
 
 
 
-    
+
 {% endblock %}

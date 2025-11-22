@@ -11,46 +11,87 @@
     {% endif %}
     {% endwith %}
 
-    
+
     <h1 class="text-center text-success mb-4">Tasa Metabólica Basal (TMB)</h1>
 
 
-    <div id="carouselTMB" class="carousel slide mb-4">
+    <div id="preguntasTMB" class="carousel slide mt-4" data-bs-ride="carousel">
+
         <div class="carousel-inner">
 
+            
             <div class="carousel-item active">
-                <div class="p-4 bg-success text-white rounded text-center">
-                    <h4>¿Qué es la TMB?</h4>
-                    <p>Es la energía mínima que tu cuerpo necesita para funcionar en reposo.</p>
-                    <small>¡Conoce tu metabolismo!</small>
+                <div class="alert alert-success text-center">
+
+                    
+                    <h4 class="mb-3">¿Qué es la TMB?</h4>
+
+                    
+                    <p class="text-dark">
+                        La tasa metabólica basal es la energía que tu cuerpo necesita para funcionar en reposo.
+                    </p>
+
+                    <hr>
+
+                    
+                    <p class="fw-bold text-success">
+                         Es la base de tu gasto energético diario.
+                    </p>
+
                 </div>
             </div>
 
+            
             <div class="carousel-item">
-                <div class="p-4 bg-success text-white rounded text-center">
-                    <h4>¿Por qué es importante?</h4>
-                    <p>Te ayuda a entender cuántas calorías necesitas cada día.</p>
-                    <small>Tu salud empieza con información.</small>
+                <div class="alert alert-success text-center">
+
+                    <h4 class="mb-3">¿Para qué sirve?</h4>
+
+                    <p class="text-dark">
+                        Te ayuda a saber cuántas calorías necesitas para mantener, subir o bajar de peso.
+                    </p>
+
+                    <hr>
+
+                    <p class="fw-bold text-success">
+                         Ideal para planear tu alimentación.
+                    </p>
+
                 </div>
             </div>
 
+        
             <div class="carousel-item">
-                <div class="p-4 bg-success text-white rounded text-center">
-                    <h4>¿Qué necesito para calcularla?</h4>
-                    <p>Edad, peso, altura y sexo.</p>
-                    <small>¡Calcula tu metabolismo ahora!</small>
+                <div class="alert alert-success text-center">
+
+                    <h4 class="mb-3">¿Puedo mejorarla?</h4>
+
+                    <p class="text-dark">
+                        Sí. El ejercicio y aumentar masa muscular elevan tu metabolismo basal.
+                    </p>
+
+                    <hr>
+
+                    <p class="fw-bold text-success">
+                         ¡Tu cuerpo puede quemar más energía incluso en reposo!
+                    </p>
+
                 </div>
             </div>
 
         </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselTMB" data-bs-slide="prev">
+       
+        <button class="carousel-control-prev" type="button" data-bs-target="#preguntasTMB" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselTMB" data-bs-slide="next">
+
+        <button class="carousel-control-next" type="button" data-bs-target="#preguntasTMB" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
         </button>
+
     </div>
+
 
     <div class="card border-success mb-4">
         <div class="card-body">
@@ -59,20 +100,21 @@
 
                 <h2 class="text-center mb-4">Calculadora de TMB</h2>
 
-                <div class="mb-3">
-                    <label class="form-label">Edad (años)</label>
-                    
-                    <input type="number" name="edad" class="form-control" required>
-                </div>
 
                 <div class="mb-3">
                     <label class="form-label">Peso (kg)</label>
                     <input type="number" step="0.1" name="peso" class="form-control" required>
                 </div>
 
+
                 <div class="mb-3">
                     <label class="form-label">Altura (cm)</label>
                     <input type="number" step="0.1" name="altura" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Edad (años)</label>
+                    <input type="number" name="edad" class="form-control" required>
                 </div>
 
                 <div class="mb-3">

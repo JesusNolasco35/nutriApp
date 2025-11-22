@@ -1,35 +1,96 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container mt-4">
+<div class="container mt-5"> 
+
+    
+    <h1 class="text-center text-success mb-4">Peso Corporal Ideal (PCI)</h1>
 
 
-    <div class="card border-success mb-4">
-        <div class="card-header bg-success text-white text-center">
-            <h4>Peso Corporal Ideal (PCI)</h4>
+    <div id="preguntasPCI" class="carousel slide mt-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <div class="alert alert-success text-center">
+                    <h4 class="mb-3">¿Qué es el Peso Corporal Ideal?</h4>
+                    <p class="text-dark">
+                        Es una estimación del peso en el que tu cuerpo puede funcionar
+                        con buena salud, energía y movilidad.
+                    </p>
+                    <hr>
+                    <p class="fw-bold text-success">
+                         Cada pequeño avance suma, no te detengas.
+                    </p>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="alert alert-success text-center">
+                    <h4 class="mb-3">¿Para qué sirve calcularlo?</h4>
+                    <p class="text-dark">
+                        Te ayuda a definir metas realistas y saludables sin exageraciones.
+                    </p>
+                    <hr>
+                    <p class="fw-bold text-success">
+                         La constancia siempre gana.
+                    </p>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="alert alert-success text-center">
+                    <h4 class="mb-3">¿Es un valor exacto?</h4>
+                    <p class="text-dark">
+                        No, es solo una referencia. Tu genética, hábitos y estilo de vida
+                        importan más que cualquier fórmula.
+                    </p>
+                    <hr>
+                    <p class="fw-bold text-success">
+                         Lo mejor está en tu esfuerzo diario.
+                    </p>
+                </div>
+            </div>
+
         </div>
 
+        
+        <button class="carousel-control-prev" type="button" data-bs-target="#preguntasPCI" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#preguntasPCI" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+    </div>
+
+    
+    <div class="card border-success mb-4">
         <div class="card-body">
 
-            <form method="POST" class="row g-3">
+            <form method="POST">
 
-                <div class="col-md-6">
+                
+                <h2 class="text-center mb-4">Calculadora de PCI</h2>
+
+                
+                <div class="mb-3">
                     <label class="form-label">Altura (cm)</label>
-                    <input type="number" name="altura" class="form-control border-success" required>
+                    <input type="number" name="altura" class="form-control" required>
                 </div>
 
-                <div class="col-md-6">
+                
+                <div class="mb-3">
                     <label class="form-label">Sexo</label>
-                    <select name="sexo" class="form-select border-success" required>
+                    <select name="sexo" class="form-select" required>
+                        <option value="" disabled selected>Selecciona...</option>
                         <option value="h">Hombre</option>
                         <option value="m">Mujer</option>
                     </select>
                 </div>
 
-                <div class="col-12 text-center mt-3">
-                    <button type="submit" class="btn btn-success px-4">
-                        Calcular PCI
-                    </button>
+                
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-success w-100">Calcular PCI</button>
                 </div>
 
             </form>
@@ -37,9 +98,9 @@
         </div>
     </div>
 
-
+    
     {% if resultado %}
-    <div class="alert alert-success text-center">
+    <div class="alert alert-success text-center mt-4">
 
         <h4 class="mb-3">Resultado</h4>
 
@@ -60,92 +121,11 @@
         </p>
 
         <p class="fw-bold text-success mt-3">
-            🌿 Tu mejor versión no es un número, es un proceso.
+             Tu mejor versión no es un número, es un proceso.
         </p>
 
     </div>
     {% endif %}
-
-
-    <div id="preguntasPCI" class="carousel slide mt-5 mb-5" data-bs-ride="carousel">
-
-        <div class="carousel-inner">
-
-
-
-            <div class="carousel-item active">
-                <div class="alert alert-success text-center">
-
-                    <h4 class="mb-2 text-success">¿Qué es el Peso Corporal Ideal?</h4>
-
-                    <p class="text-dark">
-                        Es una estimación del peso en el que tu cuerpo puede funcionar
-                        con buena salud, energía y movilidad.
-                    </p>
-
-                    <hr>
-
-                    <p class="fw-bold text-success">
-                        🌟 Cada pequeño avance suma, no te detengas.
-                    </p>
-
-                </div>
-            </div>
-
-
-
-            <div class="carousel-item">
-                <div class="alert alert-success text-center">
-
-                    <h4 class="mb-2 text-success">¿Para qué sirve calcularlo?</h4>
-
-                    <p class="text-dark">
-                        Te ayuda a definir metas realistas y saludables sin exageraciones.
-                    </p>
-
-                    <hr>
-
-                    <p class="fw-bold text-success">
-                        💪 La constancia siempre gana.
-                    </p>
-
-                </div>
-            </div>
-
-
-
-            <div class="carousel-item">
-                <div class="alert alert-success text-center">
-
-                    <h4 class="mb-2 text-success">¿Es un valor exacto?</h4>
-
-                    <p class="text-dark">
-                        No, es solo una referencia. Tu genética, hábitos y estilo de vida
-                        importan más que cualquier fórmula.
-                    </p>
-
-                    <hr>
-
-                    <p class="fw-bold text-success">
-                        ✨ Lo mejor está en tu esfuerzo diario.
-                    </p>
-
-                </div>
-            </div>
-
-        </div>
-
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#preguntasPCI" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon bg-success rounded-pill p-3"></span>
-        </button>
-
-        <button class="carousel-control-next" type="button" data-bs-target="#preguntasPCI" data-bs-slide="next">
-            <span class="carousel-control-next-icon bg-success rounded-pill p-3"></span>
-        </button>
-
-    </div>
-
 </div>
 
 {% endblock %}

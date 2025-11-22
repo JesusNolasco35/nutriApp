@@ -9,42 +9,86 @@
   <h1 class="text-center text-success mb-4">Gasto Calórico Total</h1>
 
 
-  <div id="carouselGCT" class="carousel slide mb-4">
+  
+  <div id="carouselGCT" class="carousel slide mt-4" data-bs-ride="carousel">
+
     <div class="carousel-inner">
 
+      
       <div class="carousel-item active">
-        <div class="p-4 bg-success text-white rounded text-center">
-          <h4>¿Qué es el Gasto Calórico Total?</h4>
-          <p>Es la cantidad de calorías que tu cuerpo necesita al día según tu actividad.</p>
-          <small>¡Conócelo y mejora tu salud!</small>
+        
+        <div class="alert alert-success text-center">
+
+          <h4 class="mb-3">¿Qué es el Gasto Calórico Total?</h4>
+
+          
+          <p class="text-dark">
+            Es la cantidad de calorías que tu cuerpo necesita al día según tu actividad.
+          </p>
+
+          <hr>
+
+          
+          <p class="fw-bold text-success">
+             ¡Conócelo y mejora tu salud!
+          </p>
+
         </div>
       </div>
 
+
+      
       <div class="carousel-item">
-        <div class="p-4 bg-success text-white rounded text-center">
-          <h4>¿Por qué es importante calcularlo?</h4>
-          <p>Te ayuda a saber cuántas calorías debes consumir para subir, bajar o mantener tu peso.</p>
-          <small>¡Tu cuerpo merece lo mejor!</small>
+        <div class="alert alert-success text-center">
+
+          <h4 class="mb-3">¿Por qué es importante calcularlo?</h4>
+
+          <p class="text-dark">
+            Te ayuda a saber cuántas calorías debes consumir para subir, bajar o mantener tu peso.
+          </p>
+
+          <hr>
+
+          <p class="fw-bold text-success">
+             ¡Tu cuerpo merece lo mejor!
+          </p>
+
         </div>
       </div>
 
+
+      
       <div class="carousel-item">
-        <div class="p-4 bg-success text-white rounded text-center">
-          <h4>¿Qué necesito para calcularlo?</h4>
-          <p>Peso, altura, edad, sexo y nivel de actividad física.</p>
-          <small>¡Cada paso cuenta!</small>
+        <div class="alert alert-success text-center">
+
+          <h4 class="mb-3">¿Qué necesito para calcularlo?</h4>
+
+          <p class="text-dark">
+            Peso, altura, edad, sexo y nivel de actividad física.
+          </p>
+
+          <hr>
+
+          <p class="fw-bold text-success">
+             ¡Cada paso cuenta!
+          </p>
+
         </div>
       </div>
 
     </div>
 
+    
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselGCT" data-bs-slide="prev">
       <span class="carousel-control-prev-icon"></span>
     </button>
+
     <button class="carousel-control-next" type="button" data-bs-target="#carouselGCT" data-bs-slide="next">
       <span class="carousel-control-next-icon"></span>
     </button>
+
   </div>
+
 
   <div class="card border-success mb-4">
     <div class="card-body">
@@ -52,8 +96,7 @@
       <form method="POST" action="/gct">
 
         <h2 class="text-center mb-4">Calculadora de GCT</h2>
-        <hr>
-
+        
         <div class="mb-3">
           <label class="form-label">Peso (kg)</label>
           <input type="number" step="0.1" name="peso" class="form-control" required>
@@ -65,7 +108,7 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label">Edad</label>
+          <label class="form-label">Edad (años)</label>
           <input type="number" name="edad" class="form-control" required>
         </div>
 
