@@ -177,6 +177,7 @@ def imc():
 
 
 
+
 @app.route("/tmb", methods=["GET", "POST"])
 def tmb():
     if request.method == "POST":
@@ -317,11 +318,13 @@ def macros():
 
     return render_template("macros.html", resultado=resultado)
 
+
 @app.route("/recetas")
 def recetas():
-    if "user" not in session:
+    if not session.get("logueado"):
         return redirect(url_for("login"))
     return render_template("recetas.html")
+
 
 
 

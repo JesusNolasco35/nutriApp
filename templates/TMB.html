@@ -1,71 +1,61 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container mt-5 ">
+<div class="container mt-5">
 
     {% with mensajes = get_flashed_messages(with_categories=True) %}
     {% if mensajes %}
-        {% for categoria, mensaje in mensajes %}
-            <div class="alert alert-{{ categoria }} text-center">
-                {{ mensaje }}
-            </div>
-        {% endfor %}
+    {% for categoria, mensaje in mensajes %}
+    <div class="alert alert-{{ categoria }} text-center">
+        {{ mensaje }}
+    </div>
+    {% endfor %}
     {% endif %}
     {% endwith %}
 
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
 
             <div class="card shadow-sm">
                 <div class="card-body">
 
                     <h3 class="text-center mb-4">Calculadora de TMB</h3>
-                    <hr>
 
                     <form method="POST" action="{{ url_for('tmb') }}">
 
-                        <div class="mb-3">
-                            <label class="form-label">Edad</label>
-                            <input type="number" class="form-control" name="edad" required>
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+                                <label class="form-label">Edad (años)</label>
+                                <input type="number" name="edad" class="form-control border-success" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Peso (kg)</label>
+                                <input type="number" step="0.1" name="peso" class="form-control border-success"
+                                    required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Altura (cm)</label>
+                                <input type="number" step="0.1" name="altura" class="form-control border-success"
+                                    required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Sexo</label>
+                                <select name="sexo" class="form-control border-success" required>
+                                    <option value="hombre">Hombre</option>
+                                    <option value="mujer">Mujer</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12 text-center mt-3">
+                                <button type="submit" class="btn btn-success px-4">Calcular TMB</button>
+                            </div>
+
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Peso (kg)</label>
-                            <input type="number" step="0.01" class="form-control" name="peso" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Altura (cm)</label>
-                            <input type="number" step="0.01" class="form-control" name="altura" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Sexo</label>
-                            <select class="form-control" name="sexo" required>
-                                <option value="hombre">Hombre</option>
-                                <option value="mujer">Mujer</option>
-                            </select>
-                        </div>
-
-                <div class="col-md-6">
-                    <label class="form-label">Edad (años)</label>
-                    <input type="number" name="edad" class="form-control border-success" required>
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label">Peso (kg)</label>
-                    <input type="number" step="0.1" name="peso" class="form-control border-success" required>
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label">Altura (cm)</label>
-                    <input type="number" step="0.1" name="altura" class="form-control border-success" required>
-                </div>
-
-                <div class="col-12 text-center">
-                    <button type="submit" class="btn btn-success px-4">Calcular TMB</button>
-                </div>
-
-            </form>
+                    </form>
 
                 </div>
             </div>
@@ -86,63 +76,45 @@
     </div>
     {% endif %}
 
-    <div id="preguntasTMB" class="carousel slide mb-5" data-bs-ride="carousel">
-
+    <div id="carouselGCT" class="carousel slide mb-4">
         <div class="carousel-inner">
 
             <div class="carousel-item active">
-                <div class="card border-success">
-                    <div class="card-body">
-                        <h5 class="text-success">¿Qué es la TMB?</h5>
-                        <p class="text-secondary">
-                            Es la cantidad de calorías que tu cuerpo necesita para mantenerse vivo sin actividad física.
-                        </p>
-                        <p class="text-success fw-bold">✨ Tu cuerpo trabaja por ti incluso cuando descansas.</p>
-                    </div>
+                <div class="p-4 bg-success text-white rounded text-center">
+                    <h4>¿Qué es el Gasto Calórico Total?</h4>
+                    <p>Es la cantidad de calorías que tu cuerpo necesita al día según tu actividad.</p>
+                    <small>¡Conócelo y mejora tu salud!</small>
                 </div>
             </div>
 
             <div class="carousel-item">
-                <div class="card border-success">
-                    <div class="card-body">
-                        <h5 class="text-success">¿Para qué sirve conocerla?</h5>
-                        <p class="text-secondary">
-                            Te ayuda a planificar dietas y entrenamientos según tus necesidades reales.
-                        </p>
-                        <p class="text-success fw-bold">💪 Cada paso cuenta para mejorar tu salud.</p>
-                    </div>
+                <div class="p-4 bg-success text-white rounded text-center">
+                    <h4>¿Por qué es importante calcularlo?</h4>
+                    <p>Te ayuda a saber cuántas calorías debes consumir para subir, bajar o mantener tu peso.</p>
+                    <small>¡Tu cuerpo merece lo mejor!</small>
                 </div>
             </div>
 
             <div class="carousel-item">
-                <div class="card border-success">
-                    <div class="card-body">
-                        <h5 class="text-success">¿Como se calcula el TMB segun Harris-Benedict?</h5>
-                        <p class="text-secondary">
-                            La Tasa Metabólica Basal (TMB) según Harris-Benedict se calcula usando peso, altura, edad y sexo, porque hombres y mujeres tienen fórmulas distintas.
-Hombres:
-TMB = 88.362 + (13.397 x peso) + (4.799 x altura) - (5.677 x edad)
-Mujeres:
-TMB = 447.593 + (9.247 x peso) + (3.098 x altura) - (4.330 x edad)
-Estos valores estiman las calorías que el cuerpo necesita en reposo.
-                        </p>
-                        <p class="text-success fw-bold">🌱 El progreso es lento, pero seguro.</p>
-                    </div>
+                <div class="p-4 bg-success text-white rounded text-center">
+                    <h4>¿Qué necesito para calcularlo?</h4>
+                    <p>Peso, altura, edad, sexo y nivel de actividad física.</p>
+                    <small>¡Cada paso cuenta!</small>
                 </div>
             </div>
-
 
         </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#preguntasTMB" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselGCT" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </button>
 
-        <button class="carousel-control-next" type="button" data-bs-target="#preguntasTMB" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselGCT" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
         </button>
 
     </div>
+
 
 </div>
 {% endblock %}
