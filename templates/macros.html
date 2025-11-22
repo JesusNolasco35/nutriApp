@@ -4,76 +4,7 @@
 {% block content %}
 <div class="container mt-4">
 
-    <h1 class="text-center text-success mb-4">Calculadora de Macronutrientes</h1>
-
-    <div class="card border-success mb-4">
-        <div class="card-body">
-
-            <form method="POST">
-
-                <div class="mb-3">
-                    <label class="form-label">Sexo</label>
-                    <select name="sexo" class="form-select border-success" required>
-                        <option value="">Seleccionar</option>
-                        <option value="hombre">Hombre</option>
-                        <option value="mujer">Mujer</option>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Edad</label>
-                    <input type="number" name="edad" class="form-control border-success" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Peso (kg)</label>
-                    <input type="number" name="peso" step="0.1" class="form-control border-success" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Estatura (cm)</label>
-                    <input type="number" name="altura" step="0.1" class="form-control border-success" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Nivel de actividad</label>
-                    <select name="actividad" class="form-select border-success" required>
-                        <option value="">Seleccionar</option>
-                        <option value="sedentario">Sedentario</option>
-                        <option value="ligero">Ligero</option>
-                        <option value="moderado">Moderado</option>
-                        <option value="intenso">Intenso</option>
-                        <option value="muy_intenso">Muy intenso</option>
-                    </select>
-                </div>
-
-                <button class="btn btn-success w-100">Calcular</button>
-            </form>
-
-        </div>
-    </div>
-
-    {% if resultado and resultado != 'error' %}
-
-    <div class="alert alert-success">
-        <h4 class="text-center mb-3">Resultados diarios recomendados</h4>
-
-        <p><strong>Calorías totales (GCT):</strong> {{ resultado.gct }} kcal</p>
-        <p><strong>Tasa Metabólica Basal (TMB):</strong> {{ resultado.tmb }} kcal</p>
-        <p><strong>Proteínas:</strong> {{ resultado.proteinas }} g</p>
-        <p><strong>Grasas:</strong> {{ resultado.grasas }} g</p>
-        <p><strong>Carbohidratos:</strong> {{ resultado.carbohidratos }} g</p>
-
-        <hr>
-        <p class="text-center"><em>“Cada día cuenta. Haz que tus hábitos trabajen a tu favor.”</em></p>
-    </div>
-
-    {% elif resultado == 'error' %}
-    <div class="alert alert-danger">Por favor llena todos los campos correctamente.</div>
-    {% endif %}
-
-
-
+    <h1 class="text-center text-success mb-4">Macronutrientes</h1>
 
     <div id="preguntasCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -143,4 +74,77 @@
     </div>
 
 </div>
+
+    <div class="card border-success mb-4">
+        <div class="card-body">
+
+            <form method="POST">
+
+                <h2 class="text-center mb-4">Calculadora de Macronutrientes</h2>
+
+                <div class="mb-3">
+                    <label class="form-label">Sexo</label>
+                    <select name="sexo" class="form-select" required>
+                        <option value="">Seleccionar</option>
+                        <option value="hombre">Hombre</option>
+                        <option value="mujer">Mujer</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Edad</label>
+                    <input type="number" name="edad" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Peso (kg)</label>
+                    <input type="number" name="peso" step="0.1" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Estatura (cm)</label>
+                    <input type="number" name="altura" step="0.1" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nivel de actividad</label>
+                    <select name="actividad" class="form-select" required>
+                        <option value="">Seleccionar</option>
+                        <option value="sedentario">Sedentario</option>
+                        <option value="ligero">Ligero</option>
+                        <option value="moderado">Moderado</option>
+                        <option value="intenso">Intenso</option>
+                        <option value="muy_intenso">Muy intenso</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-success w-100">Calcular</button>
+            </form>
+
+        </div>
+    </div>
+
+    {% if resultado and resultado != 'error' %}
+
+    <div class="alert alert-success">
+        <h4 class="text-center mb-3">Resultados diarios recomendados</h4>
+
+        <p><strong>Calorías totales (GCT):</strong> {{ resultado.gct }} kcal</p>
+        <p><strong>Tasa Metabólica Basal (TMB):</strong> {{ resultado.tmb }} kcal</p>
+        <p><strong>Proteínas:</strong> {{ resultado.proteinas }} g</p>
+        <p><strong>Grasas:</strong> {{ resultado.grasas }} g</p>
+        <p><strong>Carbohidratos:</strong> {{ resultado.carbohidratos }} g</p>
+
+        <hr>
+        <p class="text-center"><em>“Cada día cuenta. Haz que tus hábitos trabajen a tu favor.”</em></p>
+    </div>
+
+    {% elif resultado == 'error' %}
+    <div class="alert alert-danger">Por favor llena todos los campos correctamente.</div>
+    {% endif %}
+
+
+
+
+    
 {% endblock %}

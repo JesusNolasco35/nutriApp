@@ -1,83 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container mt-4">
+<div class="container mt-5">
 
-    <div class="card border-success mb-4">
-        <div class="card-header bg-success text-white text-center">
-            <h4>Calculadora de IMC</h4>
-        </div>
-        <div class="card-body">
+    {% with mensajes = get_flashed_messages(with_categories=True) %}
+    {% if mensajes %}
+    {% for categoria, mensaje in mensajes %}
+    <div class="alert alert-{{ categoria }} text-center">{{ mensaje }}</div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
 
-            {% with mensajes = get_flashed_messages(with_categories=True) %}
-            {% if mensajes %}
-                {% for categoria, mensaje in mensajes %}
-                    <div class="alert alert-{{ categoria }} text-center">{{ mensaje }}</div>
-                {% endfor %}
-            {% endif %}
-            {% endwith %}
-
-            {% if error %}
-                <div class="alert alert-danger text-center">{{ error }}</div>
-            {% endif %}
-
-            <form method="POST" class="row g-3">
-
-                <div class="col-md-3">
-                    <label class="form-label">Peso (kg)</label>
-                    <input type="number" step="0.1" name="peso" class="form-control border-success" required>
-                </div>
-
-                <div class="col-md-3">
-                    <label class="form-label">Altura (cm)</label>
-                    <input type="number" step="0.1" name="altura" class="form-control border-success" required>
-                </div>
-
-                <div class="col-md-3">
-                    <label class="form-label">Edad (años)</label>
-                    <input type="number" name="edad" class="form-control border-success" required>
-                </div>
-
-                <div class="col-md-3">
-                    <label class="form-label">Sexo</label>
-                    <select name="sexo" class="form-select border-success" required>
-                        <option value="">Selecciona</option>
-                        <option value="masculino">Masculino</option>
-                        <option value="femenino">Femenino</option>
-                    </select>
-                </div>
-
-                <div class="col-12 text-center mt-3">
-                    <button type="submit" class="btn btn-success px-4">Calcular IMC</button>
-                </div>
-            </form>
-
-        </div>
-    </div>
-
-
-    {% if resultado %}
-    <div class="alert alert-success text-center mt-4">
-
-        <h4 class="mb-3">{{ resultado.estado }}</h4>
-
-        <p class="fs-4 fw-bold">Tu IMC es: <span class="text-success">{{ imc }}</span></p>
-
-        <p class="text-dark">{{ mensaje }}</p>
-
-        {% if resultado.imagen %}
-        <img src="{{ url_for('static', filename='img/' ~ resultado.imagen) }}" class="img-fluid mt-3"
-            style="max-width:200px;">
-        {% endif %}
-    </div>
+    {% if error %}
+    <div class="alert alert-danger text-center">{{ error }}</div>
     {% endif %}
 
+
+    <h1 class="text-center text-success mb-4">Indice de Masa Corporal (IMC)</h1>
 
     <div id="preguntasIMC" class="carousel slide mt-4" data-bs-ride="carousel">
 
         <div class="carousel-inner">
 
-          
+
             <div class="carousel-item active">
                 <div class="alert alert-success text-center">
 
@@ -114,7 +59,7 @@
                 </div>
             </div>
 
-            
+
             <div class="carousel-item">
                 <div class="alert alert-success text-center">
 
@@ -135,7 +80,7 @@
 
         </div>
 
-       
+
         <button class="carousel-control-prev" type="button" data-bs-target="#preguntasIMC" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </button>
@@ -147,5 +92,63 @@
     </div>
 
 </div>
+
+
+<div class="card border-success mb-4">
+    <div class="card-body">
+
+        <form method="POST">
+            <h2 class="text-center mb-4">Calculadora de IMC</h2>
+
+            <div class="mb-3">
+                <label class="form-label">Peso (kg)</label>
+                <input type="number" step="0.1" name="peso" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Altura (cm)</label>
+                <input type="number" step="0.1" name="altura" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Edad (años)</label>
+                <input type="number" name="edad" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Sexo</label>
+                <select name="sexo" class="form-select" required>
+                    <option value="">Selecciona</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Calcular IMC</button>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% if resultado %}
+<div class="alert alert-success text-center mt-4">
+
+    <h4 class="mb-3">{{ resultado.estado }}</h4>
+
+    <p class="fs-4 fw-bold">Tu IMC es: <span class="text-success">{{ imc }}</span></p>
+
+    <p class="text-dark">{{ mensaje }}</p>
+
+    {% if resultado.imagen %}
+    <img src="{{ url_for('static', filename='img/' ~ resultado.imagen) }}" class="img-fluid mt-3"
+        style="max-width:200px;">
+    {% endif %}
+</div>
+{% endif %}
+
+
+
 
 {% endblock %}
