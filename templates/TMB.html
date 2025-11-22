@@ -2,7 +2,6 @@
 {% block content %}
 <div class="container mt-5">
 
-    
     {% with mensajes = get_flashed_messages(with_categories=True) %}
     {% if mensajes %}
         {% for categoria, mensaje in mensajes %}
@@ -23,55 +22,47 @@
 
                     <form method="POST" action="{{ url_for('tmb') }}">
 
-                        <div class="mb-3">
-                            <label class="form-label">Edad</label>
-                            <input type="number" class="form-control" name="edad" required>
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+                                <label class="form-label">Edad (años)</label>
+                                <input type="number" name="edad" class="form-control border-success" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Peso (kg)</label>
+                                <input type="number" step="0.1" name="peso" class="form-control border-success" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Altura (cm)</label>
+                                <input type="number" step="0.1" name="altura" class="form-control border-success" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Sexo</label>
+                                <select name="sexo" class="form-control border-success" required>
+                                    <option value="hombre">Hombre</option>
+                                    <option value="mujer">Mujer</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12 text-center mt-3">
+                                <button type="submit" class="btn btn-success px-4">Calcular TMB</button>
+                            </div>
+
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Peso (kg)</label>
-                            <input type="number" step="0.01" class="form-control" name="peso" required>
-                        </div>
+                    </form>
 
-                        <div class="mb-3">
-                            <label class="form-label">Altura (cm)</label>
-                            <input type="number" step="0.01" class="form-control" name="altura" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Sexo</label>
-                            <select class="form-control" name="sexo" required>
-                                <option value="hombre">Hombre</option>
-                                <option value="mujer">Mujer</option>
-                            </select>
-                        </div>
-
-                <div class="col-md-6">
-                    <label class="form-label">Edad (años)</label>
-                    <input type="number" name="edad" class="form-control border-success" required>
                 </div>
-
-                <div class="col-md-6">
-                    <label class="form-label">Peso (kg)</label>
-                    <input type="number" step="0.1" name="peso" class="form-control border-success" required>
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label">Altura (cm)</label>
-                    <input type="number" step="0.1" name="altura" class="form-control border-success" required>
-                </div>
-
-                <div class="col-12 text-center">
-                    <button type="submit" class="btn btn-success px-4">Calcular TMB</button>
-                </div>
-
-            </form>
+            </div>
 
         </div>
     </div>
 
     {% if resultado %}
-    <div class="card border-success mb-4">
+    <div class="card border-success mb-4 mt-4">
         <div class="card-header bg-success text-white text-center">
             <h5>Resultado</h5>
         </div>
@@ -99,7 +90,6 @@
                 </div>
             </div>
 
-           
             <div class="carousel-item">
                 <div class="card border-success">
                     <div class="card-body">
@@ -112,7 +102,6 @@
                 </div>
             </div>
 
-            
             <div class="carousel-item">
                 <div class="card border-success">
                     <div class="card-body">
@@ -127,7 +116,6 @@
 
         </div>
 
-        
         <button class="carousel-control-prev" type="button" data-bs-target="#preguntasTMB" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </button>

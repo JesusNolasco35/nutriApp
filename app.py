@@ -5,23 +5,17 @@ app.secret_key = "clavexdffdd"
 
 USUARIOS_REGISTRADOS = {}
 
+@app.route("/")
+def index():
+    return render_template("index.html")
 
-@app.route('/')
+@app.route("/bienvenida")
 def bienvenida():
-    """
-    Página de bienvenida.
-    Ofrece opciones de registrarse, iniciar sesión o continuar como invitado.
-    """
     return render_template("bienvenida.html")
 
 
 
-@app.route('/inicio')  
-def index():
-    """
-    Página principal de NutriApp después de iniciar sesión o entrar como invitado.
-    """
-    return render_template("index.html")
+
 
 
 @app.route('/inicio_invitado')
@@ -321,6 +315,13 @@ def macros():
             resultado = "error"
 
     return render_template("macros.html", resultado=resultado)
+
+@app.route("/recetas")
+def recetas():
+    if "user" not in session:
+        return redirect(url_for("login"))
+    return render_template("recetas.html")
+
 
 
 

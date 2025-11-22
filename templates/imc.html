@@ -21,7 +21,6 @@
                 <div class="alert alert-danger text-center">{{ error }}</div>
             {% endif %}
 
-            
             <form method="POST" class="row g-3">
 
                 <div class="col-md-3">
@@ -56,65 +55,90 @@
         </div>
     </div>
 
-  
+
     {% if resultado %}
-    <div class="card border-success mb-4">
-        <div class="card-header bg-success text-white text-center">
-            <h5>Resultado</h5>
-        </div>
+    <div class="alert alert-success text-center mt-4">
 
-        <div class="card-body text-center">
-            <h5 class="text-success fw-bold">{{ resultado.estado }}</h5>
-            <p class="text-secondary">Tu IMC es: <strong>{{ imc }}</strong></p>
-            <p class="text-secondary">{{ mensaje }}</p>
+        <h4 class="mb-3">{{ resultado.estado }}</h4>
 
-            {% if resultado.imagen %}
-            <img src="{{ url_for('static', filename='img/' ~ resultado.imagen) }}" class="img-fluid mt-3"
-                style="max-width:200px;">
-            {% endif %}
-        </div>
+        <p class="fs-4 fw-bold">Tu IMC es: {{ imc }}</p>
+
+        <p class="text-dark">{{ mensaje }}</p>
+
+        {% if resultado.imagen %}
+        <img src="{{ url_for('static', filename='img/' ~ resultado.imagen) }}" class="img-fluid mt-3"
+            style="max-width:200px;">
+        {% endif %}
     </div>
+    {% endif %}
 
-    
-    <div id="preguntasIMC" class="carousel slide mb-5" data-bs-ride="carousel">
+
+  
+    <div id="preguntasIMC" class="carousel slide mt-4" data-bs-ride="carousel">
+
         <div class="carousel-inner">
 
+           
             <div class="carousel-item active">
-                <div class="card border-success">
-                    <div class="card-body">
-                        <h5 class="text-success">¿Qué es el IMC?</h5>
-                        <p class="text-secondary">
-                            El índice de masa corporal es una fórmula que compara tu peso con tu estatura para saber si
-                            estás en un rango saludable.
-                        </p>
-                    </div>
+                <div class="alert alert-success text-center">
+
+                    <h4 class="mb-3">¿Qué es el IMC?</h4>
+
+                    <p class="text-dark">
+                        El índice de masa corporal relaciona tu peso y estatura para evaluar si estás en un rango
+                        saludable.
+                    </p>
+
+                    <hr>
+
+                    <p class="fw-bold text-success">
+                        🧠 Es una herramienta para conocer tu estado general de salud.
+                    </p>
+
                 </div>
             </div>
 
+           
             <div class="carousel-item">
-                <div class="card border-success">
-                    <div class="card-body">
-                        <h5 class="text-success">¿Por qué es importante?</h5>
-                        <p class="text-secondary">
-                            Permite detectar riesgos como bajo peso, sobrepeso u obesidad que pueden afectar tu salud.
-                        </p>
-                    </div>
+                <div class="alert alert-success text-center">
+
+                    <h4 class="mb-3">¿Por qué es importante?</h4>
+
+                    <p class="text-dark">
+                        Permite identificar riesgos como bajo peso, sobrepeso u obesidad.
+                    </p>
+
+                    <hr>
+
+                    <p class="fw-bold text-success">
+                        ❤️ Ayuda a prevenir enfermedades y mejorar tu bienestar.
+                    </p>
+
                 </div>
             </div>
 
+        
             <div class="carousel-item">
-                <div class="card border-success">
-                    <div class="card-body">
-                        <h5 class="text-success">¿Puedo mejorar mi IMC?</h5>
-                        <p class="text-secondary">
-                            Sí. Con actividad física, buena alimentación y constancia, tu IMC puede mejorar con el tiempo.
-                        </p>
-                    </div>
+                <div class="alert alert-success text-center">
+
+                    <h4 class="mb-3">¿Puedo mejorarlo?</h4>
+
+                    <p class="text-dark">
+                        Sí. La actividad física y una buena alimentación ayudan a mejorar tu IMC.
+                    </p>
+
+                    <hr>
+
+                    <p class="fw-bold text-success">
+                        🌟 ¡Cada pequeño cambio cuenta!
+                    </p>
+
                 </div>
             </div>
 
         </div>
 
+        
         <button class="carousel-control-prev" type="button" data-bs-target="#preguntasIMC" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </button>
@@ -122,8 +146,8 @@
         <button class="carousel-control-next" type="button" data-bs-target="#preguntasIMC" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
         </button>
+
     </div>
-    {% endif %}
 
 </div>
 
