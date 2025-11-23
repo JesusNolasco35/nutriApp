@@ -8,122 +8,236 @@
 
     <div class="row justify-content-center g-4">
 
+        
         <div class="col-12 col-sm-6 col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <img src="/static/img/registro2.png" class="card-img-top" alt="Registro de Alimentos">
                 <div class="card-body">
                     <h5 class="card-title text-success">Registro de Alimentos</h5>
                     <p class="card-text">Registra fácil tus alimentos mediante búsqueda o escaneo.</p>
-                    <button class="btn btn-success mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#info1">
+
+                    <button class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#modalRegistro">
                         Ver más
                     </button>
 
-                    <div class="collapse mt-2" id="info1">
-                        <div class="card card-body">
-                            Registra tus comidas rápidamente usando la búsqueda o el escaneo de códigos de barras.<br>
-                            Guarda tus comidas favoritas y revisa tu historial diario y semanal para mantener un seguimiento fácil.
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
 
+        
+        <div class="modal fade" id="modalRegistro" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Registro de Alimentos</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        Registra tus comidas rápidamente usando la búsqueda o el escaneo de códigos de barras.<br>
+                        Guarda tus comidas favoritas y revisa tu historial diario y semanal para mantener un seguimiento fácil.
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        
         <div class="col-12 col-sm-6 col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <img src="/static/img/peso2.jpg" class="card-img-top" alt="Seguimiento de Peso">
                 <div class="card-body">
                     <h5 class="card-title text-success">Seguimiento de Peso y Actividad</h5>
                     <p class="card-text">Controla tu progreso semanal y mensual con gráficos.</p>
-                    <button class="btn btn-success mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#info2">
+
+                    <button class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#modalPeso">
                         Ver más
                     </button>
 
-                    <div class="collapse mt-2" id="info2">
-                        <div class="card card-body">
-                            Visualiza tu progreso semanal y mensual con gráficos claros.<br>
-                            Compara tu peso y actividad física a lo largo del tiempo y recibe alertas de tus metas.
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
 
+        
+        <div class="modal fade" id="modalPeso" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Seguimiento de Peso y Actividad</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        Visualiza tu progreso semanal y mensual con gráficos claros.<br>
+                        Compara tu peso y actividad física a lo largo del tiempo y recibe alertas de tus metas.
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        
         <div class="col-12 col-sm-6 col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <img src="/static/img/diario2.jpg" class="card-img-top" alt="TMB">
                 <div class="card-body">
                     <h5 class="card-title text-success">Calculadora TMB</h5>
                     <p class="card-text">Conoce la energía basal que tu cuerpo necesita.</p>
-                    <button class="btn btn-success mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#info3">
+
+                    <button class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#modalTMB">
                         Ver más
                     </button>
 
-                    <div class="collapse mt-2" id="info3">
-                        <div class="card card-body">
-                            Calcula tu Tasa Metabólica Basal (TMB) para conocer cuántas calorías necesita tu cuerpo en reposo.<br>
-                            Útil para planificar dietas y entrenamientos según tus objetivos.
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
 
+        
+        <div class="modal fade" id="modalTMB" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Calculadora TMB</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        Calcula tu Tasa Metabólica Basal (TMB) para conocer cuántas calorías necesitas en reposo.<br>
+                        Útil para planificar dietas y entrenamientos según tus objetivos.
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        
         <div class="col-12 col-sm-6 col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <img src="/static/img/comunidad2.jpg" class="card-img-top" alt="IMC">
                 <div class="card-body">
                     <h5 class="card-title text-success">Calculadora IMC</h5>
                     <p class="card-text">Evalúa tu estado nutricional en segundos.</p>
-                    <button class="btn btn-success mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#info4">
+
+                    <button class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#modalIMC">
                         Ver más
                     </button>
 
-                    <div class="collapse mt-2" id="info4">
-                        <div class="card card-body">
-                            Evalúa tu índice de masa corporal en segundos.<br>
-                            Conoce si tu peso está dentro de un rango saludable según tu altura.
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
 
+        
+        <div class="modal fade" id="modalIMC" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Calculadora IMC</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        Evalúa tu índice de masa corporal en segundos.<br>
+                        Conoce si tu peso está dentro de un rango saludable según tu altura.
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        
         <div class="col-12 col-sm-6 col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <img src="/static/img/dieta2.jpg" class="card-img-top" alt="GCT">
                 <div class="card-body">
                     <h5 class="card-title text-success">Calculadora GCT</h5>
                     <p class="card-text">Obtén cuántas calorías ocupas al día.</p>
-                    <button class="btn btn-success mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#info5">
+
+                    <button class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#modalGCT">
                         Ver más
                     </button>
 
-                    <div class="collapse mt-2" id="info5">
-                        <div class="card card-body">
-                            Obtén las calorías que necesitas consumir diariamente para mantener, perder o ganar peso.<br>
-                            Ajusta tus planes de alimentación de manera personalizada.
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
 
+        
+        <div class="modal fade" id="modalGCT" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Calculadora GCT</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        Obtén las calorías que necesitas consumir diariamente para mantener, perder o ganar peso.<br>
+                        Ajusta tus planes de alimentación de manera personalizada.
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        
         <div class="col-12 col-sm-6 col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <img src="/static/img/modulo3.jpg" class="card-img-top" alt="Educación">
                 <div class="card-body">
                     <h5 class="card-title text-success">Educación e Información</h5>
                     <p class="card-text">Aprende sobre nutrición de manera fácil y confiable.</p>
-                    <button class="btn btn-success mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#info6">
+
+                    <button class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#modalEdu">
                         Ver más
                     </button>
 
-                    <div class="collapse mt-2" id="info6">
-                        <div class="card card-body">
-                            Accede a artículos, tips y videos sobre nutrición y hábitos saludables.<br>
-                            Aprende a leer etiquetas y hacer elecciones más conscientes en tu dieta.
-                        </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="modal fade" id="modalEdu" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Educación e Información</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
+
+                    <div class="modal-body">
+                        Accede a artículos, tips y videos sobre nutrición y hábitos saludables.<br>
+                        Aprende a leer etiquetas y hacer elecciones más conscientes en tu dieta.
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+
                 </div>
             </div>
         </div>
