@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import requests
 
-USDA_API = "https://api.nal.usda.gov/fdc/v1/foods/search"
+
 API_KEY = "g0xGxMVBfoE4xsfMOikTJKWC9F8D8OD57U4TaWed"
 
 
@@ -17,6 +17,78 @@ def index():
 @app.route("/bienvenida")
 def bienvenida():
     return render_template("bienvenida.html")
+
+@app.route("/recetas", methods=["GET", "POST"])
+def recetas():
+    datos = None
+
+    if request.method == "POST":
+        alimento = request.form.get("alimento", "").strip()
+
+        if not alimento:
+            flash("Ingresa un alimento", "error")
+            return render_template("recetas.html", datos=None)
+
+        url = f"https://api.nal.usda.gov/fdc/v1/foods/search?query={alimento}&api_key={API_KEY}"
+
+        try:
+            r = requests.get(url)
+            data = r.json()
+
+            if "foods" not in data or len(data["foods"]) == 0:
+                flash("No se encontró el alimento", "error")
+                return render_template("recetas.html", datos=None)
+
+            food = data["foods"][0]
+
+            calorias = proteinas = carbohidratos = grasas = None
+
+            for n in food.get("foodNutrients", []):
+                nombre = n.get("nutrientName")
+                valor = n.get("value")
+
+                if nombre == "Energy" and n.get("unitName") == "KCAL":
+                    calorias = valor
+
+                if nombre == "Protein":
+                    proteinas = valor
+
+                if nombre == "Carbohydrate, by difference":
+                    carbohidratos = valor
+
+                if nombre == "Total lipid (fat)":
+                    grasas = valor
+
+            puntaje = 0
+
+            if proteinas and proteinas >= 3:
+                puntaje += 1
+
+            if grasas is not None and grasas <= 5:
+                puntaje += 1
+
+            if carbohidratos is not None and carbohidratos <= 30:
+                puntaje += 1
+
+            if puntaje >= 2:
+                nutritivo = "Sí es nutritivo"
+            else:
+                nutritivo = "No es tan nutritivo"
+
+            datos = {
+                "nombre": food["description"],
+                "calorias": calorias,
+                "proteinas": proteinas,
+                "carbohidratos": carbohidratos,
+                "grasas": grasas,
+                "nutritivo": nutritivo
+            }
+
+        except Exception as e:
+            print("ERROR:", e)
+            flash("Error obteniendo datos", "error")
+
+    return render_template("recetas.html", datos=datos)
 
 
 
@@ -324,11 +396,6 @@ def macros():
     return render_template("macros.html", resultado=resultado)
 
 
-@app.route("/recetas")
-def recetas():
-    if not session.get("logueado"):
-        return redirect(url_for("login"))
-    return render_template("recetas.html")
 
 
 
