@@ -1,4 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
+import requests
+
+USDA_API = "https://api.nal.usda.gov/fdc/v1/foods/search"
+API_KEY = "g0xGxMVBfoE4xsfMOikTJKWC9F8D8OD57U4TaWed"
+
 
 app = Flask(__name__)
 app.secret_key = "clavexdffdd"

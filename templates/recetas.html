@@ -1,7 +1,55 @@
 {% extends "base.html" %}
 
+{% block title %}Analizar platillo{% endblock %}
+
 {% block content %}
-<div class="container mt-4">
+
+<div class="card p-4 border-0" style="background-color: white;">
+
+    <h2 class="text-success mb-4">Analizar Platillo</h2>
+
+    <form action="/analizar" method="POST">
+        <div class="mb-3">
+            <label class="form-label text-success">Nombre del platillo</label>
+            <input class="form-control border-success" name="platillo" placeholder="Ej: tacos al pastor" required>
+        </div>
+        <button class="btn btn-success mt-2" type="submit">Analizar</button>
+    </form>
+
+    {% if datos %}
+    <hr>
+    <h3 class="text-success">Ingredientes detectados:</h3>
+    <p>{{ingredientes}}</p>
+
+    <h3 class="text-success mt-3">Datos nutricionales:</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="table-success">
+                <th>Nutriente</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for k,v in datos.items() %}
+            <tr>
+                <td>{{k}}</td>
+                <td>{{v}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3 class="text-success mt-3">Evaluación:</h3>
+
+    {% if saludable == "Muy saludable" %}
+        <div class="alert alert-success">{{saludable}}</div>
+    {% elif saludable == "Moderadamente saludable" %}
+        <div class="alert alert-warning">{{saludable}}</div>
+    {% else %}
+        <div class="alert alert-danger">{{saludable}}</div>
+    {% endif %}
+    {% endif %}
 
 </div>
+
 {% endblock %}
