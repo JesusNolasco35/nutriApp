@@ -112,15 +112,18 @@ def login():
             return redirect(url_for('login'))
 
 
-        session['usuario_email'] = email
-        session['usuario_nombre'] = usuario['nombre']
-        session['nivel_experiencia'] = usuario['nivel_experiencia']
-        session['logueado'] = True
+    session['usuario'] = {
+         "email": email,
+        "nombre": usuario['nombre'],
+        "nivel_experiencia": usuario['nivel_experiencia'],
+        "dieta": usuario.get("dieta", "normal")
+        }
+    session['logueado'] = True
+
        
 
-        flash(f'Bienvenido {usuario["nombre"]}!', 'success')
-        return redirect(url_for('index'))
-
+    flash(f'Bienvenido {usuario["nombre"]}!', 'success')
+    return redirect(url_for('index'))   
     return render_template('login.html')
 
 
@@ -177,15 +180,21 @@ def registro():
 
     return render_template("registro.html")
 
-@app.route("/Recomendaciones")
+@app.route("/comida")
 def comida():
     if not session.get("logueado"):
-        flash("Debes iniciar sesión para ver las recetas.", "error")
+        flash("Debes iniciar sesión primero", "error")
         return redirect(url_for("index"))
 
-    nivel = session.get("nivel_experiencia", "principiante")
+   
+    dieta = request.args.get("dieta", "normal")
+    tiempo = request.args.get("tiempo", "rapido")
 
-    return render_template("sugerencias.html", nivel=nivel)
+    
+    return render_template("sugerencias.html", dieta=dieta, tiempo=tiempo)
+
+
+
 
 
 
