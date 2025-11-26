@@ -1,139 +1,374 @@
 {% extends "base.html" %}
-{% block title %}Recetas{% endblock %}
+{% block title %}Sugerencias{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <h2 class="text-center text-success">
-        Recetas para nivel: {{ nivel|capitalize }}
-    </h2>
+
+    <h2 class="text-center mb-3">Sugerencias personalizadas</h2>
+
+    <form method="GET" action="/comida" class="row g-3 mb-4">
+        <div class="col-md-4">
+            <label class="form-label">Dieta</label>
+            <select name="dieta" class="form-select">
+                <option value="normal" {% if dieta == 'normal' %}selected{% endif %}>Normal</option>
+                <option value="vegetariana" {% if dieta == 'vegetariana' %}selected{% endif %}>Vegetariana</option>
+                <option value="sin_gluten" {% if dieta == 'sin_gluten' %}selected{% endif %}>Sin gluten</option>
+                <option value="alta_proteina" {% if dieta == 'alta_proteina' %}selected{% endif %}>Alta en proteína</option>
+                <option value="bajas_calorias" {% if dieta == 'bajas_calorias' %}selected{% endif %}>Bajas en calorías</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label">Tiempo</label>
+            <select name="tiempo" class="form-select">
+                <option value="rapido" {% if tiempo == 'rapido' %}selected{% endif %}>Rápidas (5-15 min)</option>
+                <option value="tardado" {% if tiempo == 'tardado' %}selected{% endif %}>Tardadas (15-60 min)</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-end">
+            <button class="btn btn-success w-100">Aplicar filtros</button>
+        </div>
+    </form>
+
     <hr>
 
-    {% if nivel == "principiante" %}
+    <h5 class="text-center mb-4">Mostrando: {{ dieta.replace('_',' ')|capitalize }} — {% if tiempo == 'rapido' %}Rápidas (5-15 min){% else %}Tardadas (15-60 min){% endif %}</h5>
+
     <div class="row justify-content-center">
 
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm">
-                <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9" class="card-img-top">
-                <div class="card-body">
-                    <h4 class="text-success">Ensalada Rápida</h4>
-                    <p>Lista en 5 minutos con 4 ingredientes.</p>
-                    <h6>Preparación:</h6>
-                    <p>Mezcla lechuga, pepino, tomate y limón.</p>
-                </div>
-            </div>
-        </div>
+    {% if dieta == "normal" and tiempo == "rapido" %}
 
         <div class="col-md-4 mb-3">
-            <div class="card shadow-sm">
-                <img src="https://images.unsplash.com/photo-1603048297172-c92544798f7a" class="card-img-top">
-                <div class="card-body">
-                    <h4 class="text-success">Sándwich Básico</h4>
-                    <p>Pan, jamón, queso y mayonesa.</p>
-                    <h6>Preparación:</h6>
-                    <p>Arma el sándwich y tuéstalo si deseas.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mb-3">
-            <div class="card shadow-sm">
+            <div class="card h-100">
                 <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" class="card-img-top">
                 <div class="card-body">
-                    <h4 class="text-success">Huevos con Jamón</h4>
-                    <p>Desayuno rápido y sencillo.</p>
-                    <h6>Preparación:</h6>
-                    <p>Bate huevos, agrega jamón y cocina.</p>
+                    <h5 class="card-title">Sándwich Integral Rápido</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 10 min — Pan integral, pollo, lechuga.</p>
                 </div>
             </div>
         </div>
 
-    </div>
-    {% endif %}
-
-    {% if nivel == "intermedio" %}
-    <div class="row justify-content-center">
-
         <div class="col-md-4 mb-3">
-            <div class="card shadow-sm">
-                <img src="https://images.unsplash.com/photo-1589308078055-918f8f1f0f57" class="card-img-top">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9" class="card-img-top">
                 <div class="card-body">
-                    <h4 class="text-success">Pasta con Pollo</h4>
-                    <p>Pasta con pollo y salsa de tomate.</p>
-                    <h6>Preparación:</h6>
-                    <p>Cuece la pasta, saltea el pollo y mezcla.</p>
+                    <h5 class="card-title">Ensalada César Ligera</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 12 min — Lechuga, aderezo ligero, crutones.</p>
                 </div>
             </div>
         </div>
 
         <div class="col-md-4 mb-3">
-            <div class="card shadow-sm">
-                <img src="https://images.unsplash.com/photo-1604908811739-1c1f34f3bb13" class="card-img-top">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd" class="card-img-top">
                 <div class="card-body">
-                    <h4 class="text-success">Arroz con Verduras</h4>
-                    <p>Ligero, económico y nutritivo.</p>
-                    <h6>Preparación:</h6>
-                    <p>Saltea zanahoria y chícharos, mezcla con arroz.</p>
+                    <h5 class="card-title">Avena con Fruta</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 7 min — Avena, leche y fruta.</p>
                 </div>
             </div>
         </div>
 
+    {% elif dieta == "normal" and tiempo == "tardado" %}
+
         <div class="col-md-4 mb-3">
-            <div class="card shadow-sm">
+            <div class="card h-100">
                 <img src="https://images.unsplash.com/photo-1562967914-608f82629710" class="card-img-top">
                 <div class="card-body">
-                    <h4 class="text-success">Pollo al Limón</h4>
-                    <p>Perfecto para comida ligera.</p>
-                    <h6>Preparación:</h6>
-                    <p>Sazona, agrega limón y ajo, cocina a fuego medio.</p>
+                    <h5 class="card-title">Pechuga en Salsa</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 40 min — Pechuga, salsa cremosa.</p>
                 </div>
             </div>
         </div>
 
-    </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1604908811739-1c1f34f3bb13" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Arroz con Verduras</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 30 min — Arroz y verduras salteadas.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1543353071-087092ec393a" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Cazuela de Pollo</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 50 min — Guiso casero tradicional.</p>
+                </div>
+            </div>
+        </div>
+
     {% endif %}
 
-   
-    {% if nivel == "avanzado" %}
-    <div class="row justify-content-center">
+    {% if dieta == "vegetariana" and tiempo == "rapido" %}
 
         <div class="col-md-4 mb-3">
-            <div class="card shadow-sm">
-                <img src="https://images.unsplash.com/photo-1601050690597-dfbb5a1f96e9" class="card-img-top">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" class="card-img-top">
                 <div class="card-body">
-                    <h4 class="text-success">Pechuga en Salsa Cremosa</h4>
-                    <p>Suave y con reducción de crema.</p>
-                    <h6>Preparación:</h6>
-                    <p>Sella el pollo y agrega salsa cremosa con especias.</p>
+                    <h5 class="card-title">Tostada de Aguacate</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 8 min — Pan, aguacate, limón.</p>
                 </div>
             </div>
         </div>
 
         <div class="col-md-4 mb-3">
-            <div class="card shadow-sm">
-                <img src="https://images.unsplash.com/photo-1588167101417-1f7bec7be1af" class="card-img-top">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1542181966-9e5f9a8b6a2d" class="card-img-top">
                 <div class="card-body">
-                    <h4 class="text-success">Salmón Glaseado</h4>
-                    <p>Miel + limón + soya = 🔥</p>
-                    <h6>Preparación:</h6>
-                    <p>Hornea con glaseado 15 min hasta caramelizar.</p>
+                    <h5 class="card-title">Ensalada Caprese Vegetariana</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 12 min — Tomate, mozzarella, albahaca.</p>
                 </div>
             </div>
         </div>
 
         <div class="col-md-4 mb-3">
-            <div class="card shadow-sm">
-                <img src="https://images.unsplash.com/photo-1638176061669-e5327d85f1e4" class="card-img-top">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642" class="card-img-top">
                 <div class="card-body">
-                    <h4 class="text-success">Risotto de Champiñones</h4>
-                    <p>Técnica avanzada y cremosa.</p>
-                    <h6>Preparación:</h6>
-                    <p>Agrega caldo poco a poco hasta quedar cremoso.</p>
+                    <h5 class="card-title">Wrap de Hummus</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 10 min — Tortilla, hummus y vegetales.</p>
                 </div>
             </div>
         </div>
 
-    </div>
+    {% elif dieta == "vegetariana" and tiempo == "tardado" %}
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Lasagna Vegetariana</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 50 min — Capas de vegetales y queso.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1542827631-5f75c3e3d3a5" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Risotto de Calabaza</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 40 min — Arroz cremoso y calabaza.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Tarta de Espinacas</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 45 min — Masa y relleno cremoso.</p>
+                </div>
+            </div>
+        </div>
+
     {% endif %}
+
+    {% if dieta == "sin_gluten" and tiempo == "rapido" %}
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Huevos con Espinaca</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 7 min — Rápido y sin gluten.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Ensalada de Frutas</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 10 min — Mezcla de frutas frescas.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Tostadas sin Gluten</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 12 min — Pan sin gluten y acompañamientos.</p>
+                </div>
+            </div>
+        </div>
+
+    {% elif dieta == "sin_gluten" and tiempo == "tardado" %}
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1562967914-608f82629710" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Pechuga Asada con Papas</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 45 min — Plato principal sin gluten.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1542827631-5f75c3e3d3a5" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Guiso de Lentejas</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 35 min — Lentejas y verduras.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Pizza sin Gluten Casera</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 50 min — Masa sin gluten y toppings.</p>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+
+    {% if dieta == "alta_proteina" and tiempo == "rapido" %}
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Omelette Proteico</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 10 min — Huevos y claras para proteína.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1532634896-26909d0d2856" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Ensalada de Pollo</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 12 min — Pechuga, lechuga y quinoa.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Yogurt Griego con Frutos</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 7 min — Yogurt alto en proteína y frutos secos.</p>
+                </div>
+            </div>
+        </div>
+
+    {% elif dieta == "alta_proteina" and tiempo == "tardado" %}
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Pollo al Horno Proteico</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 45 min — Pollo con especias y verduras.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Filete con Quinoa</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 40 min — Carne magra y quinoa.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Albóndigas de Pavo</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 50 min — Pavo molido con especias.</p>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+
+
+    {% if dieta == "bajas_calorias" and tiempo == "rapido" %}
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c0e" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Sopa Ligera</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 10 min — Sopa clara de vegetales.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1542827631-5f75c3e3d3a5" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Ensalada Detox</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 12 min — Mezcla verde con limón.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Rolls de Lechuga</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 8 min — Envolturas bajas en calorías.</p>
+                </div>
+            </div>
+        </div>
+
+    {% elif dieta == "bajas_calorias" and tiempo == "tardado" %}
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1542827631-5f75c3e3d3a5" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Pescado al Horno Ligero</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 40 min — Pescado con vegetales al horno.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Buddha Bowl Saludable</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 35 min — Arroz integral y vegetales.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c0e" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Guiso de Verduras Ligero</h5>
+                    <p class="card-text"><strong>Tiempo:</strong> 45 min — Estofado bajo en calorías.</p>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+
+    </div> 
 
 </div>
 {% endblock %}
