@@ -107,12 +107,12 @@
                     {% if session.get('logueado') %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" href="#" id="userMenu" data-bs-toggle="dropdown">
-                            Hola, {{ session['usuario_nombre'] }}
+                            Hola, {{ session['usuario']['nombre'] }}
+
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-end">
 
-                           
 
                             <li><a class="dropdown-item" href="{{ url_for('ajustes') }}">Configuración</a></li>
 
