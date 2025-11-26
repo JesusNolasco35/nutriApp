@@ -111,19 +111,17 @@ def login():
             flash('Contraseña incorrecta', 'error')
             return redirect(url_for('login'))
 
-
-    session['usuario'] = {
-         "email": email,
-        "nombre": usuario['nombre'],
-        "nivel_experiencia": usuario['nivel_experiencia'],
-        "dieta": usuario.get("dieta", "normal")
+        session['usuario'] = {
+            "email": email,
+            "nombre": usuario['nombre'],
+            "nivel_experiencia": usuario['nivel_experiencia'],
+            "dieta": usuario.get("dieta", "normal")
         }
-    session['logueado'] = True
+        session['logueado'] = True
 
-       
+        flash(f'Bienvenido {usuario["nombre"]}!', 'success')
+        return redirect(url_for('index'))
 
-    flash(f'Bienvenido {usuario["nombre"]}!', 'success')
-    return redirect(url_for('index'))   
     return render_template('login.html')
 
 
