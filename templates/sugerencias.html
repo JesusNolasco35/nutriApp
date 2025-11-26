@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block title %}Recetas{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center text-success">
+        Recetas para nivel: {{ nivel|capitalize }}
+    </h2>
+    <hr>
+
+    {% if nivel == "principiante" %}
+    <div class="row justify-content-center">
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="text-success">Ensalada Rápida</h4>
+                    <p>Lista en 5 minutos con 4 ingredientes.</p>
+                    <h6>Preparación:</h6>
+                    <p>Mezcla lechuga, pepino, tomate y limón.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <img src="https://images.unsplash.com/photo-1603048297172-c92544798f7a" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="text-success">Sándwich Básico</h4>
+                    <p>Pan, jamón, queso y mayonesa.</p>
+                    <h6>Preparación:</h6>
+                    <p>Arma el sándwich y tuéstalo si deseas.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="text-success">Huevos con Jamón</h4>
+                    <p>Desayuno rápido y sencillo.</p>
+                    <h6>Preparación:</h6>
+                    <p>Bate huevos, agrega jamón y cocina.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if nivel == "intermedio" %}
+    <div class="row justify-content-center">
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <img src="https://images.unsplash.com/photo-1589308078055-918f8f1f0f57" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="text-success">Pasta con Pollo</h4>
+                    <p>Pasta con pollo y salsa de tomate.</p>
+                    <h6>Preparación:</h6>
+                    <p>Cuece la pasta, saltea el pollo y mezcla.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <img src="https://images.unsplash.com/photo-1604908811739-1c1f34f3bb13" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="text-success">Arroz con Verduras</h4>
+                    <p>Ligero, económico y nutritivo.</p>
+                    <h6>Preparación:</h6>
+                    <p>Saltea zanahoria y chícharos, mezcla con arroz.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <img src="https://images.unsplash.com/photo-1562967914-608f82629710" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="text-success">Pollo al Limón</h4>
+                    <p>Perfecto para comida ligera.</p>
+                    <h6>Preparación:</h6>
+                    <p>Sazona, agrega limón y ajo, cocina a fuego medio.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endif %}
+
+   
+    {% if nivel == "avanzado" %}
+    <div class="row justify-content-center">
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <img src="https://images.unsplash.com/photo-1601050690597-dfbb5a1f96e9" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="text-success">Pechuga en Salsa Cremosa</h4>
+                    <p>Suave y con reducción de crema.</p>
+                    <h6>Preparación:</h6>
+                    <p>Sella el pollo y agrega salsa cremosa con especias.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <img src="https://images.unsplash.com/photo-1588167101417-1f7bec7be1af" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="text-success">Salmón Glaseado</h4>
+                    <p>Miel + limón + soya = 🔥</p>
+                    <h6>Preparación:</h6>
+                    <p>Hornea con glaseado 15 min hasta caramelizar.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <img src="https://images.unsplash.com/photo-1638176061669-e5327d85f1e4" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="text-success">Risotto de Champiñones</h4>
+                    <p>Técnica avanzada y cremosa.</p>
+                    <h6>Preparación:</h6>
+                    <p>Agrega caldo poco a poco hasta quedar cremoso.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

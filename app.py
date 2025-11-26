@@ -91,20 +91,6 @@ def recetas():
     return render_template("recetas.html", datos=datos)
 
 
-
-
-
-
-@app.route('/inicio_invitado')
-def inicio_invitado():
-    """
-    Permite entrar como invitado sin necesidad de registrarse ni iniciar sesión.
-    Redirige al mismo index pero con flag de invitado si quieres mostrar algo especial.
-    """
-    session['logueado'] = False  
-    return redirect(url_for('index'))
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -125,14 +111,18 @@ def login():
             flash('Contraseña incorrecta', 'error')
             return redirect(url_for('login'))
 
+
         session['usuario_email'] = email
         session['usuario_nombre'] = usuario['nombre']
+        session['nivel_experiencia'] = usuario['nivel_experiencia']
         session['logueado'] = True
+       
 
         flash(f'Bienvenido {usuario["nombre"]}!', 'success')
-        return redirect(url_for('index'))  
+        return redirect(url_for('index'))
 
     return render_template('login.html')
+
 
 
 @app.route('/logout')
@@ -178,7 +168,7 @@ def registro():
             "nivel_actividad": nivel_actividad,
             "objetivo": objetivo,
             "preferencias": preferencias,
-            "nivel_experiencia": nivel_experiencia,
+            "nivel_experiencia": nivel_experiencia,  
             "password": password
         }
 
@@ -186,6 +176,17 @@ def registro():
         return redirect(url_for("login"))
 
     return render_template("registro.html")
+
+@app.route("/Recomendaciones")
+def comida():
+    if not session.get("logueado"):
+        flash("Debes iniciar sesión para ver las recetas.", "error")
+        return redirect(url_for("index"))
+
+    nivel = session.get("nivel_experiencia", "principiante")
+
+    return render_template("sugerencias.html", nivel=nivel)
+
 
 
 @app.route("/educacion")
@@ -200,7 +201,7 @@ def ajustes():
 def ayuda():
     return render_template("ayuda.html")
 
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+
 
 
 @app.route("/imc", methods=["GET", "POST"])

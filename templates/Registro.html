@@ -21,7 +21,7 @@
 
             <form method="POST" action="{{ url_for('registro') }}">
 
-               
+
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <input type="text" name="nombres" class="form-control" placeholder="Nombre(s)" required>
@@ -31,15 +31,16 @@
                     </div>
                 </div>
 
-               
+
                 <div class="mb-3">
                     <label class="form-label text-success">Fecha de nacimiento</label>
                     <input type="date" class="form-control" name="fecha_nacimiento" required>
                 </div>
 
-                
+
                 <div class="mb-3">
                     <label class="form-label text-success">Género</label><br>
+
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="genero" value="hombre" required>
                         <label class="form-check-label">Hombre</label>
@@ -56,7 +57,7 @@
                     </div>
                 </div>
 
-               
+
                 <div class="row mb-3">
                     <div class="col-md-4">
                         <input type="number" name="peso" class="form-control" placeholder="Peso (kg)" required>
@@ -78,7 +79,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="mb-3">
                     <label class="form-label text-success">Objetivo principal</label>
                     <select name="objetivo" class="form-select" required>
@@ -89,27 +90,40 @@
                     </select>
                 </div>
 
-                
+
+                <div class="mb-3">
+                    <label class="form-label text-success">Nivel de chef</label>
+                    <select name="nivel_experiencia" class="form-select" required>
+                        <option disabled selected>Nivel de experiencia</option>
+                        <option value="principiante">Principiante</option>
+                        <option value="intermedio">Intermedio</option>
+                        <option value="avanzado">Avanzado</option>
+                    </select>
+
+                </div>
+
+
                 <div class="mb-3">
                     <label class="form-label text-success">Preferencias alimenticias</label>
                     <textarea name="preferencias" class="form-control" rows="2"></textarea>
                 </div>
 
-                
+
                 <div class="mb-3">
                     <input type="email" name="email" class="form-control" placeholder="Correo electrónico" required>
                 </div>
 
-                
+
                 <div class="mb-3">
                     <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
                 </div>
 
                 <div class="mb-3">
-                    <input type="password" name="confirm_password" class="form-control" placeholder="Confirmar contraseña" required>
+                    <input type="password" name="confirm_password" class="form-control"
+                        placeholder="Confirmar contraseña" required>
                 </div>
 
-                
+
                 <button type="submit" class="btn btn-success w-100">Registrarte</button>
 
                 <p class="text-center mt-3">
