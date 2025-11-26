@@ -8,7 +8,20 @@
 
     <div class="row justify-content-center g-4">
 
-        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show"
+            role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+
+
         <div class="col-12 col-sm-6 col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <img src="/static/img/analizador.jpg" class="card-img-top" alt="Analizador de recetas y alimentos">
@@ -47,7 +60,7 @@
             </div>
         </div>
 
-        
+
         <div class="col-12 col-sm-6 col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <img src="/static/img/peso2.jpg" class="card-img-top" alt="Seguimiento de Peso">
@@ -63,7 +76,7 @@
             </div>
         </div>
 
-        
+
         <div class="modal fade" id="modalPeso" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -86,7 +99,7 @@
             </div>
         </div>
 
-        
+
         <div class="col-12 col-sm-6 col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <img src="/static/img/diario2.jpg" class="card-img-top" alt="TMB">
@@ -102,7 +115,7 @@
             </div>
         </div>
 
-        
+
         <div class="modal fade" id="modalTMB" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -125,7 +138,7 @@
             </div>
         </div>
 
-        
+
         <div class="col-12 col-sm-6 col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <img src="/static/img/comunidad2.jpg" class="card-img-top" alt="IMC">
@@ -141,7 +154,7 @@
             </div>
         </div>
 
-        
+
         <div class="modal fade" id="modalIMC" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -164,7 +177,7 @@
             </div>
         </div>
 
-        
+
         <div class="col-12 col-sm-6 col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <img src="/static/img/dieta2.jpg" class="card-img-top" alt="GCT">
@@ -180,7 +193,7 @@
             </div>
         </div>
 
-        
+
         <div class="modal fade" id="modalGCT" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -203,7 +216,7 @@
             </div>
         </div>
 
-        
+
         <div class="col-12 col-sm-6 col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <img src="/static/img/modulo3.jpg" class="card-img-top" alt="Educación">
@@ -219,7 +232,7 @@
             </div>
         </div>
 
-        
+
         <div class="modal fade" id="modalEdu" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
