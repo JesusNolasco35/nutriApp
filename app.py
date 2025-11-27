@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 import requests
 
 
-API_KEY = "g0xGxMVBfoE4xsfMOikTJKWC9F8D8OD57U4TaWed"
+API_KEY = "0b6cd1a06f944b318200285af4f11638"
 
 
 app = Flask(__name__)
@@ -18,77 +18,48 @@ def index():
 def bienvenida():
     return render_template("bienvenida.html")
 
-@app.route("/recetas", methods=["GET", "POST"])
+@app.route("/")
+def inicio():
+    return render_template("index.html")
+
+@app.route("/ingredientes", methods=["GET", "POST"])
 def recetas():
-    datos = None
+    recetas_info = []
 
     if request.method == "POST":
-        alimento = request.form.get("alimento", "").strip()
+        nombre = request.form.get("nombre", "").strip()
+        if not nombre:
+            flash("Please enter a dish name.", "error")
+            return redirect(url_for("recetas"))
 
-        if not alimento:
-            flash("Ingresa un alimento", "error")
-            return render_template("recetas.html", datos=None)
+        url_busqueda = f"https://api.spoonacular.com/recipes/complexSearch?query={nombre}&number=3&apiKey={API_KEY}"
+        resp = requests.get(url_busqueda).json()
 
-        url = f"https://api.nal.usda.gov/fdc/v1/foods/search?query={alimento}&api_key={API_KEY}"
+        if resp.get("results"):
+            for receta in resp["results"]:
+                id_receta = receta["id"]
+                url_info = f"https://api.spoonacular.com/recipes/{id_receta}/information?includeNutrition=true&apiKey={API_KEY}"
+                detalle = requests.get(url_info).json()
 
-        try:
-            r = requests.get(url)
-            data = r.json()
+                nutricion = {}
+                for nutr in detalle.get("nutrition", {}).get("nutrients", []):
+                    if nutr["name"] in ["Calories", "Protein", "Fat", "Saturated Fat", "Carbohydrates"]:
+                        nutricion[nutr["name"]] = f"{nutr['amount']} {nutr['unit']}"
 
-            if "foods" not in data or len(data["foods"]) == 0:
-                flash("No se encontró el alimento", "error")
-                return render_template("recetas.html", datos=None)
+                receta_simple = {
+                    "title": detalle["title"],
+                    "servings": detalle["servings"],
+                    "readyInMinutes": detalle.get("readyInMinutes", "N/A"),
+                    "ingredients": [ing["name"] for ing in detalle.get("extendedIngredients", [])],
+                    "nutrition": nutricion
+                }
 
-            food = data["foods"][0]
+                recetas_info.append(receta_simple)
+        else:
+            flash("No recipes found.", "error")
 
-            calorias = proteinas = carbohidratos = grasas = None
+    return render_template("recetas.html", resultados=recetas_info)
 
-            for n in food.get("foodNutrients", []):
-                nombre = n.get("nutrientName")
-                valor = n.get("value")
-
-                if nombre == "Energy" and n.get("unitName") == "KCAL":
-                    calorias = valor
-
-                if nombre == "Protein":
-                    proteinas = valor
-
-                if nombre == "Carbohydrate, by difference":
-                    carbohidratos = valor
-
-                if nombre == "Total lipid (fat)":
-                    grasas = valor
-
-            puntaje = 0
-
-            if proteinas and proteinas >= 3:
-                puntaje += 1
-
-            if grasas is not None and grasas <= 5:
-                puntaje += 1
-
-            if carbohidratos is not None and carbohidratos <= 30:
-                puntaje += 1
-
-            if puntaje >= 2:
-                nutritivo = "Sí es nutritivo"
-            else:
-                nutritivo = "No es tan nutritivo"
-
-            datos = {
-                "nombre": food["description"],
-                "calorias": calorias,
-                "proteinas": proteinas,
-                "carbohidratos": carbohidratos,
-                "grasas": grasas,
-                "nutritivo": nutritivo
-            }
-
-        except Exception as e:
-            print("ERROR:", e)
-            flash("Error obteniendo datos", "error")
-
-    return render_template("recetas.html", datos=datos)
 
 
 @app.route('/login', methods=['GET', 'POST'])
