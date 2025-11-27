@@ -10,19 +10,21 @@
         <div class="col-md-4">
             <label class="form-label">Dieta</label>
             <select name="dieta" class="form-select">
-                <option value="normal" {% if dieta == 'normal' %}selected{% endif %}>Normal</option>
-                <option value="vegetariana" {% if dieta == 'vegetariana' %}selected{% endif %}>Vegetariana</option>
-                <option value="sin_gluten" {% if dieta == 'sin_gluten' %}selected{% endif %}>Sin gluten</option>
-                <option value="alta_proteina" {% if dieta == 'alta_proteina' %}selected{% endif %}>Alta en proteína</option>
-                <option value="bajas_calorias" {% if dieta == 'bajas_calorias' %}selected{% endif %}>Bajas en calorías</option>
+                <option value="normal" {% if dieta=='normal' %}selected{% endif %}>Normal</option>
+                <option value="vegetariana" {% if dieta=='vegetariana' %}selected{% endif %}>Vegetariana</option>
+                <option value="sin_gluten" {% if dieta=='sin_gluten' %}selected{% endif %}>Sin gluten</option>
+                <option value="alta_proteina" {% if dieta=='alta_proteina' %}selected{% endif %}>Alta en proteína
+                </option>
+                <option value="bajas_calorias" {% if dieta=='bajas_calorias' %}selected{% endif %}>Bajas en calorías
+                </option>
             </select>
         </div>
 
         <div class="col-md-4">
             <label class="form-label">Tiempo</label>
             <select name="tiempo" class="form-select">
-                <option value="rapido" {% if tiempo == 'rapido' %}selected{% endif %}>Rápidas (5-15 min)</option>
-                <option value="tardado" {% if tiempo == 'tardado' %}selected{% endif %}>Tardadas (15-60 min)</option>
+                <option value="rapido" {% if tiempo=='rapido' %}selected{% endif %}>Rápidas (5-15 min)</option>
+                <option value="tardado" {% if tiempo=='tardado' %}selected{% endif %}>Tardadas (15-60 min)</option>
             </select>
         </div>
 
@@ -33,11 +35,12 @@
 
     <hr>
 
-    <h5 class="text-center mb-4">Mostrando: {{ dieta.replace('_',' ')|capitalize }} — {% if tiempo == 'rapido' %}Rápidas (5-15 min){% else %}Tardadas (15-60 min){% endif %}</h5>
+    <h5 class="text-center mb-4">Mostrando: {{ dieta.replace('_',' ')|capitalize }} — {% if tiempo == 'rapido' %}Rápidas
+        (5-15 min){% else %}Tardadas (15-60 min){% endif %}</h5>
 
     <div class="row justify-content-center">
 
-    {% if dieta == "normal" and tiempo == "rapido" %}
+        {% if dieta == "normal" and tiempo == "rapido" %}
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -45,6 +48,48 @@
                 <div class="card-body">
                     <h5 class="card-title">Sándwich Integral Rápido</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 10 min — Pan integral, pollo, lechuga.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalSandwich">
+                        Ver receta
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="modalSandwich" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Sándwich Integral Rápido</h5>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <h6><strong>Ingredientes:</strong></h6>
+                        <ul>
+                            <li>2 rebanadas de pan integral</li>
+                            <li>Pechuga de pollo desmenuzada</li>
+                            <li>Lechuga fresca</li>
+                            <li>1 rodaja de jitomate</li>
+                            <li>Mostaza ligera (opcional)</li>
+                        </ul>
+
+                        <h6 class="mt-3"><strong>Preparación:</strong></h6>
+                        <ol>
+                            <li>Tostar ligeramente las rebanadas de pan para mejorar textura.</li>
+                            <li>Colocar una capa fina de mayonesa ligera (si se usa).</li>
+                            <li>Acomodar la lechuga, el jitomate y el pollo desmenuzado.</li>
+                            <li>Cerrar el sándwich y cortar a la mitad para servir.</li>
+                        </ol>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -56,6 +101,48 @@
                 <div class="card-body">
                     <h5 class="card-title">Ensalada César Ligera</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 12 min — Lechuga, aderezo ligero, crutones.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalCesar">
+                        Ver receta
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="modalCesar" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ensalada César Ligera</h5>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <h6><strong>Ingredientes:</strong></h6>
+                        <ul>
+                            <li>Lechuga romana fresca</li>
+                            <li>Aderezo César ligero</li>
+                            <li>Pechuga de pollo (opcional)</li>
+                            <li>Crutones horneados</li>
+                            <li>Queso rallado light</li>
+                        </ul>
+
+                        <h6 class="mt-3"><strong>Preparación:</strong></h6>
+                        <ol>
+                            <li>Lavar y secar la lechuga para evitar que el aderezo se diluya.</li>
+                            <li>Cortar la lechuga en trozos medianos y colocar en un bowl.</li>
+                            <li>Agregar el aderezo y mezclar suavemente para no romper las hojas.</li>
+                            <li>Finalizar con crutones y parmesano al servir.</li>
+                        </ol>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -66,45 +153,227 @@
                 <div class="card-body">
                     <h5 class="card-title">Avena con Fruta</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 7 min — Avena, leche y fruta.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalAvena">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
 
-    {% elif dieta == "normal" and tiempo == "tardado" %}
 
+        <div class="modal fade" id="modalAvena" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Avena con Fruta</h5>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <h6><strong>Ingredientes:</strong></h6>
+                        <ul>
+                            <li>1 taza de avena</li>
+                            <li>1 taza de leche o agua</li>
+                            <li>Plátano y fresas</li>
+                            <li>Miel opcional</li>
+                        </ul>
+
+                        <h6 class="mt-3"><strong>Preparación:</strong></h6>
+                        <ol>
+                            <li>Calentar la leche en una olla pequeña.</li>
+                            <li>Agregar la avena y cocinar a fuego medio por 3–4 minutos.</li>
+                            <li>Retirar del fuego y endulzar con miel si se desea.</li>
+                            <li>Servir y colocar la fruta fresca encima con un toque de canela.</li>
+                        </ol>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {% elif dieta == "normal" and tiempo == "tardado" %}
+        <!--aquiiiii-->
+        <!-- ========================= -->
+        <!--      PECHUGA EN SALSA     -->
+        <!-- ========================= -->
         <div class="col-md-4 mb-3">
             <div class="card h-100">
-                <img src="/static/img/pechuga.jpg" class="card-img-top">
+                <img src="/static/img/pechuga.jpg" class="card-img-top img-fluid">
                 <div class="card-body">
                     <h5 class="card-title">Pechuga en Salsa</h5>
-                    <p class="card-text"><strong>Tiempo:</strong> 40 min — Pechuga, salsa cremosa.</p>
+                    <p class="card-text"><strong>Tiempo:</strong> 40 min — Pechuga en salsa.</p>
+
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalPechuga">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
 
+        <!-- Modal Pechuga -->
+        <div class="modal" tabindex="-1" id="modalPechuga">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Pechuga en Salsa </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>
+                            <strong>Ingredientes:</strong><br>
+                            • 2 pechugas de pollo<br>
+                            • 2 jitomates<br>
+                            • 1/4 cebolla<br>
+                            • 1 diente de ajo<br>
+                            • 1/2 taza de agua o caldo<br>
+                            • Sal y pimienta al gusto<br>
+                            • 1 cda de aceite<br><br>
+
+                            <strong>Preparación:</strong><br>
+                            1. Licúa el jitomate, cebolla, ajo y agua para hacer la salsa.<br>
+                            2. Salpimenta las pechugas y dóralas ligeramente en una sartén.<br>
+                            3. Vierte la salsa encima y mezcla suavemente.<br>
+                            4. Cocina tapado a fuego medio por 15–20 minutos hasta que espese y el pollo esté
+                            cocido.<br>
+                        </p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- ========================= -->
+        <!--      ARROZ CON VERDURAS   -->
+        <!-- ========================= -->
         <div class="col-md-4 mb-3">
             <div class="card h-100">
-                <img src="/static/img/rice.jpg" class="card-img-top">
+                <img src="/static/img/rice.jpg" class="card-img-top img-fluid">
                 <div class="card-body">
                     <h5 class="card-title">Arroz con Verduras</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 30 min — Arroz y verduras salteadas.</p>
+
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalArroz">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
 
+        <!-- Modal Arroz -->
+        <div class="modal" tabindex="-1" id="modalArroz">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Arroz con Verduras</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>
+                            <strong>Ingredientes:</strong><br>
+                            • 1 taza de arroz<br>
+                            • 1 1/2 tazas de agua<br>
+                            • Zanahoria picada<br>
+                            • Chícharos<br>
+                            • Elote<br>
+                            • 1 cda de aceite<br>
+                            • Sal al gusto<br><br>
+
+                            <strong>Preparación:</strong><br>
+                            1. Sofríe las verduras por 3 minutos.<br>
+                            2. Añade el arroz y dóralo ligeramente.<br>
+                            3. Agrega el agua y la sal.<br>
+                            4. Cocina tapado a fuego bajo 15 minutos.<br>
+                        </p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- ========================= -->
+        <!--       CAZUELA DE POLLO    -->
+        <!-- ========================= -->
         <div class="col-md-4 mb-3">
             <div class="card h-100">
-                <img src="/static/img/polloo.jpg" class="card-img-top">
+                <img src="/static/img/polloo.jpg" class="card-img-top img-fluid">
                 <div class="card-body">
                     <h5 class="card-title">Cazuela de Pollo</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 50 min — Guiso casero tradicional.</p>
+
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalCazuela">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
 
-    {% endif %}
+        <!-- Modal Cazuela -->
+        <div class="modal" tabindex="-1" id="modalCazuela">
+            <div class="modal-dialog">
+                <div class="modal-content">
 
-    {% if dieta == "vegetariana" and tiempo == "rapido" %}
+                    <div class="modal-header">
+                        <h5 class="modal-title">Cazuela de Pollo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>
+                            <strong>Ingredientes:</strong><br>
+                            • 500 g de pollo<br>
+                            • 2 papas en cubos<br>
+                            • 1 zanahoria en rodajas<br>
+                            • 1/2 cebolla picada<br>
+                            • 2 tazas de caldo de pollo<br>
+                            • 1 jitomate picado<br>
+                            • Sal y especias al gusto<br><br>
+
+                            <strong>Preparación:</strong><br>
+                            1. Dora el pollo ligeramente.<br>
+                            2. Agrega cebolla y jitomate; cocina 3 minutos.<br>
+                            3. Añade las papas, zanahoria y el caldo.<br>
+                            4. Cocina tapado 30–35 minutos.<br>
+                        </p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        {% endif %}
+
+        {% if dieta == "vegetariana" and tiempo == "rapido" %}
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -112,9 +381,47 @@
                 <div class="card-body">
                     <h5 class="card-title">Tostada de Aguacate</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 8 min — Pan, aguacate, limón.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalTostada">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
+
+        <!-- Modal Tostada -->
+        <div class="modal" tabindex="-1" id="modalTostada">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Tostada de Aguacate</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>
+                            <strong>Ingredientes:</strong><br>
+                            • 1 rebanada de pan tostado<br>
+                            • 1/2 aguacate<br>
+                            • Limón al gusto<br>
+                            • Sal y pimienta<br>
+                            • Opcional: jitomate, pepino o chile en polvo<br><br>
+
+                            <strong>Preparación:</strong><br>
+                            1. Aplasta el aguacate en un tazón y agrégale limón, sal y pimienta.<br>
+                            2. Úntalo sobre el pan tostado.<br>
+                            3. Agrega rebanadas de jitomate o pepino si deseas algo extra.<br>
+                        </p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -122,9 +429,47 @@
                 <div class="card-body">
                     <h5 class="card-title">Ensalada Caprese Vegetariana</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 12 min — Tomate, mozzarella, albahaca.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalCazuela">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
+
+
+        <div class="modal" tabindex="-1" id="modalCazuela">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ensalada Caprese Vegetariana</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>
+                            <strong>Ingredientes:</strong><br>
+                            • 1 tomate grande en rodajas<br>
+                            • Queso mozzarella fresco<br>
+                            • Hojas de albahaca<br>
+                            • 1 cda aceite de oliva<br>
+                            • Sal y pimienta<br><br>
+
+                            <strong>Preparación:</strong><br>
+                            1. Acomoda rodajas de tomate y mozzarella de forma alternada.<br>
+                            2. Añade hojas de albahaca entre cada rodaja.<br>
+                            3. Rocía con aceite de oliva, sal y pimienta.<br>
+                        </p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -132,11 +477,50 @@
                 <div class="card-body">
                     <h5 class="card-title">Wrap de Hummus</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 10 min — Tortilla, hummus y vegetales.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalWrap">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
 
-    {% elif dieta == "vegetariana" and tiempo == "tardado" %}
+
+        <div class="modal" tabindex="-1" id="modalWrap">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Wrap de Hummus</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>
+                            <strong>Ingredientes:</strong><br>
+                            • 1 tortilla de harina integral<br>
+                            • 2 cdas de hummus<br>
+                            • Lechuga o espinaca<br>
+                            • Pepino en tiras<br>
+                            • Zanahoria rallada<br>
+                            • Sal y pimienta<br><br>
+
+                            <strong>Preparación:</strong><br>
+                            1. Unta el hummus sobre la tortilla.<br>
+                            2. Añade los vegetales encima de forma uniforme.<br>
+                            3. Salpimenta y enrolla firmemente el wrap.<br>
+                        </p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        {% elif dieta == "vegetariana" and tiempo == "tardado" %}
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -144,9 +528,43 @@
                 <div class="card-body">
                     <h5 class="card-title">Lasagna Vegetariana</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 50 min — Capas de vegetales y queso.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalLasagna">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
+
+
+        <div class="modal fade" id="modalLasagna" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Lasagna Vegetariana</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p><strong>Ingredientes:</strong></p>
+                        <ul>
+                            <li>Láminas de pasta</li>
+                            <li>Calabacitas, espinacas y zanahoria</li>
+                            <li>Salsa de tomate</li>
+                            <li>Queso mozzarella y parmesano</li>
+                            <li>Orégano y ajo</li>
+                        </ul>
+
+                        <p><strong>Preparación:</strong></p>
+                        <p>
+                            Saltea los vegetales, arma capas con pasta, salsa y queso. Hornea por 40–45 minutos
+                            hasta que dore y el queso se derrita.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -154,23 +572,90 @@
                 <div class="card-body">
                     <h5 class="card-title">Risotto de Calabaza</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 40 min — Arroz cremoso y calabaza.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalRisotto">
+                        Ver receta
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="modalRisotto" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Risotto de Calabaza</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p><strong>Ingredientes:</strong></p>
+                        <ul>
+                            <li>Arroz arborio</li>
+                            <li>Calabaza en cubos</li>
+                            <li>Caldo de verduras</li>
+                            <li>Cebolla y ajo</li>
+                            <li>Queso parmesano</li>
+                        </ul>
+
+                        <p><strong>Preparación:</strong></p>
+                        <p>
+                            Sofríe la cebolla, agrega el arroz y la calabaza. Añade caldo poco a poco
+                            hasta que esté cremoso. Finaliza con parmesano.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
-                <img src="tarta2.jpg" class="card-img-top">
+                <img src="/static/img/espinaca.jpg" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Tarta de Espinacas</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 45 min — Masa y relleno cremoso.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalTarta">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
 
-    {% endif %}
 
-    {% if dieta == "sin_gluten" and tiempo == "rapido" %}
+        <div class="modal fade" id="modalTarta" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Tarta de Espinacas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p><strong>Ingredientes:</strong></p>
+                        <ul>
+                            <li>Masa para tarta</li>
+                            <li>Espinacas frescas</li>
+                            <li>Queso ricotta o panela</li>
+                            <li>Huevo</li>
+                            <li>Cebolla y ajo</li>
+                        </ul>
+
+                        <p><strong>Preparación:</strong></p>
+                        <p>
+                            Saltea las espinacas y mezcla con queso y huevo. Rellena la masa y hornea
+                            por 35–40 minutos hasta que cuaje y dore.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {% endif %}
+
+        {% if dieta == "sin_gluten" and tiempo == "rapido" %}
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -178,9 +663,42 @@
                 <div class="card-body">
                     <h5 class="card-title">Huevos con Espinaca</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 7 min — Rápido y sin gluten.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalHuevos">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
+
+
+        <div class="modal fade" id="modalHuevos" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Huevos con Espinaca</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p><strong>Ingredientes:</strong></p>
+                        <ul>
+                            <li>2 huevos</li>
+                            <li>Espinacas frescas</li>
+                            <li>Aceite o mantequilla</li>
+                            <li>Sal y pimienta</li>
+                        </ul>
+
+                        <p><strong>Preparación:</strong></p>
+                        <p>
+                            Saltea ligeramente las espinacas, añade los huevos batidos y cocina hasta que cuajen.
+                            Sazona al gusto y sirve caliente.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -188,9 +706,45 @@
                 <div class="card-body">
                     <h5 class="card-title">Ensalada de Frutas</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 10 min — Mezcla de frutas frescas.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalFrutas">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
+
+
+        <div class="modal fade" id="modalFrutas" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ensalada de Frutas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p><strong>Ingredientes:</strong></p>
+                        <ul>
+                            <li>Manzana</li>
+                            <li>Plátano</li>
+                            <li>Uvas</li>
+                            <li>Fresa o mango</li>
+                            <li>Yogur natural opcional</li>
+                        </ul>
+
+                        <p><strong>Preparación:</strong></p>
+                        <p>
+                            Corta toda la fruta en cubos, mezcla en un tazón y opcionalmente añade yogur para
+                            darle textura cremosa.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -198,11 +752,43 @@
                 <div class="card-body">
                     <h5 class="card-title">Tostadas sin Gluten</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 12 min — Pan sin gluten y acompañamientos.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalTostadas">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
 
-    {% elif dieta == "sin_gluten" and tiempo == "tardado" %}
+
+        <div class="modal fade" id="modalTostadas" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Tostadas sin Gluten</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p><strong>Ingredientes:</strong></p>
+                        <ul>
+                            <li>Pan sin gluten</li>
+                            <li>Aguacate o hummus</li>
+                            <li>Tomate, pepino o huevo (opcional)</li>
+                            <li>Limón, sal y pimienta</li>
+                        </ul>
+
+                        <p><strong>Preparación:</strong></p>
+                        <p>
+                            Tuesta el pan, cubre con aguacate o hummus y agrega los acompañamientos elegidos.
+                            Sazona con limón, sal y pimienta.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% elif dieta == "sin_gluten" and tiempo == "tardado" %}
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -210,65 +796,286 @@
                 <div class="card-body">
                     <h5 class="card-title">Pechuga Asada con Papas</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 45 min — Plato principal sin gluten.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal"
+                        data-bs-target="#modalPechugaPapas">
+                        Ver receta
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="modalPechugaPapas" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Pechuga Asada con Papas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p><strong>Ingredientes:</strong></p>
+                        <ul>
+                            <li>Pechuga de pollo</li>
+                            <li>Papas en cubos</li>
+                            <li>Aceite de oliva</li>
+                            <li>Ajo en polvo</li>
+                            <li>Pimienta y sal</li>
+                            <li>Perejil o hierbas al gusto</li>
+                        </ul>
+
+                        <p><strong>Preparación:</strong></p>
+                        <p>
+                            Sazona la pechuga y las papas con aceite, sal y especias. Asa todo en sartén o horno hasta
+                            dorar
+                            y cocinar completamente. Sirve caliente con perejil picado.
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </div>
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
-                <img src="https://images.unsplash.com/photo-1542827631-5f75c3e3d3a5" class="card-img-top">
+                <img src="/static/img/lentejas.jpg" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Guiso de Lentejas</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 35 min — Lentejas y verduras.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalLentejas">
+                        Ver receta
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="modalLentejas" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Guiso de Lentejas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p><strong>Ingredientes:</strong></p>
+                        <ul>
+                            <li>Lentejas</li>
+                            <li>Zanahoria picada</li>
+                            <li>Cebolla</li>
+                            <li>Ajo</li>
+                            <li>Caldo o agua</li>
+                            <li>Sal y especias</li>
+                        </ul>
+
+                        <p><strong>Preparación:</strong></p>
+                        <p>
+                            Sofríe cebolla y ajo, agrega las lentejas y el caldo, y cocina con verduras hasta que
+                            ablanden.
+                            Ajusta la sazón y sirve caliente.
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </div>
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
-                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" class="card-img-top">
+                <img src="/static/img/pizza.jpg" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Pizza sin Gluten Casera</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 50 min — Masa sin gluten y toppings.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal"
+                        data-bs-target="#modalPizzaGluten">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
 
-    {% endif %}
 
-    {% if dieta == "alta_proteina" and tiempo == "rapido" %}
+        <div class="modal fade" id="modalPizzaGluten" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Pizza sin Gluten Casera</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p><strong>Ingredientes:</strong></p>
+                        <ul>
+                            <li>Masa sin gluten (casera o premezcla)</li>
+                            <li>Salsa de tomate</li>
+                            <li>Queso mozzarella</li>
+                            <li>Toppings al gusto</li>
+                            <li>Aceite de oliva</li>
+                        </ul>
+
+                        <p><strong>Preparación:</strong></p>
+                        <p>
+                            Extiende la masa sin gluten, agrega salsa, queso y toppings. Hornea hasta que el queso
+                            se derrita y la base se dore ligeramente.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+
+        {% if dieta == "alta_proteina" and tiempo == "rapido" %}
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
-                <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2" class="card-img-top">
+                <img src="/static/img/omelet.jpg" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Omelette Proteico</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 10 min — Huevos y claras para proteína.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalOmelette">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
 
+
+        <div class="modal fade" id="modalOmelette" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Omelette Proteico</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <p><strong>Ingredientes:</strong></p>
+                        <ul>
+                            <li>2 huevos</li>
+                            <li>2 claras</li>
+                            <li>Espinaca picada</li>
+                            <li>Sal y pimienta</li>
+                            <li>Aceite o mantequilla</li>
+                        </ul>
+
+                        <p><strong>Preparación:</strong></p>
+                        <p>
+                            Bate los huevos con las claras, sazona y vierte en un sartén caliente con aceite.
+                            Agrega espinaca, cocina a fuego medio y dobla el omelette para servir.
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
         <div class="col-md-4 mb-3">
             <div class="card h-100">
-                <img src="https://images.unsplash.com/photo-1532634896-26909d0d2856" class="card-img-top">
+                <img src="/static/img/ensaladapollo.jpg" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Ensalada de Pollo</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 12 min — Pechuga, lechuga y quinoa.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal"
+                        data-bs-target="#modalEnsaladaPollo">
+                        Ver receta
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="modalEnsaladaPollo" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ensalada de Pollo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <p><strong>Ingredientes:</strong></p>
+                        <ul>
+                            <li>Pechuga de pollo cocida y picada</li>
+                            <li>Lechuga</li>
+                            <li>Quinoa cocida</li>
+                            <li>Tomate cherry</li>
+                            <li>Limón</li>
+                            <li>Aceite de oliva</li>
+                            <li>Sal y pimienta</li>
+                        </ul>
+
+                        <p><strong>Preparación:</strong></p>
+                        <p>
+                            Mezcla el pollo con la quinoa y los vegetales picados.
+                            Aliña con limón, aceite de oliva, sal y pimienta.
+                            Sirve fresca.
+                        </p>
+
+                    </div>
+
                 </div>
             </div>
         </div>
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
-                <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2" class="card-img-top">
+                <img src="/static/img/yogurt.jpg" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Yogurt Griego con Frutos</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 7 min — Yogurt alto en proteína y frutos secos.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalYogurt">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
 
-    {% elif dieta == "alta_proteina" and tiempo == "tardado" %}
+
+        <div class="modal fade" id="modalYogurt" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Yogurt Griego con Frutos</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <p><strong>Ingredientes:</strong></p>
+                        <ul>
+                            <li>Yogurt griego natural</li>
+                            <li>Nueces</li>
+                            <li>Almendras</li>
+                            <li>Arándanos</li>
+                            <li>Miel (opcional)</li>
+                        </ul>
+
+                        <p><strong>Preparación:</strong></p>
+                        <p>
+                            Sirve el yogurt en un tazón, agrega los frutos secos y arándanos encima.
+                            Endulza con miel si lo deseas y mezcla ligeramente.
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {% elif dieta == "alta_proteina" and tiempo == "tardado" %}
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -276,9 +1083,46 @@
                 <div class="card-body">
                     <h5 class="card-title">Pollo al Horno Proteico</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 45 min — Pollo con especias y verduras.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalPolloHorno">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
+
+
+        <div class="modal fade" id="modalPolloHorno" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Pollo al Horno Proteico</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <p><strong>Ingredientes:</strong></p>
+                        <ul>
+                            <li>Pechuga o muslos de pollo</li>
+                            <li>Pimiento y cebolla</li>
+                            <li>Aceite de oliva</li>
+                            <li>Pimentón, ajo en polvo, orégano</li>
+                            <li>Sal y pimienta</li>
+                        </ul>
+
+                        <p><strong>Preparación:</strong></p>
+                        <p>
+                            Sazona el pollo con especias y colócalo en una bandeja con las verduras.
+                            Rocía aceite de oliva y hornea hasta dorar.
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -286,24 +1130,97 @@
                 <div class="card-body">
                     <h5 class="card-title">Filete con Quinoa</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 40 min — Carne magra y quinoa.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal"
+                        data-bs-target="#modalFileteQuinoa">
+                        Ver receta
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="modalFileteQuinoa" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Filete con Quinoa</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <p><strong>Ingredientes:</strong></p>
+                        <ul>
+                            <li>Filete de res magra</li>
+                            <li>Quinoa cocida</li>
+                            <li>Aceite de oliva</li>
+                            <li>Ajo y perejil</li>
+                            <li>Sal y pimienta</li>
+                        </ul>
+
+                        <p><strong>Preparación:</strong></p>
+                        <p>
+                            Sazona y sella el filete en sartén caliente.
+                            Acompaña con quinoa salteada con ajo y perejil para mayor sabor.
+                        </p>
+
+                    </div>
+
                 </div>
             </div>
         </div>
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
-                <img src="https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642" class="card-img-top">
+                <img src="/static/img/albondigas.jpg" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Albóndigas de Pavo</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 50 min — Pavo molido con especias.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalPavo">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
 
-    {% endif %}
+
+        <div class="modal fade" id="modalPavo" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Albóndigas de Pavo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <p><strong>Ingredientes:</strong></p>
+                        <ul>
+                            <li>Pavo molido</li>
+                            <li>Pan molido o avena</li>
+                            <li>Huevo</li>
+                            <li>Ajo y cebolla picada</li>
+                            <li>Sal y especias</li>
+                        </ul>
+
+                        <p><strong>Preparación:</strong></p>
+                        <p>
+                            Mezcla todos los ingredientes, forma las albóndigas y hornéalas o cocínalas en sartén.
+                            Sirve con verduras o arroz.
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
 
 
-    {% if dieta == "bajas_calorias" and tiempo == "rapido" %}
+        {% if dieta == "bajas_calorias" and tiempo == "rapido" %}
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -311,9 +1228,43 @@
                 <div class="card-body">
                     <h5 class="card-title">Sopa Ligera</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 10 min — Sopa clara de vegetales.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalSopaLigera">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
+
+        <!-- Modal Sopa Ligera -->
+        <div class="modal fade" id="modalSopaLigera" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Sopa Ligera</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Ingredientes:</h6>
+                        <ul>
+                            <li>1 taza de zanahoria picada</li>
+                            <li>1 taza de calabacita en cubos</li>
+                            <li>1 taza de espinaca</li>
+                            <li>1 litro de caldo de verduras</li>
+                            <li>Sal y pimienta al gusto</li>
+                        </ul>
+
+                        <h6>Preparación:</h6>
+                        <ol>
+                            <li>Calienta el caldo de verduras en una olla.</li>
+                            <li>Agrega zanahoria y calabacita; cocina por 7 minutos.</li>
+                            <li>Incorpora la espinaca y salpimienta.</li>
+                            <li>Hierve 2 minutos más y sirve caliente.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -321,6 +1272,40 @@
                 <div class="card-body">
                     <h5 class="card-title">Ensalada Detox</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 12 min — Mezcla verde con limón.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal"
+                        data-bs-target="#modalEnsaladaDetox">
+                        Ver receta
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="modalEnsaladaDetox" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ensalada Detox</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Ingredientes:</h6>
+                        <ul>
+                            <li>1 taza de espinaca</li>
+                            <li>1 taza de lechuga romana</li>
+                            <li>1 pepino en rodajas</li>
+                            <li>1 limón (jugo)</li>
+                            <li>1 cucharada de aceite de oliva</li>
+                        </ul>
+
+                        <h6>Preparación:</h6>
+                        <ol>
+                            <li>Mezcla las hojas verdes en un tazón.</li>
+                            <li>Agrega el pepino y mezcla.</li>
+                            <li>Aliña con limón, aceite de oliva y sal ligera.</li>
+                            <li>Sirve fresca.</li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>
@@ -331,11 +1316,45 @@
                 <div class="card-body">
                     <h5 class="card-title">Rolls de Lechuga</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 8 min — Envolturas bajas en calorías.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal"
+                        data-bs-target="#modalRollsLechuga">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
 
-    {% elif dieta == "bajas_calorias" and tiempo == "tardado" %}
+
+        <div class="modal fade" id="modalRollsLechuga" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Rolls de Lechuga</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Ingredientes:</h6>
+                        <ul>
+                            <li>Hojas de lechuga grandes</li>
+                            <li>100 g de pechuga de pollo deshebrado</li>
+                            <li>1 zanahoria rallada</li>
+                            <li>1 pepino en tiras</li>
+                            <li>Salsa de soya baja en sodio</li>
+                        </ul>
+
+                        <h6>Preparación:</h6>
+                        <ol>
+                            <li>Lava y seca las hojas de lechuga.</li>
+                            <li>Coloca pollo, zanahoria y pepino sobre cada hoja.</li>
+                            <li>Enrolla con cuidado.</li>
+                            <li>Acompaña con un toque de salsa de soya.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% elif dieta == "bajas_calorias" and tiempo == "tardado" %}
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -343,9 +1362,47 @@
                 <div class="card-body">
                     <h5 class="card-title">Pescado al Horno Ligero</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 40 min — Pescado con vegetales al horno.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal"
+                        data-bs-target="#modalPescadoHorno">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
+
+
+        <div class="modal fade" id="modalPescadoHorno" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Pescado al Horno Ligero</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Ingredientes:</h6>
+                        <ul>
+                            <li>2 filetes de pescado blanco</li>
+                            <li>1 taza de brócoli</li>
+                            <li>1 zanahoria en rodajas</li>
+                            <li>1 calabacita en rodajas</li>
+                            <li>1 limón</li>
+                            <li>Sal, pimienta y orégano</li>
+                        </ul>
+
+                        <h6>Preparación:</h6>
+                        <ol>
+                            <li>Precalienta el horno a 180°C.</li>
+                            <li>Coloca los filetes en una bandeja y agrega los vegetales alrededor.</li>
+                            <li>Sazona con sal, pimienta y orégano.</li>
+                            <li>Exprime el limón sobre el pescado.</li>
+                            <li>Hornea durante 35–40 minutos hasta que esté suave.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -353,9 +1410,45 @@
                 <div class="card-body">
                     <h5 class="card-title">Buddha Bowl Saludable</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 35 min — Arroz integral y vegetales.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalBuddhaBowl">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
+
+
+        <div class="modal fade" id="modalBuddhaBowl" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Buddha Bowl Saludable</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Ingredientes:</h6>
+                        <ul>
+                            <li>1 taza de arroz integral cocido</li>
+                            <li>1/2 taza de garbanzos cocidos</li>
+                            <li>1/2 taza de brócoli</li>
+                            <li>1/2 aguacate</li>
+                            <li>1 zanahoria rallada</li>
+                            <li>Limón y sésamo</li>
+                        </ul>
+
+                        <h6>Preparación:</h6>
+                        <ol>
+                            <li>Coloca el arroz integral como base del bowl.</li>
+                            <li>Acomoda los garbanzos, brócoli, zanahoria y aguacate.</li>
+                            <li>Agrega limón y semillas de sésamo encima.</li>
+                            <li>Sirve fresco.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         <div class="col-md-4 mb-3">
             <div class="card h-100">
@@ -363,13 +1456,48 @@
                 <div class="card-body">
                     <h5 class="card-title">Guiso de Verduras Ligero</h5>
                     <p class="card-text"><strong>Tiempo:</strong> 45 min — Estofado bajo en calorías.</p>
+                    <button class="btn btn-success w-100 mt-2" data-bs-toggle="modal"
+                        data-bs-target="#modalGuisoVerduras">
+                        Ver receta
+                    </button>
                 </div>
             </div>
         </div>
 
-    {% endif %}
 
-    </div> 
+        <div class="modal fade" id="modalGuisoVerduras" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Guiso de Verduras Ligero</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Ingredientes:</h6>
+                        <ul>
+                            <li>1 taza de papa en cubos</li>
+                            <li>1 zanahoria picada</li>
+                            <li>1 taza de chayote en cubos</li>
+                            <li>1 taza de calabacita</li>
+                            <li>1 tomate picado</li>
+                            <li>Sal, pimienta y laurel</li>
+                        </ul>
+
+                        <h6>Preparación:</h6>
+                        <ol>
+                            <li>Sofríe la zanahoria y papa durante 5 minutos.</li>
+                            <li>Agrega chayote, calabacita y tomate.</li>
+                            <li>Vierte agua hasta cubrir y añade sal, pimienta y laurel.</li>
+                            <li>Tapa y cocina a fuego bajo por 30–35 minutos.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+
+    </div>
 
 </div>
 {% endblock %}
