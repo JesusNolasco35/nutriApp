@@ -1,47 +1,39 @@
-{% extends "base.html" %}
-
-{% block content %}
-
-
-    <h2 class="text-center mb-4">Buscar alimento</h2>
+{% extends "base.html" %} {% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Buscar Platillo</h2>
 
     <form method="POST" class="mb-4">
-        <input type="text" name="alimento" class="form-control" placeholder="Ejemplo: Caldo De Pollo">
-        <button class="btn btn-success mt-3 w-100">Buscar</button>
+        <input type="text" name="nombre" id="nombre" class="form-control mb-3"
+            placeholder="Ejemplo: pasta, burritos, pollo con papas" required />
+        <button class="btn btn-primary">Buscar</button>
     </form>
 
-    {% if datos %}
-    <div class="card shadow-sm p-3">
-        <h3 class="text-center mb-3">{{ datos.nombre }}</h3>
+    {% if resultados %}
+    <h3>Results:</h3>
 
-        <ul class="list-group">
-            <li class="list-group-item">
-                <strong>Calorías:</strong> {{ datos.calorias }} kcal
-            </li>
-            <li class="list-group-item">
-                <strong>Proteínas:</strong> {{ datos.proteinas }} g
-            </li>
-            <li class="list-group-item">
-                <strong>Carbohidratos:</strong> {{ datos.carbohidratos }} g
-            </li>
-            <li class="list-group-item">
-                <strong>Grasas:</strong> {{ datos.grasas }} g
-            </li>
-        </ul>
+    <div class="row mt-3">
+        {% for receta in resultados %}
+        <div class="col-md-4 mb-3">
+            <div class="card p-3">
+                <h5>{{ receta.title }}</h5>
+                <p><b>Servings:</b> {{ receta.servings }}</p>
+                <p><b>Ready in:</b> {{ receta.readyInMinutes }} min</p>
 
-        <div class="mt-3 p-3 text-center 
-            {% if datos.nutritivo == 'Sí es nutritivo' %}
-                bg-success text-white
-            {% elif datos.nutritivo == 'No es tan nutritivo' %}
-                bg-warning
-            {% else %}
-                bg-secondary text-white
-            {% endif %}
-        ">
-            <strong>{{ datos.nutritivo }}</strong>
+                {% if receta.nutrition %}
+                <h6>Macronutrients:</h6>
+                <ul>
+                    {% for key, value in receta.nutrition.items() %}
+                    <li>{{ key }}: {{ value }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                <p><b>Ingredients:</b> {{ receta.ingredients | join(", ") }}</p>
+            </div>
         </div>
+        {% endfor %}
     </div>
     {% endif %}
 
-
+</div>
 {% endblock %}
