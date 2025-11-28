@@ -78,7 +78,8 @@
 
                         <strong>5. Dieta Intermitente (ayuno intermitente):</strong><br>
                         Verdad: Puede ayudar a regular apetito y mejorar sensibilidad a la insulina.<br>
-                        Mito: No hace que “bajes de peso por magia”; funciona solo si mantienes un déficit calórico.<br><br>
+                        Mito: No hace que “bajes de peso por magia”; funciona solo si mantienes un déficit
+                        calórico.<br><br>
 
                         <strong>Tip final:</strong><br>
                         Consulta siempre con un profesional antes de iniciar cualquier dieta y prioriza hábitos
@@ -106,7 +107,11 @@
 
                     <p>
 
-                        Los macronutrientes son los nutrientes que el cuerpo necesita en grandes cantidades para funcionar correctamente. Son esenciales para proporcionar la energía que necesitamos para realizar nuestras actividades diarias y también desempeñan roles clave en la estructura y el funcionamiento de nuestras células. Los tres principales macronutrientes son carbohidratos, proteínas y grasas.<br><br>
+                        Los macronutrientes son los nutrientes que el cuerpo necesita en grandes cantidades para
+                        funcionar correctamente. Son esenciales para proporcionar la energía que necesitamos para
+                        realizar nuestras actividades diarias y también desempeñan roles clave en la estructura y el
+                        funcionamiento de nuestras células. Los tres principales macronutrientes son carbohidratos,
+                        proteínas y grasas.<br><br>
 
 
                         <strong>Carbohidratos:</strong> principal fuente de energía para el cerebro y los músculos.
@@ -147,15 +152,25 @@
                     <hr>
 
                     <p>
-                        <strong>Hidratación:</strong> La hidratación es fundamental para mantener la temperatura corporal, evitar la fatiga, mejorar el rendimiento físico y apoyar procesos como la digestión y la circulación.<br><br>
+                        <strong>Hidratación:</strong> La hidratación es fundamental para mantener la temperatura
+                        corporal, evitar la fatiga, mejorar el rendimiento físico y apoyar procesos como la digestión y
+                        la circulación.<br><br>
 
-                        <strong>Fibra:</strong> La fibra mejora la digestión, previene el estreñimiento, ayuda a controlar los niveles de azúcar en sangre, aumenta la saciedad y favorece la salud intestinal.<br><br>
+                        <strong>Fibra:</strong> La fibra mejora la digestión, previene el estreñimiento, ayuda a
+                        controlar los niveles de azúcar en sangre, aumenta la saciedad y favorece la salud
+                        intestinal.<br><br>
 
-                        <strong>Vitaminas y minerales:</strong> Son esenciales para el sistema inmunológico, la producción de energía, la salud de los huesos, la piel y los músculos, además de prevenir deficiencias importantes.<br><br>
+                        <strong>Vitaminas y minerales:</strong> Son esenciales para el sistema inmunológico, la
+                        producción de energía, la salud de los huesos, la piel y los músculos, además de prevenir
+                        deficiencias importantes.<br><br>
 
-                        <strong>Actividad física:</strong> El ejercicio regular fortalece el corazón, mejora la circulación, ayuda a controlar el peso, aumenta la fuerza y reduce el estrés, contribuyendo al bienestar general.<br><br>
+                        <strong>Actividad física:</strong> El ejercicio regular fortalece el corazón, mejora la
+                        circulación, ayuda a controlar el peso, aumenta la fuerza y reduce el estrés, contribuyendo al
+                        bienestar general.<br><br>
 
-                        <strong>Descanso adecuado:</strong> Dormir bien permite la reparación muscular, regula hormonas relacionadas con el apetito, mejora la memoria y la concentración y es clave para una buena recuperación física y mental.<br>
+                        <strong>Descanso adecuado:</strong> Dormir bien permite la reparación muscular, regula hormonas
+                        relacionadas con el apetito, mejora la memoria y la concentración y es clave para una buena
+                        recuperación física y mental.<br>
                     </p>
 
 
@@ -166,11 +181,18 @@
 
 
     <div class=" text-center shadow-sm mb-5 py-4">
-
+        {% if session.get('logueado') %}
         <img src="/static/img/images.png" class="mx-auto mb-3" width="120" alt="Descargas">
+
+
+
+
+
+
 
         <h4 class="fw-bold">Recursos Descargables</h4>
         <p class="text-muted">Material en PDF para apoyar tu nutrición</p>
+
 
         <div class="list-group w-75 mx-auto">
 
@@ -186,6 +208,8 @@
             <a download href="/static/pdfs/saludable.pdf" class="list-group-item list-group-item-action">
                 Alimentación Saludable
             </a>
+            {% endif %}
+
 
         </div>
 

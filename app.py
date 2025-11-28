@@ -56,7 +56,7 @@ def recetas():
 
                 recetas_info.append(receta_simple)
         else:
-            flash("No recipes found.", "error")
+            flash("No se encontraron reetas.", "error")
 
     return render_template("recetas.html", resultados=recetas_info)
 
@@ -160,11 +160,6 @@ def comida():
 
     return render_template("sugerencias.html", dieta=dieta, tiempo=tiempo)
 
-
-
-
-
-
 @app.route("/educacion")
 def educacion():
     return render_template("Educacion.html")
@@ -176,9 +171,6 @@ def ajustes():
 @app.route("/ayuda")
 def ayuda():
     return render_template("ayuda.html")
-
-
-
 
 @app.route("/imc", methods=["GET", "POST"])
 def imc():
@@ -217,12 +209,6 @@ def imc():
 
     return render_template("imc.html")
 
-
-
-
-
-
-
 @app.route("/tmb", methods=["GET", "POST"])
 def tmb():
     if request.method == "POST":
@@ -253,10 +239,6 @@ def tmb():
 
     return render_template("tmb.html")
 
-
-
-
-
 @app.route("/gct", methods=["GET", "POST"])
 def gct():
     if request.method == "POST":
@@ -283,7 +265,6 @@ def gct():
 
     return render_template("gct.html")
 
-
 @app.route("/pci", methods=["GET", "POST"])
 def pci():
     if request.method == "POST":
@@ -309,8 +290,6 @@ def pci():
 
     return render_template("pci.html")
 
-
-
 @app.route("/macronutrientes", methods=["GET", "POST"])
 def macros():
     resultado = None
@@ -328,7 +307,6 @@ def macros():
                 tmb = 88.36 + (13.4 * peso) + (4.8 * altura) - (5.7 * edad)
             else:
                 tmb = 447.6 + (9.2 * peso) + (3.1 * altura) - (4.3 * edad)
-
 
             factores = {
                 "sedentario": 1.2,
@@ -362,12 +340,5 @@ def macros():
             resultado = "error"
 
     return render_template("macros.html", resultado=resultado)
-
-
-
-
-
-
-
 if __name__ == "__main__":
     app.run(debug=True)
